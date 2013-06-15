@@ -11,8 +11,11 @@ Structure
 
 ``
 /lib                        # Library code written by us
+
 /migration                  # SQL migrations between DB versions
+
 /t                          # Tests. Lots of tests
+
 /vendor
     /perlbrew               # Our custom-built version of perl, for easy maintenance and uninstallation
 ``

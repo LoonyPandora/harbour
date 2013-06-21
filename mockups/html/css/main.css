@@ -98,16 +98,31 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+
+.middle h4 {
+    font-family: "HelveticaNeue-Medium";
+    color: #7f8c8d;
+    font-size: 14px;
+    margin: 0;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+    border-bottom: 1px solid #eee;
+}
+
+
 .list {
     list-style: none;
     top: 40px;
     padding: 0;
+    margin: 0;
 }
 
 
 .list li {
     position: relative;
     height: 60px;
+    margin: 0;
     border-bottom: 1px solid #eee;
 }
 
@@ -141,11 +156,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .list h3 {
     font-family: "HelveticaNeue";
-    color: #7f8c8d;
+    color: #34495e;
     line-height: 20px;
     font-size: 14px;
     margin: 0;
 }
+
+
 
 
 

@@ -64,7 +64,7 @@ h1, h2, h3, h4, h5, h6 {
     height: 60px;
     width: 280px;
     background-color: #fcfcff;
-    box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -83,7 +83,7 @@ h1, h2, h3, h4, h5, h6 {
     right: 0;
     background-color: #fcfcff;
     padding: 0 0 0 20px;
-    box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -124,9 +124,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .list li p {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
     font-family: "HelveticaNeue-Light";
     color: #7f8c8d;
     line-height: 20px;
@@ -134,9 +131,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .list h3 {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
     font-family: "HelveticaNeue";
     color: #7f8c8d;
     line-height: 20px;
@@ -148,29 +142,58 @@ h1, h2, h3, h4, h5, h6 {
 
 .search {
     height: 60px;
-    padding: 15px 20px 0 20px;
-    border-bottom: 1px solid #eee;
+    padding: 20px 20px 0 20px;
+/*    border-bottom: 1px solid red;*/
 }
 
 .search input {
     font-family: "HelveticaNeue";
-    font-size: 13px;
+    font-size: 14px;
     height: 30px;
     min-height: 30px;
-    border-radius: 15px;
+    border-radius: 20px;
     border: 1px solid #ddd;
+/*    border: none;*/
+    box-shadow: none;
+    background-color: #fff;
 }
-
-
 
 
 .subnav {
-    height: 40px;
-    width: 100%;
-    border: 1px solid #eee;
+    font-family: "HelveticaNeue";
     background-color: #fff;
-    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    display: inline-block;
+    margin-bottom: 10px;
+    height: 30px;
 }
+
+.subnav ul {
+    list-style: none;
+    padding: 0;
+    height: 30px;
+}
+
+.subnav ul li {
+    float: left;
+    height: 30px;
+}
+
+.subnav ul li a {
+    display: block;
+    height: 30px;
+    line-height: 28px;
+    vertical-align: middle;
+    padding: 0 10px;
+    text-align: center;
+}
+
+.subnav ul li a:hover {
+    background-color: #ddd;
+    text-decoration: none;
+    color: #fff;
+}
+
 
 
 
@@ -179,7 +202,10 @@ h1, h2, h3, h4, h5, h6 {
     outline: 1px solid red;
 }
 
-.circle {
-    border-radius: 50em;
+
+.truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 

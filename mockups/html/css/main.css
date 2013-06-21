@@ -3,8 +3,9 @@
 
 
 body {
-    font-family: "HelveticaNeue-Light", sans-serif;
+    font-family: "HelveticaNeue", sans-serif;
     overflow: hidden;
+    color: #44596e;
 }
 
 
@@ -100,7 +101,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
 .middle h4 {
-    font-family: "HelveticaNeue-Medium";
+    font-family: "HelveticaNeue";
     color: #7f8c8d;
     font-size: 14px;
     margin: 0;
@@ -148,7 +149,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .list li p {
-    font-family: "HelveticaNeue-Light";
+    font-family: "HelveticaNeue";
     color: #7f8c8d;
     line-height: 20px;
     font-size: 11px;

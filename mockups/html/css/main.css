@@ -91,11 +91,39 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+
+.btn-circle {
+    background-color: rgba(255,255,255,0.7);
+    color: #44596e;
+    border-color: rgba(0,0,0,0.1);
+    height: 40px;
+    width: 40px;
+    margin-left: 5px;
+    text-align: center;
+}
+
+.btn-circle:hover,
+.btn-circle:focus,
+.btn-circle:active,
+.btn-circle.active {
+    background-color: rgba(255,255,255,1.0);
+    color: #222;
+    border-color: rgba(0,0,0,0.1);
+}
+
+
+.title .group {
+    height: 60px;
+    padding: 10px;
+}
+
+
 .title h1 {
     margin: 0;
     vertical-align: middle;
     height: 60px;
     line-height: 60px;
+    font-size: 30px;
 }
 
 
@@ -291,6 +319,32 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+
+.subnav-group {
+    height: 30px;
+    margin-bottom: 15px;
+}
+
+.subnav-group button {
+    background-color: rgba(255,255,255,0.7);
+    color: #44596e;
+    border-color: rgba(0,0,0,0.1);
+    font-size: 14px;
+    padding: 4px 15px;
+    height: 30px;
+}
+
+.subnav-group button:hover,
+.subnav-group button:focus,
+.subnav-group button:active,
+.subnav-group button.active {
+    background-color: rgba(255,255,255,1.0);
+    color: #222;
+    border-color: rgba(0,0,0,0.1);
+}
+
+
+
 .outline {
     outline: 1px solid red;
 }
@@ -308,3 +362,4 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.25em;
     vertical-align: text-top;
 }
+

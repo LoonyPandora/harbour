@@ -1,0 +1,12 @@
+
+.outline {
+    outline: 1px solid red;
+}
+
+.truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+

@@ -6,7 +6,36 @@
     right:      0;
     left:       60px;
     height:     60px;
-    padding:    0 0 0 20px;
+    padding:    0;
     box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.1);
 }
 
+#logo {
+    position: absolute;
+    top:      0;
+    left:     0;
+    width:    21%;
+    height:   60px;
+}
+
+
+#title {
+    font-family: "HelveticaNeue-Light";
+    font-size:   30px;
+    position:    absolute;
+    top:         0;
+    left:        21%;
+    width:       -webkit-calc(79% - 140px);
+    width:       calc(79% - 140px);
+    height:      60px;
+    line-height: 60px;
+    padding:     0 0 0 20px;
+    margin:      0;
+}
+
+#header-nav {
+    position: absolute;
+    right:  0;
+    height: 60px;
+    width: 140px;
+}

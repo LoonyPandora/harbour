@@ -10,12 +10,17 @@
 }
 
 
-.collection-list-container input {
+/* firefox requires the wrapping div */
+.collection-list-container .input-wrapper {
     position: absolute;
     top: 20px;
     left: 20px;
     right: 20px;
-    width: auto;
+    height: 30px;
+}
+
+.collection-list-container input {
+    width: 100%;
     height: 30px;
     min-height: 30px;
     box-shadow: none;
@@ -24,11 +29,9 @@
     font-size: 14px;
 }
 
-
 .collection-list {
     margin-top: 55px;
 }
-
 
 .collection-list h4 {
     font-family: "HelveticaNeue";
@@ -51,7 +54,6 @@
 
 
 .collection-list ul li {
-    position: relative;
     height: 60px;
     margin: 0;
     border-bottom: 1px solid #eee;
@@ -62,46 +64,90 @@
     box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
 }
 
+
+.collection-list ul li a {
+    display: block;
+    height: 60px;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+
 .collection-list li img {
-    position: absolute;
-    top: 15px;
-    left: 10px;
+    float: left;
+    margin: 15px 10px 0 10px;
     width: 30px;
     height: 30px;
 }
 
-.collection-list li .list-content {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 50px;
-    padding: 10px 0;
+.collection-list h5 {
+    font-family: "HelveticaNeue";
+    float: right;
+    width: -webkit-calc(100% - 50px);
+    width: calc(100% - 50px);
+    color: #34495e;
+    line-height: 20px;
+    height: 20px;
+    font-size: 14px;
+    margin: 10px 0 0 0;
 }
 
+
 .collection-list li span {
+    float: right;
+    width: -webkit-calc(100% - 50px);
+    width: calc(100% - 50px);
     font-family: "HelveticaNeue";
     color: #7f8c8d;
     line-height: 20px;
     font-size: 11px;
     display: block;
-    left: 50px;
-    right: 0;
     height: 20px;
     line-height: 20px;
-    position: absolute;
-    top: 30px;
 }
 
-.collection-list h5 {
-    position: absolute;
-    top: 10px;
-    left: 50px;
-    font-family: "HelveticaNeue";
-    color: #34495e;
-    line-height: 20px;
-    height: 20px;
-    font-size: 14px;
-    margin: 0;
-    right: 0;
+
+.collection-list li.active {
+    background-color: #f9f9f9;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
 }
+
+
+
+
+.list-footer {
+    position: fixed;
+    left: 60px;
+    bottom: 0;
+    width: 20%;
+    height: 50px;
+    padding: 10px 20px;
+    text-align: right;
+    background-color: rgba(255,255,255,0.5);
+    border-right: 1px solid #eee;
+}
+
+.list-footer button {
+    font-weight: bold;
+}
+
+
+
+
+/* Truncate everything by default, as this section is templated */
+.collection-list h4,
+.collection-list h5,
+.collection-list span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+
+
+
+
+

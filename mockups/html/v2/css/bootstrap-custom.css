@@ -1,5 +1,18 @@
 
+body {
+    font-family: "HelveticaNeue", "Arial", sans-serif;
+    overflow: hidden;
+}
+
+
+/* I like this on headings */
+h1, h2, h3, h4, h5, h6 {
+    text-rendering: optimizeLegibility;
+    font-weight: normal;
+}
+
+/* Line height adjustments screw up in firefox - hope it's fixed upstream */
 .glyphicon:before {
-    line-height: 1.25em;
-    vertical-align: text-top;
+/*    line-height: 1.25em;*/
+/*    vertical-align: text-top;*/
 }

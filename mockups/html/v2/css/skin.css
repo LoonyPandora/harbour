@@ -1,12 +1,17 @@
 
-.outline {
-    outline: 1px solid red;
+/* Brand Colors */
+
+/* color: #e74c3c; */
+
+
+body {
+    color: #44596e;
 }
 
-.truncate {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+#module-list {
+    background-color: rgba(44,62,80,1);
 }
 
-
+#module-list li:hover {
+    background-color: rgba(44,62,80,0.95);
+}

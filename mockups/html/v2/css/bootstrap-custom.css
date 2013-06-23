@@ -11,6 +11,12 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
 }
 
+
+/* Remove outline for firefox. TODO: Check accessibility implication */
+a {
+   outline: 0 !important;
+}
+
 /* Line height adjustments screw up in firefox - hope it's fixed upstream */
 .glyphicon:before {
 /*    line-height: 1.25em;*/

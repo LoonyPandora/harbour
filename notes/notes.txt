@@ -1,0 +1,82 @@
+Advantages
+----------
+
+cPanel doesn't come with an SSL certificate by default
+
+
+
+License
+-------
+
+- License is checked by the management machine, not the client.
+- Client software is a very very simple REST API, with no GUI. Eventually will be open sourced, not worried about piracy.
+- Management server will check with our servers for license validity, an encrypted / signed license key that determines the license
+    - Don't worry about licensing too much, real companies will pay, if small players pirate that increases our userbase
+    - If license check fails, disable the management application, but not the client. We don't want to punish end-users for their host's problem.
+
+
+License Flow
+------------
+
+my ($date, $hmac, $random) = split('.', base64_url_decode(20140101.f7bc83f430538424b13298e6aa6fb143ef4d59a14946175997479dbc2d1a3cd8.abcdefghij1234567890) )
+
+sub verify {
+    my ($date, $hmac, $random);
+
+    my $secret = $GLOBAL_SECRET;
+
+    hmac_sha256($secret, $date . $random) == $hmac;
+
+    lookup_license_info_in_db($hmac);
+}
+
+
+Client
+------
+
+- Auto generated Self-signed SSL certificate on the client, will only EVER communicate with the master
+- Uses SQLite DB as it's config file (safer than the shared MySQL, less resource intensive)
+- Stores revision history of managed config files in the DB for easy rollback
+    - Could use git for this, but no pure-perl / XS implementations that work without shelling out to git binary.
+    - Store a) current revision b) auto-saved version as it was before we applied current revision - in case user edits config by hand.
+    - DB is backed up once a day for a week, once a week for a month, once a month for a year. 12 + 4 + 7 + 1 == 24 copies of the DB
+- All requests require the username:password to be sent in an authorization header
+    - It's all over HTTPS, so no problem with that. The reason is because we will be performing actions as linux users it's not our auth scheme
+    - Investigate use of private / public keys too
+- Mostly presents a restful JSON interface to built in binaries.
+
+Example Request:
+
+GET /proc/cpuinfo
+Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==
+
+Where the auth is actually the username / password of the user you wish to run the request as.
+
+
+
+
+
+Manager
+-------
+
+- Use something the API sends in a header to HMAC sign the entire GET/POST/JSON request.
+    - We need to verify that this user initiated was done so conciously and not through XSRF
+    - That it hasn't been tampered with in-transit
+
+- Send the signing key as a custom HTTP header with every response.
+    - It should be derived from the session ID
+    - It's safe because same-origin policy prevents an attacker making an AJAX request with this users session (and thus cannot read response headers)
+    - All communication is done over HTTPS, so the headers are encrypted in transit.
+
+Example:
+
+X-Signing-Key: "secret";
+
+$.ajax({
+    url: "foo/bar",
+    headers: {
+        "X-Request-Signature": hmac("secret", base64(Method + URL + params) )
+    }
+});
+
+

@@ -1,10 +1,107 @@
 
 
 .collection-list-container {
-    overflow-y: scroll;
+    overflow:   scroll;
     position:   absolute;
     top:        0;
     bottom:     0;
     left:       0;
     width:      21%;
+}
+
+
+.collection-list-container input {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    width: auto;
+    height: 30px;
+    min-height: 30px;
+    box-shadow: none;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+
+
+.collection-list {
+    margin-top: 55px;
+}
+
+
+.collection-list h4 {
+    font-family: "HelveticaNeue";
+    color: #7f8c8d;
+    font-size: 14px;
+    margin: 0;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+    border-bottom: 1px solid #eee;
+}
+
+
+.collection-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+    display: block;
+}
+
+
+.collection-list ul li {
+    position: relative;
+    height: 60px;
+    margin: 0;
+    border-bottom: 1px solid #eee;
+}
+
+.collection-list li.active {
+    background-color: #f9f9f9;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.collection-list li img {
+    position: absolute;
+    top: 15px;
+    left: 10px;
+    width: 30px;
+    height: 30px;
+}
+
+.collection-list li .list-content {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 50px;
+    padding: 10px 0;
+}
+
+.collection-list li span {
+    font-family: "HelveticaNeue";
+    color: #7f8c8d;
+    line-height: 20px;
+    font-size: 11px;
+    display: block;
+    left: 50px;
+    right: 0;
+    height: 20px;
+    line-height: 20px;
+    position: absolute;
+    top: 30px;
+}
+
+.collection-list h5 {
+    position: absolute;
+    top: 10px;
+    left: 50px;
+    font-family: "HelveticaNeue";
+    color: #34495e;
+    line-height: 20px;
+    height: 20px;
+    font-size: 14px;
+    margin: 0;
+    right: 0;
 }

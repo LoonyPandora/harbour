@@ -34,9 +34,6 @@
 }
 
 
-
-
-
 #header-nav {
     list-style: none;
     position:   absolute;
@@ -69,9 +66,9 @@
 #header-nav li a:active,
 #header-nav li a.active {
     color: #222;
-    text-decoration: none;
+    text-decoration:  none;
     background-color: rgba(255,255,255,1);
-    border-color: rgba(0,0,0,0.15);
+    border-color:     rgba(0,0,0,0.15);
 }
 
 

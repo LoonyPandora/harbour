@@ -1340,7 +1340,7 @@ input[type="color"]:focus {
 input,
 select,
 textarea {
-/*  width: 100%;*/
+  width: 100%;
 }
 
 input[type="file"],

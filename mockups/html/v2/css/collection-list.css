@@ -114,18 +114,19 @@
 /* Footer
 -------------------------------------------------------------------------- */
 
-.collection-list-wrapper .list-footer {
-    position:         fixed;
-    bottom:           0;
-    left:             60px;
-    width:            20%;
-    height:           50px;
-    padding:          10px 20px;
-    text-align:       right;
-    background-color: rgba(255,255,255,0.5);
+.collection-list-footer {
+    position:           absolute;
+    bottom:             0;
+    left:               0;
+    width:              21%;
+    height:             50px;
+    padding:            10px 20px;
+    background-color:   rgba(255,255,255,0.5);
+    border-right-style: solid;
+    border-width:       1px;
 }
 
-.collection-list-wrapper .list-footer button {
+.collection-list-footer button {
     font-weight: bold;
 }
 

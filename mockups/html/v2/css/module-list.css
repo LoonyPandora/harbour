@@ -31,7 +31,6 @@
 #module-list li a {
     font-weight:    bold;
     display:        block;
-    vertical-align: middle;
     height:         60px;
     line-height:    60px;
     font-size:      18px;
@@ -42,11 +41,13 @@
 }
 
 #module-list li a .glyphicon {
-    display:        inline-block;
+    display:        block;
+    float:          right;
     text-align:     center;
     vertical-align: middle;
     height:         60px;
     width:          60px;
     font-size:      36px;
+    margin-left:    10px;
 }
 

@@ -1,0 +1,36 @@
+
+/* Outer Wrapper
+-------------------------------------------------------------------------- */
+
+.content-wrapper .subnav {
+    list-style: none;
+    padding:    0;
+    margin:     20px 0 0 20px;
+    height:     30px;
+}
+
+.content-wrapper .subnav li {
+    display: block;
+    float:   left;
+}
+
+.content-wrapper .subnav li a,
+.content-wrapper .subnav li a:hover,
+.content-wrapper .subnav li a:active,
+.content-wrapper .subnav li a.active {
+    border-bottom-style: solid;
+    border-width:        3px;
+}
+
+.content-wrapper .subnav li a {
+    display: block;
+    height:  30px;
+    padding: 4px 15px;
+}
+
+
+.content-wrapper .subnav li a:hover,
+.content-wrapper .subnav li a:active,
+.content-wrapper .subnav li a.active {
+    text-decoration: none;
+}

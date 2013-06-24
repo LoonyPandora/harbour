@@ -77,3 +77,19 @@ body {
 }
 
 
+
+/* Subnav of content
+-------------------------------------------------------------------------- */
+
+.content-wrapper .subnav li a {
+    border-color: #ddd;
+    color:        #7f8c8d;
+}
+
+.content-wrapper .subnav li a:hover,
+.content-wrapper .subnav li a:active,
+.content-wrapper .subnav li a.active {
+    border-color: #2c3e50;
+    color:        #2c3e50;
+}
+

@@ -13,8 +13,9 @@ h1, h2, h3, h4, h5, h6 {
 
 
 /* Remove outline for firefox. TODO: Check accessibility implication */
+/* Screws up a bunch of stuff - target this better */
 a {
-   outline: 0 !important;
+/*   outline: 0 !important;*/
 }
 
 /* Line height adjustments screw up in firefox - hope it's fixed upstream */

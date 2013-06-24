@@ -1,5 +1,8 @@
 
-.content-container {
+/* Outer Wrapper
+-------------------------------------------------------------------------- */
+
+.content-wrapper {
     overflow-y: scroll;
     position:   absolute;
     top:        0;

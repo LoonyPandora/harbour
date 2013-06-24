@@ -1,39 +1,44 @@
 
+/* Outer Wrapper
+-------------------------------------------------------------------------- */
+
+#header, #logo, #title {
+    height:      60px;
+    line-height: 60px;
+}
+
 #header {
     z-index:    2;
     position:   absolute;
     top:        0;
     right:      0;
     left:       60px;
-    height:     60px;
-    padding:    0;
     box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.1);
 }
-
 
 #logo {
     position: absolute;
     top:      0;
     left:     0;
     width:    21%;
-    height:   60px;
 }
-
 
 #title {
     font-family: "HelveticaNeue-Light";
-    font-size:   30px;
     position:    absolute;
+    font-size:   30px;
     top:         0;
     left:        21%;
-    width:       -webkit-calc(79% - 160px);
-    width:       calc(79% - 160px);
-    height:      60px;
-    line-height: 60px;
     padding:     0 0 0 20px;
     margin:      0;
+    width:       -webkit-calc(79% - 160px);
+    width:               calc(79% - 160px);
 }
 
+
+
+/* Header Navigation
+-------------------------------------------------------------------------- */
 
 #header-nav {
     list-style: none;
@@ -45,13 +50,11 @@
     width:      160px;
 }
 
-
 #header-nav li {
     display: block;
     float:   left;
     margin:  10px 0 0 10px;
 }
-
 
 #header-nav li a {
     display:          block;
@@ -64,17 +67,14 @@
     border:           1px solid rgba(0,0,0,0.1);
 }
 
-
 #header-nav li a:hover,
 #header-nav li a:focus,
 #header-nav li a:active,
 #header-nav li a.active {
-    color:            #222;
     text-decoration:  none;
     background-color: rgba(255,255,255,1);
     border-color:     rgba(0,0,0,0.15);
 }
-
 
 #header-nav li a:active,
 #header-nav li a.active {

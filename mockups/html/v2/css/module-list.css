@@ -1,4 +1,7 @@
 
+/* Outer Wrapper Unorderd List
+-------------------------------------------------------------------------- */
+
 #module-list {
     z-index:    3;
     list-style: none;
@@ -17,7 +20,6 @@
     margin:      0 0 0 -220px;
     text-align:  right;
     text-shadow: rgb(0, 0, 0) 0 1px 0;
-
     -webkit-transition: 0.08s linear all;
             transition: 0.08s linear all;
 }

@@ -1,11 +1,6 @@
 
-/* Brand Colors */
-
-/* color: #e74c3c; */
-
-
-/* Generic */
-/* ===================== */
+/* Generic
+-------------------------------------------------------------------------- */
 
 body {
     color: #44596e;
@@ -13,8 +8,8 @@ body {
 
 
 
-/* Module List */
-/* ===================== */
+/* Module List
+-------------------------------------------------------------------------- */
 
 #module-list {
     background-color: rgba(44,62,80,1);
@@ -32,8 +27,8 @@ body {
 
 
 
-/* Header */
-/* ===================== */
+/* Header
+-------------------------------------------------------------------------- */
 
 #header {
     background-color: #ecf0f1;
@@ -43,10 +38,16 @@ body {
     color: #44596e;
 }
 
+#header-nav li a:hover,
+#header-nav li a:focus,
+#header-nav li a:active,
+#header-nav li a.active {
+    color: #222;
+}
 
 
-/* Collection List */
-/* ===================== */
+/* Collection List
+-------------------------------------------------------------------------- */
 
 .collection-list-wrapper,
 .collection-list-wrapper input,

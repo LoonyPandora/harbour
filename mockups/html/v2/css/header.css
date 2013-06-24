@@ -10,6 +10,7 @@
     box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.1);
 }
 
+
 #logo {
     position: absolute;
     top:      0;
@@ -37,11 +38,13 @@
 #header-nav {
     list-style: none;
     position:   absolute;
+    top:        0;
     right:      0;
     padding:    0;
     height:     60px;
     width:      160px;
 }
+
 
 #header-nav li {
     display: block;
@@ -49,23 +52,24 @@
     margin:  10px 0 0 10px;
 }
 
+
 #header-nav li a {
-    display:       block;
-    text-align:    center;
-    color:         #44596e;
-    line-height:   40px;
-    width:         40px;
-    height:        40px;
-    border-radius: 3px;
+    display:          block;
+    text-align:       center;
+    line-height:      40px;
+    width:            40px;
+    height:           40px;
+    border-radius:    3px;
     background-color: rgba(255,255,255,0.7);
-    border: 1px solid rgba(0,0,0,0.1);
+    border:           1px solid rgba(0,0,0,0.1);
 }
+
 
 #header-nav li a:hover,
 #header-nav li a:focus,
 #header-nav li a:active,
 #header-nav li a.active {
-    color: #222;
+    color:            #222;
     text-decoration:  none;
     background-color: rgba(255,255,255,1);
     border-color:     rgba(0,0,0,0.15);

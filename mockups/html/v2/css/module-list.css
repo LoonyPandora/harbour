@@ -32,12 +32,10 @@
     vertical-align: middle;
     height:         60px;
     line-height:    60px;
-    color:          #fff;
     font-size:      18px;
 }
 
 #module-list li a:hover {
-    color:           #fff;
     text-decoration: none;
 }
 
@@ -47,6 +45,6 @@
     vertical-align: middle;
     height:         60px;
     width:          60px;
-    font-size:      35px;
+    font-size:      36px;
 }
 

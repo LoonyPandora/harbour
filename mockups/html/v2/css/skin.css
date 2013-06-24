@@ -12,15 +12,26 @@ body {
     background-color: rgba(44,62,80,1);
 }
 
+/* On the li so it doesn't turn transparent when we un-hover due to the transition */
 #module-list li:hover {
     background-color: rgba(44,62,80,0.95);
+}
+
+#module-list li a,
+#module-list li a:hover {
+    color:          #fff;
+    font-size:      18px;
 }
 
 #header {
     background-color: #f1f4f7;
 }
 
-
 .collection-list-container {
     border-right: 1px solid #eee;
+}
+
+
+#header-nav li a {
+    color: #44596e;
 }

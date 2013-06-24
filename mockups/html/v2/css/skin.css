@@ -4,9 +4,17 @@
 /* color: #e74c3c; */
 
 
+/* Generic */
+/* ===================== */
+
 body {
     color: #44596e;
 }
+
+
+
+/* Module List */
+/* ===================== */
 
 #module-list {
     background-color: rgba(44,62,80,1);
@@ -19,19 +27,52 @@ body {
 
 #module-list li a,
 #module-list li a:hover {
-    color:          #fff;
-    font-size:      18px;
+    color: #fff;
 }
+
+
+
+/* Header */
+/* ===================== */
 
 #header {
-    background-color: #f1f4f7;
+    background-color: #ecf0f1;
 }
-
-.collection-list-container {
-    border-right: 1px solid #eee;
-}
-
 
 #header-nav li a {
     color: #44596e;
 }
+
+
+
+/* Collection List */
+/* ===================== */
+
+.collection-list-wrapper,
+.collection-list-wrapper input,
+.collection-list h4 {
+    border-color: #eee;
+}
+
+.collection-list h4 {
+    color: #7f8c8d;
+}
+
+.collection-list ul li a:hover {
+    background-color: #f6f6f6;
+}
+
+.collection-list h5 {
+    color: #34495e;
+}
+
+.collection-list li span {
+    color: #7f8c8d;
+}
+
+.collection-list li.active a,
+.collection-list li.active a:hover {
+    background-color: #ecf0f1;
+}
+
+

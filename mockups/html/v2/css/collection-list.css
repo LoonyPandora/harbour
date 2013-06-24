@@ -1,142 +1,140 @@
 
+/* Outer Wrapper
+-------------------------------------------------------------------------- */
 
-.collection-list-container {
-    overflow:   scroll;
-    position:   absolute;
-    top:        0;
-    bottom:     0;
-    left:       0;
-    width:      21%;
+.collection-list-wrapper {
+    overflow:           scroll;
+    position:           absolute;
+    top:                0;
+    bottom:             0;
+    left:               0;
+    width:              21%;
+    border-right-style: solid;
+    border-width:       1px;
 }
 
 
-/* firefox requires the wrapping div */
-.collection-list-container .input-wrapper {
+
+/* Filter Box
+-------------------------------------------------------------------------- */
+
+/* Firefox requires the wrapping div */
+.collection-list-wrapper .input-wrapper {
     position: absolute;
-    top: 20px;
-    left: 20px;
-    right: 20px;
-    height: 30px;
+    top:      20px;
+    left:     20px;
+    right:    20px;
+    height:   30px;
 }
 
-.collection-list-container input {
-    width: 100%;
-    height: 30px;
-    min-height: 30px;
-    box-shadow: none;
-    border-radius: 20px;
-    border: 1px solid #ddd;
-    font-size: 14px;
+.collection-list-wrapper input {
+    height:        30px;
+    min-height:    30px;
+    box-shadow:    none;
+    border-radius: 15px;
+    font-size:     14px;
+    border-width:  1px;
+    border-style:  solid;
 }
+
+
+/* List Wrapper
+-------------------------------------------------------------------------- */
 
 .collection-list {
     margin: 55px 0 50px 0;
 }
 
 .collection-list h4 {
-    font-family: "HelveticaNeue";
-    color: #7f8c8d;
-    font-size: 14px;
-    margin: 0;
-    height: 40px;
-    line-height: 40px;
-    padding: 0 10px;
-    border-bottom: 1px solid #eee;
+    font-family:         "HelveticaNeue-Light";
+    font-size:           14px;
+    margin:              0;
+    padding:             0 10px;
+    height:              40px;
+    line-height:         40px;
+    border-bottom-style: solid;
+    border-width:        1px;
 }
 
+
+
+/* Unordered List
+-------------------------------------------------------------------------- */
 
 .collection-list ul {
+    display:    block;
     list-style: none;
-    padding: 0;
-    margin: 0 0 20px 0;
-    display: block;
+    padding:    0;
+    margin:     0 0 20px 0;
 }
 
-
-.collection-list ul li {
-    height: 60px;
-    margin: 0;
-    border-bottom: 1px solid #eee;
-}
-
-.collection-list li.active {
-    background-color: #f9f9f9;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
-}
-
-
+.collection-list ul li,
 .collection-list ul li a {
     display: block;
-    height: 60px;
+    height:  60px;
     padding: 0;
-    margin: 0;
+    margin:  0;
 }
 
-
-
-
-.collection-list li img {
-    float: left;
+.collection-list ul li a img {
+    float:  left;
     margin: 15px 10px 0 10px;
-    width: 30px;
+    width:  30px;
     height: 30px;
 }
 
-.collection-list h5 {
-    font-family: "HelveticaNeue";
-    float: right;
-    width: -webkit-calc(100% - 50px);
-    width: calc(100% - 50px);
-    color: #34495e;
-    line-height: 20px;
-    height: 20px;
-    font-size: 14px;
-    margin: 10px 0 0 0;
-}
-
-
-.collection-list li span {
-    float: right;
-    width: -webkit-calc(100% - 50px);
-    width: calc(100% - 50px);
-    font-family: "HelveticaNeue";
-    color: #7f8c8d;
-    line-height: 20px;
-    font-size: 11px;
+.collection-list ul li a h5,
+.collection-list ul li a span {
     display: block;
-    height: 20px;
-    line-height: 20px;
+    float:   right;
+    width:   -webkit-calc(100% - 50px);
+    width:           calc(100% - 50px);
 }
 
+.collection-list ul li a h5 {
+    line-height: 20px;
+    height:      20px;
+    font-size:   14px;
+    margin:      10px 0 0 0;
+}
 
-.collection-list li.active {
-    background-color: #f9f9f9;
+.collection-list ul li a span {
+    height:      20px;
+    line-height: 20px;
+    font-size:   11px;
+}
+
+.collection-list ul li.active a,
+.collection-list ul li a:active {
     box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
 }
 
 
 
+/* Footer
+-------------------------------------------------------------------------- */
 
-.list-footer {
-    position: fixed;
-    left: 60px;
-    bottom: 0;
-    width: 20%;
-    height: 50px;
-    padding: 10px 20px;
-    text-align: right;
+.collection-list-wrapper .list-footer {
+    position:         fixed;
+    bottom:           0;
+    left:             60px;
+    width:            20%;
+    height:           50px;
+    padding:          10px 20px;
+    text-align:       right;
     background-color: rgba(255,255,255,0.5);
-    border-right: 1px solid #eee;
 }
 
-.list-footer button {
+.collection-list-wrapper .list-footer button {
     font-weight: bold;
 }
 
 
 
+/* Misc
+-------------------------------------------------------------------------- */
 
-/* Truncate everything by default, as this section is templated */
+/* Truncate everything by default as this section is templated */
 .collection-list h4,
 .collection-list h5,
 .collection-list span {
@@ -144,10 +142,3 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-
-
-
-
-
-
-

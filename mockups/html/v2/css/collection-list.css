@@ -106,7 +106,7 @@
 
 .collection-list ul li.active a,
 .collection-list ul li a:active {
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: inset 0 0 3px rgba(0,0,0,0.1);
 }
 
 

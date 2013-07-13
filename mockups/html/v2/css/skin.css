@@ -31,7 +31,7 @@ body {
 -------------------------------------------------------------------------- */
 
 #header {
-    background-color: #f1f4f7;
+    background-color: #fff;
 }
 
 #header-nav li a {
@@ -44,6 +44,13 @@ body {
 #header-nav li a.active {
     color: #222;
 }
+
+#logo {
+    background-image: url("../img/logo.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
 
 
 /* Collection List

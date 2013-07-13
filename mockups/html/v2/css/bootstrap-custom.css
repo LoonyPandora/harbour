@@ -18,8 +18,7 @@ a {
 /*   outline: 0 !important;*/
 }
 
-/* Line height adjustments screw up in firefox - hope it's fixed upstream */
-.glyphicon:before {
-    line-height: 1.1em;
-    vertical-align: text-top;
+/* Font awesome messes with my carefully prepared line-height. Kill it with fire */
+.icon {
+    line-height: inherit;
 }

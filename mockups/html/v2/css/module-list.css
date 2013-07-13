@@ -40,12 +40,13 @@
     text-decoration: none;
 }
 
-#module-list li a .glyphicon {
+#module-list li a .icon {
     display:        block;
     float:          right;
     text-align:     center;
     vertical-align: middle;
     height:         60px;
+    line-height:    60px;
     width:          60px;
     font-size:      36px;
     margin-left:    10px;

@@ -1,0 +1,145 @@
+
+/* Outer Wrapper
+-------------------------------------------------------------------------- */
+
+.collection-list-wrapper {
+    overflow-y:         scroll;
+    position:           absolute;
+    top:                0;
+    bottom:             0;
+    left:               0;
+    width:              21%;
+    border-right-style: solid;
+    border-width:       1px;
+}
+
+
+
+/* Filter Box
+-------------------------------------------------------------------------- */
+
+/* Firefox requires the wrapping div */
+.collection-list-wrapper .input-wrapper {
+    position: absolute;
+    top:      20px;
+    left:     20px;
+    right:    20px;
+    height:   30px;
+}
+
+.collection-list-wrapper input {
+    height:        30px;
+    min-height:    30px;
+    box-shadow:    none;
+    border-radius: 15px;
+    font-size:     14px;
+    border-width:  1px;
+    border-style:  solid;
+}
+
+
+/* List Wrapper
+-------------------------------------------------------------------------- */
+
+.collection-list {
+    margin: 55px 0 50px 0;
+}
+
+.collection-list h4 {
+    font-family:         "HelveticaNeue-Light";
+    font-size:           14px;
+    margin:              0;
+    padding:             0 10px;
+    height:              40px;
+    line-height:         40px;
+    border-bottom-style: solid;
+    border-width:        1px;
+}
+
+
+
+/* Unordered List
+-------------------------------------------------------------------------- */
+
+.collection-list ul {
+    display:    block;
+    list-style: none;
+    padding:    0;
+    margin:     0 0 20px 0;
+}
+
+.collection-list ul li,
+.collection-list ul li a {
+    display: block;
+    height:  60px;
+    padding: 0;
+    margin:  0;
+}
+
+.collection-list ul li a img {
+    float:  left;
+    margin: 15px 10px 0 10px;
+    width:  30px;
+    height: 30px;
+}
+
+.collection-list ul li a h5,
+.collection-list ul li a span {
+    display: block;
+    float:   right;
+    width:   -webkit-calc(100% - 50px);
+    width:           calc(100% - 50px);
+}
+
+.collection-list ul li a h5 {
+    line-height: 20px;
+    height:      20px;
+    font-size:   14px;
+    margin:      10px 0 0 0;
+}
+
+.collection-list ul li a span {
+    height:      20px;
+    line-height: 20px;
+    font-size:   11px;
+}
+
+.collection-list ul li.active a,
+.collection-list ul li a:active {
+    box-shadow: inset 0 0 3px rgba(0,0,0,0.1);
+}
+
+
+
+/* Footer
+-------------------------------------------------------------------------- */
+
+.collection-list-footer {
+    position:           absolute;
+    bottom:             0;
+    left:               0;
+    width:              21%;
+    height:             50px;
+    padding:            10px 20px;
+    background-color:   rgba(255,255,255,0.5);
+    border-right-style: solid;
+    border-width:       1px;
+}
+
+.collection-list-footer button {
+    font-weight: bold;
+}
+
+
+
+/* Misc
+-------------------------------------------------------------------------- */
+
+/* Truncate everything by default as this section is templated */
+.collection-list h4,
+.collection-list h5,
+.collection-list span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

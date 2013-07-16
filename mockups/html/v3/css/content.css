@@ -1,0 +1,19 @@
+
+/* Outer Wrapper
+-------------------------------------------------------------------------- */
+
+.content-wrapper {
+    overflow-y: scroll;
+    position:   absolute;
+    top:        0;
+    right:      0;
+    bottom:     0;
+    width:      79%;
+}
+
+.content-wrapper .content {
+    clear: both;
+    padding: 55px 20px 20px 20px;
+    height: 1000px;
+/*    outline: 1px solid red;*/
+}

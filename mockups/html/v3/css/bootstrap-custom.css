@@ -1,0 +1,24 @@
+
+body {
+    font-family: "HelveticaNeue", "Arial", sans-serif;
+    overflow: hidden;
+}
+
+
+/* I like this on headings */
+h1, h2, h3, h4, h5, h6 {
+    text-rendering: optimizeLegibility;
+    font-weight: normal;
+}
+
+
+/* Remove outline for firefox. TODO: Check accessibility implication */
+/* Screws up a bunch of stuff - target this better */
+a {
+/*   outline: 0 !important;*/
+}
+
+/* Font awesome messes with my carefully prepared line-height. Kill it with fire */
+.icon {
+    line-height: inherit;
+}

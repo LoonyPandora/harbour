@@ -88,7 +88,7 @@
 .collection-list ul li a span {
     display: inline-block;
     width:   100%;
-    padding: 0 10px;
+    padding: 0 5px 0 10px;
 }
 
 .collection-list ul li a h5 {

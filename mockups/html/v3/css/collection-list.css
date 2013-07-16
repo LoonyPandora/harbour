@@ -42,7 +42,9 @@
 -------------------------------------------------------------------------- */
 
 .collection-list {
-    margin: 55px 0 50px 0;
+    /* Safari has a glitch where the margin doesn't work until you
+       trigger reflow. Hence the use of padding */
+    padding: 55px 0 30px 0;
 }
 
 .collection-list h4 {
@@ -76,19 +78,17 @@
     margin:  0;
 }
 
-.collection-list ul li a img {
-    float:  left;
-    margin: 15px 10px 0 10px;
-    width:  30px;
-    height: 30px;
+.collection-list ul li a {
+    border-left-width: 5px;
+    border-left-style: solid;
+    border-left-color: rgba(0,0,0,0.1);
 }
 
 .collection-list ul li a h5,
 .collection-list ul li a span {
-    display: block;
-    float:   right;
-    width:   -webkit-calc(100% - 50px);
-    width:           calc(100% - 50px);
+    display: inline-block;
+    width:   100%;
+    padding: 0 10px;
 }
 
 .collection-list ul li a h5 {
@@ -102,6 +102,11 @@
     height:      20px;
     line-height: 20px;
     font-size:   11px;
+}
+
+/* This is just the really active link - not one you are in the process of clicking on */
+.collection-list ul li.active a {
+    border-left-color: #f39c12;
 }
 
 .collection-list ul li.active a,

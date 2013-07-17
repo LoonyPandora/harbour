@@ -20,6 +20,7 @@
     <!-- Third Party -->
     <link href="css/hashgrid.css" rel="stylesheet">
     <link href="css/animate.css" rel="stylesheet">
+    <link href="css/jquery.easy-pie-chart.css" rel="stylesheet">
 
     <!-- App Classes -->
     <link href="css/structure.css" rel="stylesheet">
@@ -191,16 +192,15 @@
                                 <span class="input-label">Primary Domain</span>
                                 <span class="input-message">Input with warning</span>
 
-                                <input type="text" placeholder="e.g example.com">
+                                <input type="text" value="$UUID.$server.showcase-sites.co.uk" disabled="disabled">
                             </label>
-
 
                             <label>
                                 <span class="input-label">Other Domains</span>
                                 <span class="input-message">Input with warning</span>
 
                                 <div class="input-group">
-                                    <input type="text" placeholder="Alternative domain e.g example.net">
+                                    <input type="text" placeholder="e.g example.net">
                                     <div class="input-group-btn">
                                         <button type="button" class="btn btn-default" tabindex="-1">Add Domain</button>
                                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1">
@@ -213,8 +213,6 @@
                                 </div>
                             </label>
                         </div>
-
-
 
                         <div class="col-lg-6">
                             <label>
@@ -230,6 +228,9 @@
                                     </label>
                                 </div>
                             </label>
+                            
+                            <div class="canvas-pie-chart" data-percent="50">50%</div>
+                            
                         </div>
 
                     </div>
@@ -289,6 +290,7 @@
 <script src="js/holder.js" type="text/javascript"></script>
 <script src="js/bootstrap.js" type="text/javascript"></script>
 <script src="js/hashgrid.js" type="text/javascript"></script>
+<script src="js/jquery.easy-pie-chart.js" type="text/javascript"></script>
 <script src="js/main.js" type="text/javascript"></script>
 
 </body>

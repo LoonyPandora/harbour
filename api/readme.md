@@ -9,7 +9,7 @@ There shouldn't be too much in here, it's got to be pretty lightweight. Most of 
 Structure
 ---------
 
-``
+```
 /lib                        # Library code written by us
 
 /migration                  # SQL migrations between DB versions
@@ -18,4 +18,4 @@ Structure
 
 /vendor
     /perlbrew               # Our custom-built version of perl, for easy maintenance and uninstallation
-``
+```

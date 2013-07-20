@@ -7,7 +7,7 @@ The bread and butter of this project. Web app in HTML5 and backbone.js.
 Structure
 ---------
 
-``
+```
 /core                   # Lightweight core, should be just enough to bootstrap the loading of modules
 
 /modules                # Module directory. Individual modules are downloaded and installed here
@@ -23,4 +23,4 @@ Structure
 
 /vendor                 # 3rd party front-end libraries. jQuery / Bootstrap / Moment / etc. Each in a dir by version
 
-``
+```

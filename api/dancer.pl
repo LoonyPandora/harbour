@@ -7,7 +7,7 @@ use Data::Dump qw(dump);
 use Path::Tiny qw(path);
 
 # Get a list of all installed modules and load them one-by-one
-my $moduledir = path( dirname(__FILE__), "../gui/modules/MaestroX");
+my $moduledir = path(dirname(__FILE__), "../gui/modules/MaestroX");
 
 for my $module ($moduledir->children) {
     if ( $module->is_dir && $module->child("lib", $module->basename . ".pm")->is_file ) {

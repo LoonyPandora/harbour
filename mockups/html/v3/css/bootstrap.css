@@ -277,6 +277,13 @@ table {
   .label {
     border: 1px solid #000;
   }
+  .table {
+    border-collapse: collapse !important;
+  }
+  .table-bordered th,
+  .table-bordered td {
+    border: 1px solid #ddd !important;
+  }
 }
 
 * {
@@ -560,7 +567,7 @@ dt {
 }
 
 dd {
-  margin-left: 10px;
+  margin-left: 0;
 }
 
 .dl-horizontal dt {
@@ -693,8 +700,7 @@ pre {
   word-break: break-all;
   word-wrap: break-word;
   background-color: #f5f5f5;
-  border: 1px solid #ccc;
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  border: 1px solid #cccccc;
   border-radius: 4px;
 }
 
@@ -1152,9 +1158,6 @@ th {
 
 .table-bordered {
   border: 1px solid #dddddd;
-  border-collapse: separate;
-  border-left: 0;
-  border-radius: 4px;
 }
 
 .table-bordered > thead > tr > th,
@@ -1163,69 +1166,7 @@ th {
 .table-bordered > thead > tr > td,
 .table-bordered > tbody > tr > td,
 .table-bordered > tfoot > tr > td {
-  border-left: 1px solid #dddddd;
-}
-
-.table-bordered > caption + thead > tr:first-child th,
-.table-bordered > caption + tbody > tr:first-child th,
-.table-bordered > caption + tbody > tr:first-child td,
-.table-bordered > colgroup + thead > tr:first-child th,
-.table-bordered > colgroup + tbody > tr:first-child th,
-.table-bordered > colgroup + tbody > tr:first-child td,
-.table-bordered > thead:first-child > tr:first-child th,
-.table-bordered > tbody:first-child > tr:first-child th,
-.table-bordered > tbody:first-child > tr:first-child td {
-  border-top: 0;
-}
-
-.table-bordered > thead:first-child > tr:first-child > th:first-child,
-.table-bordered > tbody:first-child > tr:first-child > td:first-child,
-.table-bordered > tbody:first-child > tr:first-child > th:first-child {
-  border-top-left-radius: 4px;
-}
-
-.table-bordered > thead:first-child > tr:first-child > th:last-child,
-.table-bordered > tbody:first-child > tr:first-child > td:last-child,
-.table-bordered > tbody:first-child > tr:first-child > th:last-child {
-  border-top-right-radius: 4px;
-}
-
-.table-bordered > thead:last-child > tr:last-child > th:first-child,
-.table-bordered > tbody:last-child > tr:last-child > td:first-child,
-.table-bordered > tbody:last-child > tr:last-child > th:first-child,
-.table-bordered > tfoot:last-child > tr:last-child > td:first-child,
-.table-bordered > tfoot:last-child > tr:last-child > th:first-child {
-  border-bottom-left-radius: 4px;
-}
-
-.table-bordered > thead:last-child > tr:last-child > th:last-child,
-.table-bordered > tbody:last-child > tr:last-child > td:last-child,
-.table-bordered > tbody:last-child > tr:last-child > th:last-child,
-.table-bordered > tfoot:last-child > tr:last-child > td:last-child,
-.table-bordered > tfoot:last-child > tr:last-child > th:last-child {
-  border-bottom-right-radius: 4px;
-}
-
-.table-bordered > tfoot + tbody:last-child > tr:last-child > td:first-child {
-  border-bottom-left-radius: 0;
-}
-
-.table-bordered > tfoot + tbody:last-child > tr:last-child > td:last-child {
-  border-bottom-right-radius: 0;
-}
-
-.table-bordered > caption + thead > tr:first-child > th:first-child,
-.table-bordered > colgroup + thead > tr:first-child > th:first-child,
-.table-bordered > caption + tbody > tr:first-child > td:first-child,
-.table-bordered > colgroup + tbody > tr:first-child > td:first-child {
-  border-top-left-radius: 4px;
-}
-
-.table-bordered > caption + thead > tr:first-child > th:last-child,
-.table-bordered > colgroup + thead > tr:first-child > th:last-child,
-.table-bordered > caption + tbody > tr:first-child > td:last-child,
-.table-bordered > colgroup + tbody > tr:first-child > td:last-child {
-  border-top-right-radius: 4px;
+  border: 1px solid #dddddd;
 }
 
 .table-striped > tbody > tr:nth-child(odd) > td,
@@ -1249,29 +1190,53 @@ table th[class^="col-"] {
   float: none;
 }
 
+.table > thead > tr > td.active,
 .table > tbody > tr > td.active,
+.table > tfoot > tr > td.active,
+.table > thead > tr > th.active,
 .table > tbody > tr > th.active,
-.table > tbody > tr.active > td {
+.table > tfoot > tr > th.active,
+.table > thead > tr.active > td,
+.table > tbody > tr.active > td,
+.table > tfoot > tr.active > td {
   background-color: #f5f5f5;
 }
 
+.table > thead > tr > td.success,
 .table > tbody > tr > td.success,
+.table > tfoot > tr > td.success,
+.table > thead > tr > th.success,
 .table > tbody > tr > th.success,
-.table > tbody > tr.success > td {
+.table > tfoot > tr > th.success,
+.table > thead > tr.success > td,
+.table > tbody > tr.success > td,
+.table > tfoot > tr.success > td {
   background-color: #dff0d8;
   border-color: #d6e9c6;
 }
 
+.table > thead > tr > td.danger,
 .table > tbody > tr > td.danger,
+.table > tfoot > tr > td.danger,
+.table > thead > tr > th.danger,
 .table > tbody > tr > th.danger,
-.table > tbody > tr.danger > td {
+.table > tfoot > tr > th.danger,
+.table > thead > tr.danger > td,
+.table > tbody > tr.danger > td,
+.table > tfoot > tr.danger > td {
   background-color: #f2dede;
   border-color: #eed3d7;
 }
 
+.table > thead > tr > td.warning,
 .table > tbody > tr > td.warning,
+.table > tfoot > tr > td.warning,
+.table > thead > tr > th.warning,
 .table > tbody > tr > th.warning,
-.table > tbody > tr.warning > td {
+.table > tfoot > tr > th.warning,
+.table > thead > tr.warning > td,
+.table > tbody > tr.warning > td,
+.table > tfoot > tr.warning > td {
   background-color: #fcf8e3;
   border-color: #fbeed5;
 }
@@ -1467,10 +1432,7 @@ input[type="checkbox"] {
 }
 
 input[type="file"] {
-  height: 38px;
-  /* In IE7, the height of the select element cannot be changed by height, only font-size. TODO: Check if this is still needed when dropping IE7 support */
-
-  line-height: 38px;
+  display: block;
 }
 
 select[multiple],
@@ -1547,14 +1509,6 @@ textarea::-webkit-input-placeholder {
 .checkbox + .checkbox {
   margin-top: -5px;
 }
-
-/*
-// Move the options list down to align with labels
-.controls > .radio:first-child,
-.controls > .checkbox:first-child {
-  padding-top: 5px; // has to be padding because margin collapses
-}
-*/
 
 .radio-inline,
 .checkbox-inline {
@@ -1747,9 +1701,8 @@ select.input-small {
   font-weight: normal;
   line-height: 1.428571429;
   text-align: center;
-  text-shadow: 0 1px 0 #fff;
   background-color: #eeeeee;
-  border: 1px solid #ccc;
+  border: 1px solid #cccccc;
   border-radius: 4px;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
@@ -1863,7 +1816,7 @@ select.input-small {
 
 .btn:hover,
 .btn:focus {
-  color: #fff;
+  color: #ffffff;
   text-decoration: none;
 }
 
@@ -2181,7 +2134,7 @@ input[type="button"].btn-block {
   height: 0;
   margin-left: 2px;
   vertical-align: middle;
-  border-top: 4px solid #000;
+  border-top: 4px solid #000000;
   border-right: 4px solid transparent;
   border-left: 4px solid transparent;
   content: "";
@@ -2199,7 +2152,7 @@ input[type="button"].btn-block {
   margin: 2px 0 0;
   list-style: none;
   background-color: #ffffff;
-  border: 1px solid #ccc;
+  border: 1px solid #cccccc;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 4px;
   -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
@@ -2213,11 +2166,10 @@ input[type="button"].btn-block {
 }
 
 .dropdown-menu .divider {
-  height: 2px;
+  height: 1px;
   margin: 9px 0;
   overflow: hidden;
   background-color: #e5e5e5;
-  border-bottom: 1px solid #ffffff;
 }
 
 .dropdown-menu > li > a {
@@ -2306,7 +2258,7 @@ input[type="button"].btn-block {
 .dropup .caret,
 .navbar-fixed-bottom .dropdown .caret {
   border-top: 0;
-  border-bottom: 4px solid #000;
+  border-bottom: 4px solid #000000;
   content: "";
 }
 
@@ -2358,11 +2310,11 @@ input[type="button"].btn-block {
 }
 
 a.list-group-item .list-group-item-heading {
-  color: #333;
+  color: #333333;
 }
 
 a.list-group-item .list-group-item-text {
-  color: #555;
+  color: #555555;
 }
 
 a.list-group-item:hover,
@@ -2514,7 +2466,7 @@ a.list-group-item.active .list-group-item-text {
   font-size: 21px;
   font-weight: bold;
   line-height: 1;
-  color: #000;
+  color: #000000;
   text-shadow: 0 1px 0 #ffffff;
   opacity: 0.2;
   filter: alpha(opacity=20);
@@ -2522,7 +2474,7 @@ a.list-group-item.active .list-group-item-text {
 
 .close:hover,
 .close:focus {
-  color: #000;
+  color: #000000;
   text-decoration: none;
   cursor: pointer;
   opacity: 0.5;
@@ -2616,11 +2568,10 @@ button.close {
 }
 
 .nav .nav-divider {
-  height: 2px;
+  height: 1px;
   margin: 9px 0;
   overflow: hidden;
   background-color: #e5e5e5;
-  border-bottom: 1px solid #ffffff;
 }
 
 .nav-tabs {
@@ -3288,7 +3239,6 @@ button.close {
 }
 
 .breadcrumb > li + li:before {
-  display: inline-block;
   padding: 0 5px;
   color: #cccccc;
   content: "/\00a0";
@@ -4017,7 +3967,7 @@ a.thumbnail:focus {
   font-size: 75%;
   font-weight: 500;
   line-height: 1;
-  color: #fff;
+  color: #ffffff;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
@@ -4027,7 +3977,7 @@ a.thumbnail:focus {
 
 .label[href]:hover,
 .label[href]:focus {
-  color: #fff;
+  color: #ffffff;
   text-decoration: none;
   cursor: pointer;
   background-color: #808080;
@@ -4340,7 +4290,7 @@ a.list-group-item.active > .badge,
   left: 0;
   width: 15%;
   font-size: 20px;
-  color: #fff;
+  color: #ffffff;
   text-align: center;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
   opacity: 0.5;
@@ -4373,7 +4323,7 @@ a.list-group-item.active > .badge,
 
 .carousel-control:hover,
 .carousel-control:focus {
-  color: #fff;
+  color: #ffffff;
   text-decoration: none;
   opacity: 0.9;
   filter: alpha(opacity=90);
@@ -4403,12 +4353,12 @@ a.list-group-item.active > .badge,
 
 .carousel-indicators {
   position: absolute;
-  bottom: 20px;
+  bottom: 10px;
   left: 50%;
   z-index: 15;
-  width: 100px;
+  width: 120px;
   padding-left: 0;
-  margin-left: -50px;
+  margin-left: -60px;
   text-align: center;
   list-style: none;
 }
@@ -4420,7 +4370,7 @@ a.list-group-item.active > .badge,
   margin: 1px;
   text-indent: -999px;
   cursor: pointer;
-  border: 1px solid #fff;
+  border: 1px solid #ffffff;
   border-radius: 10px;
 }
 
@@ -4428,7 +4378,7 @@ a.list-group-item.active > .badge,
   width: 12px;
   height: 12px;
   margin: 0;
-  background-color: #fff;
+  background-color: #ffffff;
 }
 
 .carousel-caption {
@@ -4439,7 +4389,7 @@ a.list-group-item.active > .badge,
   z-index: 10;
   padding-top: 20px;
   padding-bottom: 20px;
-  color: #fff;
+  color: #ffffff;
   text-align: center;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
@@ -4462,6 +4412,9 @@ a.list-group-item.active > .badge,
     right: 20%;
     left: 20%;
     padding-bottom: 30px;
+  }
+  .carousel-indicators {
+    bottom: 20px;
   }
 }
 

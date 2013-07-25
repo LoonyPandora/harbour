@@ -53,6 +53,46 @@ get "/session/css.html" => sub {
 };
 
 
+# HTML output because nginx is purposefully dumb and can't turn JSON -> HTML
+# FIXME: Write a proper serializer here instead of hardcoding
+get "/session/js.min.html" => sub {
+    # FIXME: benchmark performance;
+    my $combined;
+    for my $file (@all_js) {
+        $combined .= "\n\n// $file\n//==============================\n\n";
+        $combined .= path("/Library/WebServer/Documents/maestro/mockups/html/v3/", $file)->slurp;
+    }
+
+    # First 9 chars of the SHA is enough for git, so it's enough for us.
+    my $filename = substr(Digest::SHA::sha1_hex($combined), 0, 9) . ".js";
+
+    path("/Library/WebServer/Documents/maestro/mockups/html/v3/cache/", $filename)->spew($combined);
+
+    # FIXME: Hardcoded for the demo
+    return qq{<script src="cache/$filename"></script>}
+};
+
+
+get "/session/css.min.html" => sub {
+    # FIXME: benchmark performance;
+    my $combined;
+    for my $file (@all_css) {
+        $combined .= "\n\n/* $file\n ============================== */\n\n";
+        $combined .= path("/Library/WebServer/Documents/maestro/mockups/html/v3/", $file)->slurp;
+    }
+
+    # First 9 chars of the SHA is enough for git, so it's enough for us.
+    my $filename = substr(Digest::SHA::sha1_hex($combined), 0, 9) . ".css";
+
+    path("/Library/WebServer/Documents/maestro/mockups/html/v3/cache/", $filename)->spew($combined);
+
+    # FIXME: Hardcoded for the demo
+    return qq{<link href="cache/$filename" rel="stylesheet">}
+};
+
+
+true;
+
 
 
 true;

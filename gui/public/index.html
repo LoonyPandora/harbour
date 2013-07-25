@@ -1,0 +1,225 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="imagetoolbar" content="false">
+
+    <title>Maestro Demo Page</title>
+
+    <meta name="description" content="Maestro Demo Page">
+
+    <!-- <link rel="shortcut icon" href=""> -->
+    <!-- <link rel="author" href="humans.txt"> -->
+
+    <!--# include virtual="/api/session/css.html" -->
+
+    </head>
+<body>
+    
+<ul id="module-list" class="view">
+    <li>
+        <a href="#">
+            <span class="text">Home</span>
+            <span class="icon icon-dashboard"></span>
+        </a>
+    </li>
+    <li>
+        <a href="#">
+            <span class="text">Domain Names</span>
+            <span class="icon icon-star"></span>
+        </a>
+    </li>
+    <li>
+        <a href="#">
+            <span class="text">Long Section Name</span>
+            <span class="icon icon-camera-retro"></span>
+        </a>
+    </li>
+    <li>
+        <a href="#">
+            <span class="text">SSL Certificates</span>
+            <span class="icon icon-time"></span>
+        </a>
+    </li>
+</ul>
+
+<div id="header">
+    <div id="logo"></div>
+    <h1 id="title" class="view truncate">Maestro Control Panel</h1>
+    <ul id="header-nav" class="view">
+        <li><a href="#" class="icon icon-bell-alt"></a></li>
+        <li><a href="#" class="icon icon-user"></a></li>
+        <li><a href="#" class="icon icon-off"></a></li>
+    </ul>
+</div>
+
+<div id="panel-domain" class="panel-container">
+    <div class="collection-list-wrapper">
+        <div class="input-wrapper">
+            <input type="search" placeholder="Filter">
+        </div>
+
+        <div class="view collection-list">
+            <h4>Shared Hosting</h4>
+            <ul>
+                <li>
+                    <a href="#">
+                        <h5>qioejriojflkadifgiohadfklkdfadfgafgdfgasdfasdfasdf.asdf</h5>
+                        <span>Expires: 2013-88-88</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <h5>foobar.asdf</h5>
+                        <span>Expires: 2013-88-88</span>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="#">
+                        <h5>foobar.asdf</h5>
+                        <span>Expires: 2013-88-88</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <h5>foobar.asdf</h5>
+                        <span>Expires: 2013-88-88</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <h5>foobar.asdf</h5>
+                        <span>Expires: 2013-88-88</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <h5>foobar.asdf</h5>
+                        <span>Expires: 2013-88-88</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <h5>foobar.asdf</h5>
+                        <span>Expires: 2013-88-88</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <h5>foobar.asdf</h5>
+                        <span>Expires: 2013-88-88</span>
+                    </a>
+                </li>
+            </ul>
+
+            <h4>Domain Names</h4>
+            <ul>
+                <li>
+                    <a href="#">
+                        <h5>foobar.asdf</h5>
+                        <span>Expires: 2013-88-88</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <h5>foobar.asdf</h5>
+                        <span>Expires: 2013-88-88</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <h5>foobar.asdf</h5>
+                        <span>Expires: 2013-88-88</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="view collection-list-footer">
+        <button type="button" class="btn btn-success btn-small btn-block">
+            <span class="glyphicon glyphicon-plus"></span> New Account
+        </button>
+    </div>
+
+    <div class="content-wrapper">
+        <ul class="view subnav">
+            <li>
+                <a href="#" class="icon icon-home active"> Home</a>
+            </li>
+            <li>
+                <a href="#" class="icon icon-globe"> DNS</a>
+            </li>
+            <li>
+                <a href="#" class="icon icon-file"> Really Long Section</a>
+            </li>
+            <li>
+                <a href="#" class="icon icon-play-circle"> Apps</a>
+            </li>
+        </ul>
+
+        <div class="view content">
+            <form>
+
+                <h2>Settings</h2>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <label>
+                            <span class="input-label">Primary Domain</span>
+                            <span class="input-message">Input with warning</span>
+
+                            <input type="text" value="$UUID.$server.showcase-sites.co.uk" disabled="disabled">
+                        </label>
+
+                        <label>
+                            <span class="input-label">Other Domains</span>
+                            <span class="input-message">Input with warning</span>
+
+                            <div class="input-group">
+                                <input type="text" placeholder="e.g example.net">
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-default" tabindex="-1">Add Domain</button>
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Remove Domain</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <label>
+                            <span class="input-label">Renewal Status</span>
+                            <span class="input-message">Input with warning</span>
+                            <br>
+
+                            <div class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-default active">
+                                    <input type="radio" name="options">Automatic
+                                </label>
+                                <label class="btn btn-default">
+                                    <input type="radio" name="options">Manual
+                                </label>
+                            </div>
+                        </label>
+
+                        <div class="canvas-pie-chart" data-percent="50">50%</div>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Until IE9 Disappears, we can't use defer - so JS still at the bottom -->
+<!--# include virtual="/api/session/js.html" -->
+
+</body>
+</html>
+

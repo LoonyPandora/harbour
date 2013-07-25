@@ -1,0 +1,53 @@
+
+/* We don't use the bootstrap form validation stuff - it's bloody awful */
+
+/* We use labels for form errors too - need them displaying block */
+label {
+    display: block;
+    margin: 0 0 12px 0;
+}
+
+
+.input-label, .input-message {
+    display: inline-block;
+    margin: 0;
+    height: 30px;
+    line-height: 30px;
+}
+
+
+/* defaults to hidden, until there is an error class on the parent label */
+.input-message {
+    border-radius: 2px;
+    font-size: 12px;
+    padding: 0 5px;
+    margin: 0;
+    height: 20px;
+    line-height: 20px;
+    display: none;
+    overflow: hidden;
+}
+
+
+/* Error states, based off the names used in bootstrap to take the rest of the colors */
+.has-error input {
+    border-color: #b94a48;
+}
+
+.has-warning input {
+    border-color: #c09853;
+}
+
+.has-error .input-message {
+    display: inline-block;
+    color: #fff;
+    background-color: #b94a48;
+}
+
+.has-warning .input-message {
+    display: inline-block;
+    color: #fff;
+    background-color: #f39c12;
+}
+
+

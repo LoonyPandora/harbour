@@ -1,0 +1,102 @@
+
+/* Generic
+-------------------------------------------------------------------------- */
+
+body {
+    color: #44596e;
+}
+
+
+
+/* Module List
+-------------------------------------------------------------------------- */
+
+#module-list {
+    background-color: rgba(44,62,80,1);
+}
+
+/* On the li so it doesn't turn transparent when we un-hover due to the transition */
+#module-list li:hover {
+    background-color: rgba(44,62,80,0.95);
+}
+
+#module-list li a,
+#module-list li a:hover {
+    color: #fff;
+}
+
+
+
+/* Header
+-------------------------------------------------------------------------- */
+
+#header {
+    background-color: #fff;
+}
+
+#header-nav li a {
+    color: #44596e;
+}
+
+#header-nav li a:hover,
+#header-nav li a:focus,
+#header-nav li a:active,
+#header-nav li a.active {
+    color: #222;
+}
+
+#logo {
+    background-image: url("../img/logo.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+
+
+/* Collection List
+-------------------------------------------------------------------------- */
+
+.collection-list-wrapper,
+.collection-list-wrapper input,
+.collection-list h4 {
+    border-color: #eee;
+}
+
+.collection-list h4 {
+    color: #7f8c8d;
+}
+
+.collection-list h5 {
+    color: #34495e;
+}
+
+.collection-list li span {
+    color: #7f8c8d;
+}
+
+.collection-list li a:hover,
+.collection-list li.active a,
+.collection-list li.active a:hover {
+    background-color: rgba(0,0,0,0.05);
+}
+
+.collection-list-footer {
+    border-color: #eee;
+}
+
+
+/* Subnav of content
+-------------------------------------------------------------------------- */
+
+.content-wrapper .subnav li a {
+    border-color: #ddd;
+    color:        #7f8c8d;
+}
+
+.content-wrapper .subnav li a:hover,
+.content-wrapper .subnav li a:active,
+.content-wrapper .subnav li a.active {
+    border-color: #2c3e50;
+    color:        #2c3e50;
+}
+

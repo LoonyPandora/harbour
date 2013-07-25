@@ -1,0 +1,54 @@
+
+/* Outer Wrapper Unorderd List
+-------------------------------------------------------------------------- */
+
+#module-list {
+    z-index:    3;
+    list-style: none;
+    position:   absolute;
+    top:        0;
+    bottom:     0;
+    left:       0;
+    padding:    0;
+    margin:     0;
+    width:      60px;
+}
+
+#module-list li {
+    height:      60px;
+    width:       280px;
+    margin:      0 0 0 -220px;
+    text-align:  right;
+    text-shadow: rgb(0, 0, 0) 0 1px 0;
+    -webkit-transition: 0.08s linear all;
+            transition: 0.08s linear all;
+}
+
+#module-list li:hover {
+    margin: 0;
+}
+
+#module-list li a {
+    font-weight:    bold;
+    display:        block;
+    height:         60px;
+    line-height:    60px;
+    font-size:      18px;
+}
+
+#module-list li a:hover {
+    text-decoration: none;
+}
+
+#module-list li a .icon {
+    display:        block;
+    float:          right;
+    text-align:     center;
+    vertical-align: middle;
+    height:         60px;
+    line-height:    60px;
+    width:          60px;
+    font-size:      36px;
+    margin-left:    10px;
+}
+

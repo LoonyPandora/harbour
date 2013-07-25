@@ -1,0 +1,150 @@
+
+/* Outer Wrapper
+-------------------------------------------------------------------------- */
+
+.collection-list-wrapper {
+    overflow-y:         scroll;
+    position:           absolute;
+    top:                0;
+    bottom:             0;
+    left:               0;
+    width:              21%;
+    border-right-style: solid;
+    border-width:       1px;
+}
+
+
+
+/* Filter Box
+-------------------------------------------------------------------------- */
+
+/* Firefox requires the wrapping div */
+.collection-list-wrapper .input-wrapper {
+    position: absolute;
+    top:      20px;
+    left:     20px;
+    right:    20px;
+    height:   30px;
+}
+
+.collection-list-wrapper input {
+    height:        30px;
+    min-height:    30px;
+    box-shadow:    none;
+    border-radius: 15px;
+    font-size:     14px;
+    border-width:  1px;
+    border-style:  solid;
+}
+
+
+/* List Wrapper
+-------------------------------------------------------------------------- */
+
+.collection-list {
+    /* Safari has a glitch where the margin doesn't work until you
+       trigger reflow. Hence the use of padding */
+    padding: 55px 0 30px 0;
+}
+
+.collection-list h4 {
+    font-family:         "HelveticaNeue-Light";
+    font-size:           14px;
+    margin:              0;
+    padding:             0 10px;
+    height:              40px;
+    line-height:         40px;
+    border-bottom-style: solid;
+    border-width:        1px;
+}
+
+
+
+/* Unordered List
+-------------------------------------------------------------------------- */
+
+.collection-list ul {
+    display:    block;
+    list-style: none;
+    padding:    0;
+    margin:     0 0 20px 0;
+}
+
+.collection-list ul li,
+.collection-list ul li a {
+    display: block;
+    height:  60px;
+    padding: 0;
+    margin:  0;
+}
+
+.collection-list ul li a {
+    border-left-width: 5px;
+    border-left-style: solid;
+    border-left-color: rgba(0,0,0,0.1);
+}
+
+.collection-list ul li a h5,
+.collection-list ul li a span {
+    display: inline-block;
+    width:   100%;
+    padding: 0 5px 0 10px;
+}
+
+.collection-list ul li a h5 {
+    line-height: 20px;
+    height:      20px;
+    font-size:   14px;
+    margin:      10px 0 0 0;
+}
+
+.collection-list ul li a span {
+    height:      20px;
+    line-height: 20px;
+    font-size:   11px;
+}
+
+/* This is just the really active link - not one you are in the process of clicking on */
+.collection-list ul li.active a {
+    border-left-color: #f39c12;
+}
+
+.collection-list ul li.active a,
+.collection-list ul li a:active {
+    box-shadow: inset 0 0 3px rgba(0,0,0,0.1);
+}
+
+
+
+/* Footer
+-------------------------------------------------------------------------- */
+
+.collection-list-footer {
+    position:           absolute;
+    bottom:             0;
+    left:               0;
+    width:              21%;
+    height:             50px;
+    padding:            10px 20px;
+    background-color:   rgba(255,255,255,0.5);
+    border-right-style: solid;
+    border-width:       1px;
+}
+
+.collection-list-footer button {
+    font-weight: bold;
+}
+
+
+
+/* Misc
+-------------------------------------------------------------------------- */
+
+/* Truncate everything by default as this section is templated */
+.collection-list h4,
+.collection-list h5,
+.collection-list span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

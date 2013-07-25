@@ -4,20 +4,20 @@ use Dancer ":syntax";
 use common::sense;
 
 my @all_js = (
-    "js/jquery.js",                "js/holder.js",
-    "js/bootstrap.js",             "js/hashgrid.js",
-    "js/jquery.easy-pie-chart.js", "js/main.js",
+    "core/js/jquery.js",                "core/js/holder.js",
+    "core/js/bootstrap.js",             "core/js/hashgrid.js",
+    "core/js/jquery.easy-pie-chart.js", "core/js/main.js",
 );
 
 my @all_css = (
-    "css/bootstrap.css",        "css/font-awesome.css",
-    "css/bootstrap-custom.css", "css/hashgrid.css",
-    "css/animate.css",          "css/jquery.easy-pie-chart.css",
-    "css/structure.css",        "css/header.css",
-    "css/module-list.css",      "css/collection-list.css",
-    "css/subnav.css",           "css/content.css",
-    "css/form.css",             "css/utilities.css",
-    "css/skin.css",
+    "core/css/bootstrap.css",        "core/css/font-awesome.css",
+    "core/css/bootstrap-custom.css", "core/css/hashgrid.css",
+    "core/css/animate.css",          "core/css/jquery.easy-pie-chart.css",
+    "core/css/structure.css",        "core/css/header.css",
+    "core/css/module-list.css",      "core/css/collection-list.css",
+    "core/css/subnav.css",           "core/css/content.css",
+    "core/css/form.css",             "core/css/utilities.css",
+    "skins/default/css/default.css",
 );
 
 get "/session/js" => sub {

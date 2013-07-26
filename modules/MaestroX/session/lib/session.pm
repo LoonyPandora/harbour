@@ -4,13 +4,15 @@ use Dancer ":syntax";
 use common::sense;
 
 my @all_js = (
-    "core/js/jquery.js",                "core/js/holder.js",
+    "core/js/jquery.js",                
     "core/js/bootstrap.js",             "core/js/hashgrid.js",
     "core/js/jquery.easy-pie-chart.js",
 
 
     "core/js/underscore.js",              "core/js/backbone.js",
 
+    "core/js/backbone.cacheit.js",
+    "core/js/moment.js",
 
     "core/js/maestro.js",
     "core/js/maestro.config.js",

@@ -60,7 +60,6 @@
         _private: {}
     }
 
-
     // Keep active application instances namespaced under an app object.
     Maestro.App = _.extend({}, Backbone.Events);
 

@@ -60,8 +60,7 @@
         // Shorthand the application namespace
         var app = Maestro.App;
     
-        // Define your master router on the application namespace and trigger all
-        // navigation from this instance.
+        // Define the master router, which has loaded all sub routers above
         app.router = new Maestro.Router();
     
         // Trigger the initial route and enable HTML5 History API support
@@ -82,10 +81,6 @@
                 // Stop the default event to ensure the link will not cause a page refresh.
                 evt.preventDefault();
 
-                // This uses the default router defined above, and not any routers
-                // that may be placed in modules.  To have this work globally (at the
-                // cost of losing all route events) you can change the following line
-                // to: Backbone.history.navigate(href, true);
                 app.router.navigate(href, true);
             }
         });

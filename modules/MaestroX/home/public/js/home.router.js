@@ -1,13 +1,13 @@
 (function (Home) {
     "use strict";
 
-    Home.Router = Backbone.Router.extend({
+    Home.Router = Maestro.Router.extend({
         routes: {
             "": "index",
         },
 
         index: function () {
-
+            console.log("index");
         }
     });
 

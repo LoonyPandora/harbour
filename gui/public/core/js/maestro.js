@@ -5,19 +5,7 @@
     this.Maestro = {};
 
     // Extend the default Backbone Router / View / Model / Collection
-    Maestro.Router = Backbone.Router.extend({
-        initialize: function () {
-            // Underscore each is super super slow. Only use it where readability is needed
-            // http://jsperf.com/jquery-each-vs-for-loop/234
-
-            // Add each modules router to the main router
-            var modules = _.keys(Maestro.Module.get());
-            for (var i = 0; i < modules.length; i++) {
-                var Home = Maestro.Module.get(modules[i]);
-                this[ modules[i] ] = new Home.Router();
-            }
-        }
-    });
+    Maestro.Router = Backbone.Router.extend({ });
 
     Maestro.View = Backbone.View.extend({ });
 
@@ -58,9 +46,23 @@
     $(function ($) {
         // Shorthand the application namespace
         var app = Maestro.App;
+
+        // Load every module into the main router
+        var Router = Backbone.Router.extend({
+            initialize: function () {
+                // Underscore each is super super slow. Only use it where readability is needed
+                // http://jsperf.com/jquery-each-vs-for-loop/234
+
+                var modules = _.keys(Maestro.Module.get());
+                for (var i = 0; i < modules.length; i++) {
+                    var Home = Maestro.Module.get(modules[i]);
+                    this[ modules[i] ] = new Home.Router();
+                }
+            }
+        });
     
         // Define the master router, which has loaded all sub routers above
-        app.router = new Maestro.Router();
+        app.router = new Router();
     
         // Trigger the initial route and enable HTML5 History API support
         Backbone.history.start({

@@ -23,6 +23,10 @@ my @all_js = (
     "/modules/home/js/home.collection.js",
     "/modules/home/js/home.view.js",
     
+    "core/js/spin.js",
+    "core/js/jquery.spin.js",
+    
+    
     
     "core/js/main.js",
 

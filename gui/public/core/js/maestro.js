@@ -7,7 +7,14 @@
     // Extend the default Backbone Router / View / Model / Collection
     Maestro.Router = Backbone.Router.extend({ });
 
-    Maestro.View = Backbone.View.extend({ });
+    Maestro.View = Backbone.View.extend({
+        render: function () {
+            var view = this;
+
+            
+
+        }
+    });
 
     Maestro.Model = Backbone.Model.extend({ });
 

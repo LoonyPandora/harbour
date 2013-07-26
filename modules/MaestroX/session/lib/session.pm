@@ -6,7 +6,23 @@ use common::sense;
 my @all_js = (
     "core/js/jquery.js",                "core/js/holder.js",
     "core/js/bootstrap.js",             "core/js/hashgrid.js",
-    "core/js/jquery.easy-pie-chart.js", "core/js/main.js",
+    "core/js/jquery.easy-pie-chart.js",
+
+
+    "core/js/underscore.js",              "core/js/backbone.js",
+
+
+    "core/js/backbone.app.js",
+    "core/js/backbone.maestro.js",
+    
+    "/modules/home/js/home.router.js",
+    "/modules/home/js/home.model.js",
+    "/modules/home/js/home.collection.js",
+    "/modules/home/js/home.view.js",
+    
+    
+    "core/js/main.js",
+
 );
 
 my @all_css = (

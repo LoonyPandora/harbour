@@ -12,7 +12,8 @@ my @all_js = (
     "core/js/underscore.js",              "core/js/backbone.js",
 
 
-    "core/js/backbone.maestro.js",
+    "core/js/maestro.js",
+    "core/js/maestro.config.js",
     
     "/modules/home/js/home.router.js",
     "/modules/home/js/home.model.js",

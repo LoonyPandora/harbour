@@ -54,7 +54,6 @@
     // Keep active application instances namespaced under an app object.
     Maestro.App = _.extend({}, Backbone.Events);
 
-
     // kick-off all initialization, everything up to this point should be definitions.
     $(function ($) {
         // Shorthand the application namespace

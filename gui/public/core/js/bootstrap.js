@@ -40,14 +40,6 @@
     }
   }
 
-  // http://blog.alexmaccaw.com/css-transitions
-  $.fn.emulateTransitionEnd = function (duration) {
-    var called = false, $el    = this
-    $(this).one('webkitTransitionEnd', function () { called = true })
-    var callback = function () { if (!called) $($el).trigger('webkitTransitionEnd') }
-    setTimeout(callback, duration)
-  }
-
   $(function () {
     $.support.transition = transitionEnd()
   })
@@ -111,9 +103,7 @@
     }
 
     $.support.transition && $parent.hasClass('fade') ?
-      $parent
-        .one($.support.transition.end, removeElement)
-        .emulateTransitionEnd(150) :
+      $parent.on($.support.transition.end, removeElement) :
       removeElement()
   }
 
@@ -390,14 +380,12 @@
       $next[0].offsetWidth // force reflow
       $active.addClass(direction)
       $next.addClass(direction)
-      $active
-        .one($.support.transition.end, function () {
-          $next.removeClass([type, direction].join(' ')).addClass('active')
-          $active.removeClass(['active', direction].join(' '))
-          that.sliding = false
-          setTimeout(function () { that.$element.trigger('slid') }, 0)
-        })
-        .emulateTransitionEnd(600)
+      this.$element.find('.item').one($.support.transition.end, function () {
+        $next.removeClass([type, direction].join(' ')).addClass('active')
+        $active.removeClass(['active', direction].join(' '))
+        that.sliding = false
+        setTimeout(function () { that.$element.trigger('slid') }, 0)
+      })
     } else {
       this.$element.trigger(e)
       if (e.isDefaultPrevented()) return
@@ -422,7 +410,7 @@
     return this.each(function () {
       var $this   = $(this)
       var data    = $this.data('bs.carousel')
-      var options = $.extend({}, Carousel.DEFAULTS, $this.data(), typeof option == 'object' && option)
+      var options = $.extend({}, Carousel.DEFAULTS, typeof option == 'object' && option)
       var action  = typeof option == 'string' ? option : options.slide
 
       if (!data) $this.data('bs.carousel', (data = new Carousel(this, options)))
@@ -577,9 +565,7 @@
     this.$element[method]('in')
 
     $.support.transition && this.$element.hasClass('collapse') ?
-      this.$element
-        .one($.support.transition.end, complete)
-        .emulateTransitionEnd(350) :
+      this.$element.one($.support.transition.end, complete) :
       complete()
   }
 
@@ -683,7 +669,7 @@
     if (!isActive) {
       if ('ontouchstart' in document.documentElement) {
         // if mobile we we use a backdrop because click events don't delegate
-        $('<div class="dropdown-backdrop"/>').insertAfter($(this)).on('click', clearMenus)
+        $('<div class="dropdown-backdrop"/>').insertBefore($(this)).on('click', clearMenus)
       }
 
       $parent.trigger(e = $.Event('show.bs.dropdown'))
@@ -733,7 +719,7 @@
 
   function clearMenus() {
     $(backdrop).remove()
-    $(toggle).each(function (e) {
+    $(toggle).each(function (e) { 
       var $parent = getParent($(this))
       if (!$parent.hasClass('open')) return
       $parent.trigger(e = $.Event('hide.bs.dropdown'))
@@ -785,6 +771,7 @@
 
   // APPLY TO STANDARD DROPDOWN ELEMENTS
   // ===================================
+
 
   $(document)
     .on('click.bs.dropdown.data-api', clearMenus)
@@ -869,11 +856,7 @@
       that.enforceFocus()
 
       transition ?
-        that.$element
-          .one($.support.transition.end, function () {
-            that.$element.focus().trigger('shown.bs.modal')
-          })
-          .emulateTransitionEnd(300) :
+        that.$element.one($.support.transition.end, function () { that.$element.focus().trigger('shown.bs.modal') }) :
         that.$element.focus().trigger('shown.bs.modal')
     })
   }
@@ -898,9 +881,7 @@
       .attr('aria-hidden', true)
 
     $.support.transition && this.$element.hasClass('fade') ?
-      this.$element
-        .one($.support.transition.end, $.proxy(this.hideModal, this))
-        .emulateTransitionEnd(300) :
+      this.hideWithTransition() :
       this.hideModal()
   }
 
@@ -922,6 +903,19 @@
     } else if (!this.isShown) {
       this.$element.off('keyup.dismiss.bs.modal')
     }
+  }
+
+  Modal.prototype.hideWithTransition = function () {
+    var that    = this
+    var timeout = setTimeout(function () {
+      that.$element.off($.support.transition.end)
+      that.hideModal()
+    }, 500)
+
+    this.$element.one($.support.transition.end, function () {
+      clearTimeout(timeout)
+      that.hideModal()
+    })
   }
 
   Modal.prototype.hideModal = function () {
@@ -962,18 +956,14 @@
       if (!callback) return
 
       doAnimate ?
-        this.$backdrop
-          .one($.support.transition.end, callback)
-          .emulateTransitionEnd(150) :
+        this.$backdrop.one($.support.transition.end, callback) :
         callback()
 
     } else if (!this.isShown && this.$backdrop) {
       this.$backdrop.removeClass('in')
 
       $.support.transition && this.$element.hasClass('fade')?
-        this.$backdrop
-          .one($.support.transition.end, callback)
-          .emulateTransitionEnd(150) :
+        this.$backdrop.one($.support.transition.end, callback) :
         callback()
 
     } else if (callback) {
@@ -1027,11 +1017,11 @@
       .one('hide', function () {
         $this.is(':visible') && $this.focus()
       })
-  })
+    })
 
-  var $body = $(document.body)
-    .on('shown.bs.modal',  '.modal', function () { $body.addClass('modal-open') })
-    .on('hidden.bs.modal', '.modal', function () { $body.removeClass('modal-open') })
+    var $body = $(document.body)
+      .on('bs.modal.shown',  '.modal', function () { $body.addClass('modal-open') })
+      .on('bs.modal.hidden', '.modal', function () { $body.removeClass('modal-open') })
 
 }(window.jQuery);
 /* ========================================================================
@@ -1138,12 +1128,12 @@
     var self = obj instanceof this.constructor ?
       obj : $(obj.currentTarget)[this.type](options).data('bs.' + this.type)
 
-    clearTimeout(self.timeout)
-
     if (!self.options.delay || !self.options.delay.show) return self.show()
 
+    clearTimeout(this.timeout)
+
     self.hoverState = 'in'
-    self.timeout    = setTimeout(function () {
+    this.timeout    = setTimeout(function () {
       if (self.hoverState == 'in') self.show()
     }, self.options.delay.show)
   }
@@ -1152,12 +1142,12 @@
     var self = obj instanceof this.constructor ?
       obj : $(obj.currentTarget)[this.type](this._options).data('bs.' + this.type)
 
-    clearTimeout(self.timeout)
+    clearTimeout(this.timeout)
 
     if (!self.options.delay || !self.options.delay.hide) return self.hide()
 
     self.hoverState = 'out'
-    self.timeout    = setTimeout(function () {
+    this.timeout    = setTimeout(function () {
       if (self.hoverState == 'out') self.hide()
     }, self.options.delay.hide)
   }
@@ -1180,10 +1170,6 @@
         this.options.placement.call(this, $tip[0], this.$element[0]) :
         this.options.placement
 
-      var autoToken = /\s?auto?\s?/i
-      var autoPlace = autoToken.test(placement)
-      if (autoPlace) placement = placement.replace(autoToken, '') || 'top'
-
       $tip
         .detach()
         .css({ top: 0, left: 0, display: 'block' })
@@ -1191,34 +1177,25 @@
 
       this.options.container ? $tip.appendTo(this.options.container) : $tip.insertAfter(this.$element)
 
+      var tp
       var pos          = this.getPosition()
       var actualWidth  = $tip[0].offsetWidth
       var actualHeight = $tip[0].offsetHeight
 
-      if (autoPlace) {
-        var $parent = this.$element.parent()
-
-        var orgPlacement = placement
-        var docScroll    = document.documentElement.scrollTop || document.body.scrollTop
-        var parentWidth  = this.options.container == 'body' ? window.innerWidth  : $parent.outerWidth()
-        var parentHeight = this.options.container == 'body' ? window.innerHeight : $parent.outerHeight()
-        var parentLeft   = this.options.container == 'body' ? 0 : $parent.offset().left
-
-        placement = placement == 'bottom' && pos.top   + pos.height  + actualHeight - docScroll > parentHeight  ? 'top'    :
-                    placement == 'top'    && pos.top   - docScroll   - actualHeight < 0                         ? 'bottom' :
-                    placement == 'right'  && pos.right + actualWidth > parentWidth                              ? 'left'   :
-                    placement == 'left'   && pos.left  - actualWidth < parentLeft                               ? 'right'  :
-                    placement
-
-        $tip
-          .removeClass(orgPlacement)
-          .addClass(placement)
+      switch (placement) {
+        case 'bottom':
+          tp = {top: pos.top + pos.height, left: pos.left + pos.width / 2 - actualWidth / 2}
+          break
+        case 'top':
+          tp = {top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2}
+          break
+        case 'left':
+          tp = {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth}
+          break
+        case 'right':
+          tp = {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width}
+          break
       }
-
-      var tp = placement == 'bottom' ? { top: pos.top + pos.height,   left: pos.left + pos.width / 2 - actualWidth / 2  } :
-               placement == 'top'    ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2  } :
-               placement == 'left'   ? { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth } :
-            /* placement == 'right' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width   }
 
       this.applyPlacement(tp, placement)
       this.$element.trigger('shown.bs.' + this.type)
@@ -1230,10 +1207,6 @@
     var $tip   = this.tip()
     var width  = $tip[0].offsetWidth
     var height = $tip[0].offsetHeight
-
-    // manually read margins because getBoundingClientRect includes difference
-    offset.top  = offset.top  + parseInt($tip.css('margin-top'), 10)
-    offset.left = offset.left + parseInt($tip.css('margin-left'), 10)
 
     $tip
       .offset(offset)
@@ -1291,10 +1264,19 @@
 
     $tip.removeClass('in')
 
+    function removeWithAnimation() {
+      var timeout = setTimeout(function () {
+        $tip.off($.support.transition.end).detach()
+      }, 500)
+
+      $tip.one($.support.transition.end, function () {
+        clearTimeout(timeout)
+        $tip.detach()
+      })
+    }
+
     $.support.transition && this.$tip.hasClass('fade') ?
-      $tip
-        .one($.support.transition.end, $tip.detach)
-        .emulateTransitionEnd(150) :
+      removeWithAnimation() :
       $tip.detach()
 
     this.$element.trigger('hidden.bs.' + this.type)
@@ -1757,9 +1739,7 @@
     }
 
     transition ?
-      $active
-        .one($.support.transition.end, next)
-        .emulateTransitionEnd(150) :
+      $active.one($.support.transition.end, next) :
       next()
 
     $active.removeClass('in')

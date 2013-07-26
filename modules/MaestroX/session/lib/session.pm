@@ -12,6 +12,7 @@ my @all_js = (
     "core/js/underscore.js",              "core/js/backbone.js",
 
     "core/js/backbone.cacheit.js",
+    "core/js/backbone.fetch-cache.js",
     "core/js/moment.js",
 
     "core/js/maestro.js",

@@ -17,28 +17,49 @@
     Maestro.Module = {
         // If no name specified, or it doesn't exist - return all modules
         get: function (name) {
-            if (Maestro.Module._privateList[name]) {
-                return Maestro.Module._privateList[name];
+            if (Maestro.Module._private[name]) {
+                return Maestro.Module._private[name];
             }
 
-            return Maestro.Module._privateList;
+            return Maestro.Module._private;
         },
 
         // Registers a module, and all it's routes
         register: function (name) {
             // If this module has already been created, return it.
-            if (Maestro.Module._privateList[name]) {
-                return Maestro.Module._privateList[name];
+            if (Maestro.Module._private[name]) {
+                return Maestro.Module._private[name];
             }
 
             // If not, create a blank object and return that
-            Maestro.Module._privateList[name] = {};
-            return Maestro.Module._privateList[name];
+            Maestro.Module._private[name] = {};
+            return Maestro.Module._private[name];
         },
 
         // FIXME: Close over this, but keep a getter for all modules
-        _privateList: {}
+        _private: {}
     }
+
+    // Template related functions
+    Maestro.Template = {
+        fetch: function (path, callback) {
+            // Instant synchronous way of getting the template, if it exists in our cache
+            if (Maestro.Template._private[path]) {
+                return callback(Maestro.Template._private[path]);
+            }
+
+            return $.get(path, function (contents) {
+                var tmpl = _.template(contents);
+                Maestro.Template._private[path] = tmpl;
+
+                callback( tmpl );
+            });
+        },
+
+        // Store for our compiled templates
+        _private: {}
+    }
+
 
     // Keep active application instances namespaced under an app object.
     Maestro.App = _.extend({}, Backbone.Events);
@@ -66,10 +87,7 @@
         app.router = new Router();
     
         // Trigger the initial route and enable HTML5 History API support
-        Backbone.history.start({
-            pushState: true,
-            root: "/"
-        });
+        Backbone.history.start({ pushState: true, root: "/" });
     
         // All navigation that is relative should be passed through the navigate
         // method, to be processed by the router.  If the link has a data-bypass

@@ -14,7 +14,7 @@
             options = options || {};
 
             // Set a default error message and the path to common error template
-            if (view.template === "error") {
+            if (options.withError) {
                 view.template = "/core/templates/error.html";
             }
 
@@ -27,6 +27,7 @@
                 );
             });
 
+            // Backbone convention
             return this;
         },
 

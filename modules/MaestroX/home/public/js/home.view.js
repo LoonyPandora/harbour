@@ -16,8 +16,9 @@
                         }
                     })
                 }).fail(function () {
-                    view.template = "error";
-                    render();
+                    render({
+                        withError: "Couldn't fetch foobar"
+                    });
                 });
             }
         })

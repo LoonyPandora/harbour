@@ -83,8 +83,8 @@
 
                 var modules = _.keys(Maestro.Module.get());
                 for (var i = 0; i < modules.length; i++) {
-                    var Home = Maestro.Module.get(modules[i]);
-                    this[ modules[i] ] = new Home.Router();
+                    var Module = Maestro.Module.get(modules[i]);
+                    this[ modules[i] ] = new Module.Router();
                 }
             }
         });

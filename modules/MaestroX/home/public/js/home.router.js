@@ -7,7 +7,16 @@
         },
 
         index: function () {
-            console.log("index");
+            var setup = {
+                layout: "",
+                views: [
+                
+                ]
+            };
+
+            _.each(setup.views, function (view, index) {
+                console.log(index, view);
+            });
         }
     });
 

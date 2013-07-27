@@ -8,14 +8,14 @@
 
         index: function () {
             var setup = {
-                layout: "",
+                layout: "/core/layouts/collection-list.html",
                 views: [
-                
+                    new Home.View.Header()
                 ]
             };
 
             _.each(setup.views, function (view, index) {
-                console.log(index, view);
+                view.initialize();
             });
         }
     });

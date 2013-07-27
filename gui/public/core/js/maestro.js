@@ -5,15 +5,41 @@
     this.Maestro = {};
 
     // Extend the default Backbone Router / View / Model / Collection
-    Maestro.Router = Backbone.Router.extend({ });
+    Maestro.Router = Backbone.Router.extend({
+
+    });
 
     Maestro.View = Backbone.View.extend({
-        render: function () {
+        render: function (options) {
+            options = options || {};
+
+            // Set a default error message and the path to common error template
+            if (view.template === "error") {
+                view.template = "/core/templates/error.html";
+            }
+
+            // Fetch the template AFTER we've tried fetching models
+            // So we can fetch the error template if the promise is rejected.
+            Maestro.Template.fetch(view.template, function (tmpl) {
+                view.stopListening();
+                view.$el.spin(false).html(
+                    tmpl(options.json)
+                );
+            });
+
+            return this;
+        },
+
+        // We fetch data and call the serialize function of the view
+        initialize: function () {
             var view = this;
 
-            
+            // We serialize data to data munge and fetch stuff before we render
+            view.serialize(view.render);
+        },
 
-        }
+        // Munges data into a format we can render. Must override in each view
+        serialize: function () { }
     });
 
     Maestro.Model = Backbone.Model.extend({ });

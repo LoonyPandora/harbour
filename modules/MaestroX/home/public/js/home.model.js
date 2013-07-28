@@ -1,9 +1,12 @@
 (function (Home) {
     "use strict";
 
-    Home.Model = Maestro.Model.extend({
 
-    });
+    Home.Models = {
+        Stuff: Maestro.Model.extend({
+            idAttribute: "id"
+        })
+    };
 
 })(Maestro.Module.register("home"));
 

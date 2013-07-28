@@ -3,34 +3,20 @@ package MaestroX::session;
 use Dancer ":syntax";
 use common::sense;
 
-my @all_js = (
-    "core/js/jquery.js",                
-    "core/js/bootstrap.js",             "core/js/hashgrid.js",
-    "core/js/jquery.easy-pie-chart.js",
 
-
-    "core/js/underscore.js",              "core/js/backbone.js",
-
-    "core/js/backbone.cacheit.js",
-    "core/js/backbone.fetch-cache.js",
-    "core/js/moment.js",
-
-    "core/js/maestro.js",
-    "core/js/maestro.config.js",
-    
-    "/modules/home/js/home.router.js",
-    "/modules/home/js/home.model.js",
-    "/modules/home/js/home.collection.js",
-    "/modules/home/js/home.view.js",
-    
-    "core/js/spin.js",
-    "core/js/jquery.spin.js",
-    
-    
-    
-    "core/js/main.js",
-
+my @core_js = (
+    "core/js/jquery.js",           "core/js/bootstrap.js",
+    "core/js/underscore.js",       "core/js/backbone.js",
+    "core/js/hashgrid.js",         "core/js/jquery.easy-pie-chart.js",
+    "core/js/backbone.cacheit.js", "core/js/backbone.fetch-cache.js",
+    "core/js/moment.js",           "core/js/maestro.js",
+    "core/js/maestro.config.js",   "core/js/spin.js",
+    "core/js/jquery.spin.js",      "core/js/main.js",
 );
+
+
+
+my @enabled_modules = qw(session hosting);
 
 my @all_css = (
     "core/css/bootstrap.css",        "core/css/font-awesome.css",
@@ -43,75 +29,44 @@ my @all_css = (
     "skins/default/css/default.css",
 );
 
-get "/session/js" => sub {
-    return \@all_js;
-};
 
-get "/session/css" => sub {
-    return \@all_css;
-};
+
 
 
 # HTML output because nginx is purposefully dumb
 # FIXME: Write a proper serializer here instead of hardcoding
 get "/session/js.html" => sub {
-    my @output_js;
-    for my $js (@all_js) {
-        push @output_js, qq{<script src="$js"></script>};
+    my @output;
+    for my $core (@core_js) {
+        push @output, qq{
+            <script src="$core"></script>
+        };
+    }
+
+    for my $module (@enabled_modules) {
+        push @output, qq{
+            <script src="/modules/$module/js/$module.router.js"></script>
+            <script src="/modules/$module/js/$module.model.js"></script>
+            <script src="/modules/$module/js/$module.collection.js"></script>
+            <script src="/modules/$module/js/$module.view.js"></script>
+        };
     }
 
     set serializer => undef;
-    return join "\n", @output_js;
+    return join "\n", @output;
 };
 
 
 get "/session/css.html" => sub {
-    my @output_css;
+    my @output;
     for my $css (@all_css) {
-        push @output_css, qq{<link href="$css" rel="stylesheet">};
+        push @output, qq{<link href="$css" rel="stylesheet">};
     }
 
     set serializer => undef;
-    return join "\n    ", @output_css;
+    return join "\n    ", @output;
 };
 
-
-# HTML output because nginx is purposefully dumb and can't turn JSON -> HTML
-# FIXME: Write a proper serializer here instead of hardcoding
-get "/session/js.min.html" => sub {
-    # FIXME: benchmark performance;
-    my $combined;
-    for my $file (@all_js) {
-        $combined .= "\n\n// $file\n//==============================\n\n";
-        $combined .= path("/Library/WebServer/Documents/maestro/mockups/html/v3/", $file)->slurp;
-    }
-
-    # First 9 chars of the SHA is enough for git, so it's enough for us.
-    my $filename = substr(Digest::SHA::sha1_hex($combined), 0, 9) . ".js";
-
-    path("/Library/WebServer/Documents/maestro/mockups/html/v3/cache/", $filename)->spew($combined);
-
-    # FIXME: Hardcoded for the demo
-    return qq{<script src="cache/$filename"></script>}
-};
-
-
-get "/session/css.min.html" => sub {
-    # FIXME: benchmark performance;
-    my $combined;
-    for my $file (@all_css) {
-        $combined .= "\n\n/* $file\n ============================== */\n\n";
-        $combined .= path("/Library/WebServer/Documents/maestro/mockups/html/v3/", $file)->slurp;
-    }
-
-    # First 9 chars of the SHA is enough for git, so it's enough for us.
-    my $filename = substr(Digest::SHA::sha1_hex($combined), 0, 9) . ".css";
-
-    path("/Library/WebServer/Documents/maestro/mockups/html/v3/cache/", $filename)->spew($combined);
-
-    # FIXME: Hardcoded for the demo
-    return qq{<link href="cache/$filename" rel="stylesheet">}
-};
 
 
 true;

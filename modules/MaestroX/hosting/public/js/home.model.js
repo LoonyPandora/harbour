@@ -3,7 +3,7 @@
 
 
     Home.Models = {
-        Stuff: Maestro.Model.extend({
+        Hosting: Maestro.Model.extend({
             idAttribute: "id"
         })
     };

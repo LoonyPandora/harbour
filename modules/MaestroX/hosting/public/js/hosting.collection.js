@@ -3,7 +3,7 @@
 
     Hosting.Collection = {
         List: Maestro.Collection.extend({
-            model: Hosting.Models.List,
+            model: Hosting.Model.List,
             url: "/api/hosting"
         })
     }

@@ -1,7 +1,7 @@
 (function (Hosting) {
     "use strict";
 
-    Hosting.Models = {
+    Hosting.Model = {
         List: Maestro.Model.extend({
             idAttribute: "id"
         })

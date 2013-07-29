@@ -23,7 +23,13 @@
                 // FIXME: Make this only insert when changing modules and not hardcoded
                 $(tmpl({
                     module: view.Mixin.module
-                })).insertBefore("#panel-domain");
+                }))
+                    .css({ y: "-100%"})
+                    .insertBefore("#panel-domain")
+                    .transition({ y: 0 });
+
+                $("#panel-domain")
+                    .transition({ y: "100%" });
 
                 // FIXME: This is probably really slow. Due to the element not being in the DOM
                 // When we instantiate the object, backbone removed the el... Hence the reselecting

@@ -11,7 +11,8 @@ my @core_js = (
     "core/js/backbone.cacheit.js", "core/js/backbone.fetch-cache.js",
     "core/js/moment.js",           "core/js/maestro.js",
     "core/js/maestro.config.js",   "core/js/spin.js",
-    "core/js/jquery.spin.js",      "core/js/main.js",
+    "core/js/jquery.spin.js",      "core/js/jquery.transit.js",
+    "core/js/main.js",
 );
 
 

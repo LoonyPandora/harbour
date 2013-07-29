@@ -50,6 +50,7 @@ get "/session/js.html" => sub {
             <script src="/modules/$module/js/$module.model.js"></script>
             <script src="/modules/$module/js/$module.collection.js"></script>
             <script src="/modules/$module/js/$module.view.js"></script>
+            <script src="/modules/$module/js/$module.mixin.js"></script>
         };
     }
 

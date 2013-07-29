@@ -6,9 +6,6 @@
             "": "index",
         },
 
-        module: "hosting",
-        layout: "/core/layouts/collection-list.html",
-
         index: function () {
             var setup = {
                 views: [

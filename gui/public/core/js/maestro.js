@@ -10,13 +10,13 @@
             var router = this;
 
             // Fetch the layout adding the module's name to identify it
-            Maestro.Template.fetch(router.layout, function (tmpl) {
-                // Insert the layout into the DOM
-                // FIXME: Make this only insert when changing modules
-                $(tmpl({
-                    module: router.module
-                })).insertBefore("#panel-domain")
-            });
+            // Maestro.Template.fetch(router.layout, function (tmpl) {
+            //     // Insert the layout into the DOM
+            //     // FIXME: Make this only insert when changing modules
+            //     $(tmpl({
+            //         module: router.module
+            //     })).insertBefore("#panel-domain")
+            // });
         }
     });
 
@@ -126,23 +126,23 @@
                     var ModuleData = Maestro.Module.get(module);
 
                     var subModules = _.keys(Maestro.Module.get(module));
-
                     for (var j = 0; j < subModules.length; j++) {
                         var submodule = subModules[j];
 
-                        if (submodule == "Router") {
+                        // Can't Mixin to the Mixin...
+                        // FIXME: Routers should get mixins too, but are at a different nesting level
+                        if (submodule == "Router" || submodule == "Mixin") {
                             continue;
                         }
 
                         var contents = _.keys(ModuleData[submodule]);
                         for (var x = 0; x < contents.length; x++) {
                             ModuleData[submodule][contents[x]] = ModuleData[submodule][contents[x]].extend({
-                                Meta: {
-                                    module: module
-                                }
+                                Mixin: _.extend(ModuleData.Mixin, { module: module })
                             });
                         }
                     };
+
                     this[ module ] = new ModuleData.Router();
                 }
             }

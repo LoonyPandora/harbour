@@ -6,11 +6,24 @@
 
     // Extend the default Backbone Router / View / Model / Collection
     Maestro.Router = Backbone.Router.extend({
+        initialize: function () {
+            var router = this;
 
+            // Fetch the layout adding the module's name to identify it
+            Maestro.Template.fetch(router.layout, function (tmpl) {
+                // Insert the layout into the DOM
+                // FIXME: Make this only insert when changing modules
+                $(tmpl({
+                    module: router.module
+                })).insertBefore("#panel-domain")
+            });
+        }
     });
 
     Maestro.View = Backbone.View.extend({
         render: function (options) {
+            var view = this;
+
             options = options || {};
 
             // Set a default error message and the path to common error template
@@ -21,22 +34,17 @@
             // Fetch the template AFTER we've tried fetching models
             // So we can fetch the error template if the promise is rejected.
             Maestro.Template.fetch(view.template, function (tmpl) {
-                view.stopListening();
-                view.$el.spin(false).html(
+                // view.stopListening();
+
+                // console.log(view.$el, $(view.$el.selector));
+
+                view.$el.html(
                     tmpl(options.json)
                 );
             });
 
             // Backbone convention
-            return this;
-        },
-
-        // We fetch data and call the serialize function of the view
-        initialize: function () {
-            var view = this;
-
-            // We serialize data to data munge and fetch stuff before we render
-            view.serialize(view.render);
+            return view;
         },
 
         // Munges data into a format we can render. Must override in each view
@@ -50,24 +58,26 @@
     // Our own Module getters & settings
     Maestro.Module = {
         // If no name specified, or it doesn't exist - return all modules
-        get: function (name) {
-            if (Maestro.Module._private[name]) {
-                return Maestro.Module._private[name];
+        get: function (module) {
+            if (Maestro.Module._private[module]) {
+                return Maestro.Module._private[module];
             }
 
             return Maestro.Module._private;
         },
 
         // Registers a module, and all it's routes
-        register: function (name) {
-            // If this module has already been created, return it.
-            if (Maestro.Module._private[name]) {
-                return Maestro.Module._private[name];
+        register: function (module) {
+            // If this module has already been created, return it so we keep adding to it
+            if (Maestro.Module._private[module]) {
+                return Maestro.Module._private[module];
             }
 
-            // If not, create a blank object and return that
-            Maestro.Module._private[name] = {};
-            return Maestro.Module._private[name];
+            // If not, create a blank object with some meta information, and return that
+            Maestro.Module._private[module] = {Meta: {
+                module: module
+            }};
+            return Maestro.Module._private[module];
         },
 
         // FIXME: Close over this, but keep a getter for all modules
@@ -86,7 +96,7 @@
                 var tmpl = _.template(contents);
                 Maestro.Template._private[path] = tmpl;
 
-                callback( tmpl );
+                callback(tmpl);
             });
         },
 

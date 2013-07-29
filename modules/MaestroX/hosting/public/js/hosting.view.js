@@ -1,22 +1,24 @@
-(function (Home) {
+(function (Hosting) {
     "use strict";
 
-    Home.View = {
-        Header: Maestro.View.extend({
+    Hosting.View = {
+        List: Maestro.View.extend({
             template: "",
-            el: "#title.view",
+            el: "#panel-hosting .view.collection-list",
 
-            serialize: function (render) {
-                var foo = {}
+            serialize: function () {
+                var view = this;
+
+                var foo = new Hosting.Collection.List();
                 foo.fetch().done(function () {
-                    render({
+                    view.render({
                         json: {
                             foo: "bar",
                             hello: "world"
                         }
                     })
                 }).fail(function () {
-                    render({
+                    view.render({
                         withError: "Couldn't fetch foobar"
                     });
                 });
@@ -24,5 +26,5 @@
         })
     };
 
-})(Maestro.Module.register("home"));
+})(Maestro.Module.register("hosting"));
 

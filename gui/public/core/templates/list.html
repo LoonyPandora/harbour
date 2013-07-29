@@ -1,13 +1,11 @@
-<% _.each(sections, function(section) { %>
-<h4><%- section.title %></h4>
+<h4>Hosting</h4>
 <ul>
-    <% _.each(section.items, function(item) { %>
+    <% _.each(accounts, function(account) { %>
     <li>
-        <a href="#">
-            <h5><%- item.name %></h5>
-            <span><%- item.expires %></span>
+        <a href="/hosting/<%- account.id %>">
+            <h5><%- account.domains[0] %></h5>
+            <span><%- account.id %></span>
         </a>
     </li>
     <% }); %>
 </ul>
-<% }); %>

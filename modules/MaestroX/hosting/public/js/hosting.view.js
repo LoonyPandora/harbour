@@ -9,25 +9,11 @@
             serialize: function () {
                 var view = this;
 
-                var foo = new Hosting.Collection.List();
-                foo.fetch().done(function () {
+                var collection = new Hosting.Collection.List();
+                collection.fetch().done(function () {
                     view.render({
                         json: {
-                            sections: [
-                                {
-                                    title: "Hosting",
-                                    items: [
-                                        {
-                                            name: "foobar.com",
-                                            expires: "2014-07-01",
-                                            aliases: [
-                                                "asdf.co.uk",
-                                                "example.org"
-                                            ]
-                                        }
-                                    ]
-                                }
-                            ]
+                            accounts: collection.toJSON()
                         }
                     })
                 }).fail(function () {

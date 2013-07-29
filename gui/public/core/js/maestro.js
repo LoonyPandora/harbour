@@ -10,35 +10,14 @@
     Maestro.View = Backbone.View.extend({
         render: function (options) {
             var view = this;
-
             options = options || {};
 
-            // Set a default error message and the path to common error template
-            if (options.withError) {
-                view.template = "/core/templates/error.html";
-            }
-
-            // Fetch the layout first, then fetch the template, then render it
-            Maestro.Template.fetch(view.Mixin.layout, function (tmpl) {
-                // FIXME: Make this only insert when changing modules and not hardcoded
-                $(tmpl({
-                    module: view.Mixin.module
-                }))
-                    .css({ y: "-100%"})
-                    .insertBefore("#panel-domain")
-                    .transition({ y: 0 });
-
-                $("#panel-domain")
-                    .transition({ y: "100%" });
-
-                // FIXME: This is probably really slow. Due to the element not being in the DOM
-                // When we instantiate the object, backbone removed the el... Hence the reselecting
-                Maestro.Template.fetch(view.template, function (tmpl) {
-                    $(view.$el.selector).html(
-                        tmpl(options.json)
-                    );
-                });
-            
+            // FIXME: This is probably really slow. Due to the element not being in the DOM
+            // When we instantiate the object, backbone removed the el... Hence the reselecting
+            Maestro.Template.fetch(view.template, function (tmpl) {
+                $(view.$el.selector).html(
+                    tmpl(options.json)
+                );
             });
 
             // Backbone convention
@@ -51,7 +30,33 @@
 
     Maestro.Model = Backbone.Model.extend({ });
 
-    Maestro.Collection = Backbone.Collection.extend({ });
+    Maestro.Collection = Backbone.Collection.extend({
+        fetchAll: function (callback) {
+            var item = this;
+
+            Maestro.Template.fetch(item.Mixin.layout, function (tmpl) {
+                // FIXME: Make this only insert when changing modules and not hardcoded
+                if ($("#panel-" + item.Mixin.module).length === 0) {
+                    $(tmpl({
+                        module: item.Mixin.module
+                    })).css({ y: "-100%"})
+                       .insertBefore("#panel-domain")
+                       .transition({ y: 0 });
+
+                       $(".view", "#panel-" + item.Mixin.module).spin();
+
+                    $("#panel-domain").transition({ y: "100%" });
+                }
+
+                item.fetch().done(function () {
+                    callback(item);
+                }).fail(function () {
+                    console.log("failed");
+                });
+            })
+        
+        }
+    });
 
     // Our own Module getters & settings
     Maestro.Module = {

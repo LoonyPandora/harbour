@@ -9,7 +9,8 @@
         index: function () {
             var setup = {
                 views: [
-                    new Hosting.View.List()
+                    new Hosting.View.List(),
+                    new Hosting.View.Header()
                 ]
             };
 

@@ -9,6 +9,9 @@ use common::sense;
 # Returns a list of all hosting accounts
 get "/hosting" => sub {
 
+    #  Simulate slow network
+    sleep(5);
+
     # Need to show the domains so we can filter it in the model quicksearch
     return [
         {

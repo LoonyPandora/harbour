@@ -24,8 +24,6 @@
         render: function (options) {
             var view = this;
 
-            console.log(view.Meta.module);
-
             options = options || {};
 
             // Set a default error message and the path to common error template
@@ -76,9 +74,7 @@
             }
 
             // If not, create a blank object with some meta information, and return that
-            Maestro.Module._private[module] = {Meta: {
-                module: module
-            }};
+            Maestro.Module._private[module] = {};
             return Maestro.Module._private[module];
         },
 
@@ -122,18 +118,32 @@
 
                 // We want to recurse down through each module to add the Meta object
                 // This is so we can always know what module we are in, among other things
+                
+                // FIXME: This is utterly heinous
                 var modules = _.keys(Maestro.Module.get());
                 for (var i = 0; i < modules.length; i++) {
-                    var currentModule = modules[i];
-                    var Module = Maestro.Module.get(currentModule);
+                    var module = modules[i];
+                    var ModuleData = Maestro.Module.get(module);
 
-                    Module.View.List = Module.View.List.extend({
-                        Meta: {
-                            module: currentModule
+                    var subModules = _.keys(Maestro.Module.get(module));
+
+                    for (var j = 0; j < subModules.length; j++) {
+                        var submodule = subModules[j];
+
+                        if (submodule == "Router") {
+                            continue;
                         }
-                    });
 
-                    this[ modules[i] ] = new Module.Router();
+                        var contents = _.keys(ModuleData[submodule]);
+                        for (var x = 0; x < contents.length; x++) {
+                            ModuleData[submodule][contents[x]] = ModuleData[submodule][contents[x]].extend({
+                                Meta: {
+                                    module: module
+                                }
+                            });
+                        }
+                    };
+                    this[ module ] = new ModuleData.Router();
                 }
             }
         });

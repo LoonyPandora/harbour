@@ -5,20 +5,7 @@
     this.Maestro = {};
 
     // Extend the default Backbone Router / View / Model / Collection
-    Maestro.Router = Backbone.Router.extend({
-        initialize: function () {
-            var router = this;
-
-            // Fetch the layout adding the module's name to identify it
-            // Maestro.Template.fetch(router.layout, function (tmpl) {
-            //     // Insert the layout into the DOM
-            //     // FIXME: Make this only insert when changing modules
-            //     $(tmpl({
-            //         module: router.module
-            //     })).insertBefore("#panel-domain")
-            // });
-        }
-    });
+    Maestro.Router = Backbone.Router.extend({ });
 
     Maestro.View = Backbone.View.extend({
         render: function (options) {
@@ -31,16 +18,21 @@
                 view.template = "/core/templates/error.html";
             }
 
-            // Fetch the template AFTER we've tried fetching models
-            // So we can fetch the error template if the promise is rejected.
-            Maestro.Template.fetch(view.template, function (tmpl) {
-                // view.stopListening();
+            // Fetch the layout first, then fetch the template, then render it
+            Maestro.Template.fetch(view.Mixin.layout, function (tmpl) {
+                // FIXME: Make this only insert when changing modules and not hardcoded
+                $(tmpl({
+                    module: view.Mixin.module
+                })).insertBefore("#panel-domain");
 
-                // console.log(view.$el, $(view.$el.selector));
-
-                view.$el.html(
-                    tmpl(options.json)
-                );
+                // FIXME: This is probably really slow. Due to the element not being in the DOM
+                // When we instantiate the object, backbone removed the el... Hence the reselecting
+                Maestro.Template.fetch(view.template, function (tmpl) {
+                    $(view.$el.selector).html(
+                        tmpl(options.json)
+                    );
+                });
+            
             });
 
             // Backbone convention

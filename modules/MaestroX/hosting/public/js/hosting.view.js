@@ -3,7 +3,7 @@
 
     Hosting.View = {
         List: Maestro.View.extend({
-            template: "",
+            template: "/core/templates/list.html",
             el: "#panel-hosting .view.collection-list",
 
             serialize: function () {
@@ -13,8 +13,21 @@
                 foo.fetch().done(function () {
                     view.render({
                         json: {
-                            foo: "bar",
-                            hello: "world"
+                            sections: [
+                                {
+                                    title: "Hosting",
+                                    items: [
+                                        {
+                                            name: "foobar.com",
+                                            expires: "2014-07-01",
+                                            aliases: [
+                                                "asdf.co.uk",
+                                                "example.org"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     })
                 }).fail(function () {

@@ -1,0 +1,13 @@
+<% _.each(sections, function(section) { %>
+<h4><%- section.title %></h4>
+<ul>
+    <% _.each(section.items, function(item) { %>
+    <li>
+        <a href="#">
+            <h5><%- item.name %></h5>
+            <span><%- item.expires %></span>
+        </a>
+    </li>
+    <% }); %>
+</ul>
+<% }); %>

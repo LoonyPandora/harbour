@@ -6,7 +6,7 @@
             "": "index",
         },
 
-        module: Hosting.Meta.module,
+        module: "hosting",
         layout: "/core/layouts/collection-list.html",
 
         index: function () {
@@ -17,7 +17,6 @@
             };
 
             _.each(setup.views, function (view, index) {
-                console.log("Hello");
                 view.serialize();
             });
         }

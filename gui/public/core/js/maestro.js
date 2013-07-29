@@ -24,6 +24,8 @@
         render: function (options) {
             var view = this;
 
+            console.log(view.Meta.module);
+
             options = options || {};
 
             // Set a default error message and the path to common error template
@@ -118,9 +120,19 @@
                 // Underscore each is super super slow. Only use it where readability is needed
                 // http://jsperf.com/jquery-each-vs-for-loop/234
 
+                // We want to recurse down through each module to add the Meta object
+                // This is so we can always know what module we are in, among other things
                 var modules = _.keys(Maestro.Module.get());
                 for (var i = 0; i < modules.length; i++) {
-                    var Module = Maestro.Module.get(modules[i]);
+                    var currentModule = modules[i];
+                    var Module = Maestro.Module.get(currentModule);
+
+                    Module.View.List = Module.View.List.extend({
+                        Meta: {
+                            module: currentModule
+                        }
+                    });
+
                     this[ modules[i] ] = new Module.Router();
                 }
             }

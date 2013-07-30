@@ -17,7 +17,7 @@
             Maestro.Template.fetch(view.template, function (tmpl) {
                 $(view.$el.selector).html(
                     tmpl(options.json)
-                );
+                ).addClass("fadeIn");
             });
 
             // Backbone convention
@@ -41,11 +41,17 @@
                         module: item.Mixin.module
                     })).css({ y: "-100%"})
                        .insertBefore("#panel-domain")
-                       .transition({ y: 0 });
+                       .transition({ y: 0 }, 750, 'easeInOutCubic');
 
-                       $(".view", "#panel-" + item.Mixin.module).spin();
+                       $(".view", "#panel-" + item.Mixin.module).spin({
+                           color: "rgba(44,62,80,0.7)",
+                           width: 4,
+                           length: 8,
+                           radius: 8,
+                           hwaccel: true
+                       });
 
-                    $("#panel-domain").transition({ y: "100%" });
+                    $("#panel-domain").transition({ y: "100%" }, 750, 'easeInOutCubic');
                 }
 
                 item.fetch().done(function () {

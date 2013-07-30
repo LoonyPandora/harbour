@@ -1,0 +1,40 @@
+/* Fades in the spinner with a 1.25 second delay for page transition animations */
+
+@-webkit-keyframes fadeInDelay {
+    0%   { opacity: 0; }
+    50%  { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@-moz-keyframes fadeInDelay {
+    0%   { opacity: 0; }
+    50%  { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@-o-keyframes fadeInDelay {
+    0%   { opacity: 0; }
+    50%  { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes fadeInDelay {
+    0%   { opacity: 0; }
+    50%  { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.spinner {
+    -webkit-animation-duration: 2.5s;
+       -moz-animation-duration: 2.5s;
+         -o-animation-duration: 2.5s;
+            animation-duration: 2.5s;
+    -webkit-animation-fill-mode: both;
+       -moz-animation-fill-mode: both;
+         -o-animation-fill-mode: both;
+            animation-fill-mode: both;
+    -webkit-animation-name: fadeInDelay;
+       -moz-animation-name: fadeInDelay;
+         -o-animation-name: fadeInDelay;
+            animation-name: fadeInDelay;
+}

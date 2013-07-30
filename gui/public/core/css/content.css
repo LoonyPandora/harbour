@@ -14,6 +14,8 @@
 .content-wrapper .content {
     clear: both;
     padding: 55px 20px 20px 20px;
-    height: 1000px;
-/*    outline: 1px solid red;*/
+
+    /* Height minus subnav and padding */
+    height:       -webkit-calc(100% - 50px);
+    height:               calc(100% - 50px);
 }

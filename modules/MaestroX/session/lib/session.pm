@@ -21,13 +21,13 @@ my @core_js = (
 my @enabled_modules = qw(session hosting);
 
 my @all_css = (
-    "core/css/bootstrap.css",        "core/css/font-awesome.css",
-    "core/css/bootstrap-custom.css", "core/css/hashgrid.css",
-    "core/css/animate.css",          "core/css/jquery.easy-pie-chart.css",
-    "core/css/structure.css",        "core/css/header.css",
-    "core/css/module-list.css",      "core/css/collection-list.css",
-    "core/css/subnav.css",           "core/css/content.css",
-    "core/css/form.css",             "core/css/utilities.css",
+    "core/css/bootstrap.css",             "core/css/font-awesome.css",
+    "core/css/bootstrap-custom.css",      "core/css/hashgrid.css",
+    "core/css/jquery.easy-pie-chart.css", "core/css/structure.css",
+    "core/css/header.css",                "core/css/module-list.css",
+    "core/css/collection-list.css",       "core/css/subnav.css",
+    "core/css/content.css",               "core/css/form.css",
+    "core/css/utilities.css",             "core/css/spinner.css",
     "skins/default/css/default.css",
 );
 

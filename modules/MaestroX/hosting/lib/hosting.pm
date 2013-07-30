@@ -10,7 +10,7 @@ use common::sense;
 get "/hosting" => sub {
 
     #  Simulate slow network
-    sleep(5);
+    sleep(1);
 
     # Need to show the domains so we can filter it in the model quicksearch
     return [

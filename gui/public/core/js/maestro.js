@@ -17,7 +17,8 @@
             Maestro.Template.fetch(view.template, function (tmpl) {
                 $(view.$el.selector).html(
                     tmpl(options.json)
-                ).addClass("fadeIn");
+                ).css({opacity: 0})
+                 .transition({ opacity: 1 }, 200);
             });
 
             // Backbone convention
@@ -44,7 +45,7 @@
                        .transition({ y: 0 }, 750, 'easeInOutCubic');
 
                        $(".view", "#panel-" + item.Mixin.module).spin({
-                           color: "rgba(44,62,80,0.7)",
+                           color: "rgba(44,62,80,0.6)",
                            width: 4,
                            length: 8,
                            radius: 8,

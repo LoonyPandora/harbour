@@ -7,11 +7,22 @@
             el: "#title.view",
 
             serialize: function () {
-                var view = this;
-
-                view.render({
+                this.render({
                     json: {
                         title: "Hello"
+                    }
+                });
+            }
+        }),
+
+        AddButton: Maestro.View.extend({
+            template: "/core/templates/add-account.html",
+            el: "#panel-hosting .view.collection-list-footer",
+
+            serialize: function () {
+                this.render({
+                    json: {
+                        buttonText: "New Account"
                     }
                 });
             }
@@ -26,12 +37,6 @@
 
                 var collection = new Hosting.Collection.List();
 
-                // 1. Fetch Layout
-                // 2. Add Spinners to Views in Layout
-                // 3. Fetch Collection
-                // 4. Fetch Relevant Template(s)
-                // 5. Remove spinners from layout
-                // 6. Render data with templates into Layout
                 collection.fetchAll(function () {
                     view.render({
                         json: {

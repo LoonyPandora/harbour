@@ -8,6 +8,34 @@
     Maestro.Router = Backbone.Router.extend({ });
 
     Maestro.View = Backbone.View.extend({
+        initialize: function () {
+            var view = this;
+
+            // Fetch the layout as early as possible, and pass a promise so
+            // we don't try to render a view before the layout is in the DOM
+            view.layoutReady = Maestro.Template.fetch(view.Mixin.layout, function (tmpl) {
+                // FIXME: Make this only insert when changing modules and not hardcoded
+                if ($("#panel-" + view.Mixin.module).length === 0) {
+                    $(tmpl({
+                        module: view.Mixin.module
+                    })).css({ y: "-100%"})
+                       .insertBefore("#panel-domain")
+                       .transition({ y: 0 }, 750, 'easeInOutCubic');
+
+                    $(".view", "#panel-" + view.Mixin.module).spin({
+                        color: "rgba(44,62,80,0.6)",
+                        width: 4,
+                        length: 8,
+                        radius: 8,
+                        hwaccel: true
+                    });
+
+                    // FIXME: Don't hardcode this
+                    $("#panel-domain").transition({ y: "100%" }, 750, 'easeInOutCubic');
+                }
+            })
+        },
+        
         render: function (options) {
             var view = this;
             options = options || {};
@@ -15,10 +43,12 @@
             // FIXME: This is probably really slow. Due to the element not being in the DOM
             // When we instantiate the object, backbone removed the el... Hence the reselecting
             Maestro.Template.fetch(view.template, function (tmpl) {
-                $(view.$el.selector).html(
-                    tmpl(options.json)
-                ).css({opacity: 0})
-                 .transition({ opacity: 1 }, 200);
+                // Wait until the layout has been fetched before we try to DOM insert
+                view.layoutReady.done(function() {
+                    $(view.$el.selector).html(
+                        tmpl(options.json)
+                    ).css({opacity: 0}).transition({ opacity: 1 }, 200);
+                });
             });
 
             // Backbone convention
@@ -32,36 +62,18 @@
     Maestro.Model = Backbone.Model.extend({ });
 
     Maestro.Collection = Backbone.Collection.extend({
-        fetchAll: function (callback) {
-            var item = this;
+        // For conveinience, if the first argument is a function, treat it as a callback
+        // Rather than passing an object with a success function, which will always raise
+        // the question of "where is error handling" (answer: it's automagically done)
+        fetch: function (options) {
+            var collection = this;
 
-            Maestro.Template.fetch(item.Mixin.layout, function (tmpl) {
-                // FIXME: Make this only insert when changing modules and not hardcoded
-                if ($("#panel-" + item.Mixin.module).length === 0) {
-                    $(tmpl({
-                        module: item.Mixin.module
-                    })).css({ y: "-100%"})
-                       .insertBefore("#panel-domain")
-                       .transition({ y: 0 }, 750, 'easeInOutCubic');
-
-                       $(".view", "#panel-" + item.Mixin.module).spin({
-                           color: "rgba(44,62,80,0.6)",
-                           width: 4,
-                           length: 8,
-                           radius: 8,
-                           hwaccel: true
-                       });
-
-                    $("#panel-domain").transition({ y: "100%" }, 750, 'easeInOutCubic');
-                }
-
-                item.fetch().done(function () {
-                    callback(item);
-                }).fail(function () {
-                    console.log("failed");
+            if ( _.isFunction(options) ) {
+                var callback = options;
+                Backbone.Collection.prototype.fetch.call(collection).done(function () {
+                    callback(collection);
                 });
-            })
-        
+            }
         }
     });
 

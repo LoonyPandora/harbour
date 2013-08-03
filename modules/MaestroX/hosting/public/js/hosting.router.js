@@ -10,8 +10,8 @@
             var setup = {
                 views: [
                     new Hosting.View.List(),
-                    new Hosting.View.Header(),
-                    new Hosting.View.AddButton()
+                    new Hosting.View.AddButton(),
+                    new Hosting.View.Header()
                 ]
             };
 

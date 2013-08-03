@@ -34,16 +34,15 @@
 
             serialize: function () {
                 var view = this;
-
                 var collection = new Hosting.Collection.List();
 
-                collection.fetchAll(function () {
+                collection.fetch(function () {
                     view.render({
                         json: {
                             accounts: collection.toJSON()
                         }
                     });
-                })
+                });
             }
         })
     };

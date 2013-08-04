@@ -3,7 +3,7 @@
 
     Hosting.Router = Maestro.Router.extend({
         routes: {
-            "": "index",
+            "hosting": "index",
         },
 
         index: function () {

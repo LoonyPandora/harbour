@@ -41,7 +41,13 @@
                     if (key === view.options.section) {
                         value.active = "active";
                     }
-                    value.url = key;
+
+                    var base = Backbone.history.fragment;
+                    if (base.indexOf("/") !== -1) {
+                        base = base.substring(0, base.lastIndexOf("/"));
+                    }
+
+                    value.url = base + "/" + key;
                     return value;
                 });
 

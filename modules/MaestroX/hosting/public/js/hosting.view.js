@@ -28,6 +28,31 @@
             }
         }),
 
+        SubNav: Maestro.View.extend({
+            template: "/core/templates/subnav.html",
+            el: "#panel-hosting .view.subnav",
+
+            serialize: function () {
+                var view = this;
+
+                // Put a url property in the list of subnav items which is the same as the key
+                // Makes the template simpler if we just pass an array
+                var sectionList =_.map(view.Mixin.subnav, function (value, key) {
+                    if (key === view.options.section) {
+                        value.active = "active";
+                    }
+                    value.url = key;
+                    return value;
+                });
+
+                this.render({
+                    json: {
+                        sections: sectionList
+                    }
+                });
+            }
+        }),
+
         List: Maestro.View.extend({
             template: "/core/templates/list.html",
             el: "#panel-hosting .view.collection-list",

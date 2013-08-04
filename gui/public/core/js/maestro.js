@@ -8,8 +8,12 @@
     Maestro.Router = Backbone.Router.extend({ });
 
     Maestro.View = Backbone.View.extend({
-        initialize: function () {
+        initialize: function (options) {
             var view = this;
+
+            view.options = options;
+
+            console.log(this, options);
 
             // Fetch the layout as early as possible, and pass a promise so
             // we don't try to render a view before the layout is in the DOM

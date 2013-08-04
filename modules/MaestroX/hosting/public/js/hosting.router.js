@@ -7,16 +7,12 @@
         },
 
         index: function () {
-            var setup = {
-                views: [
-                    new Hosting.View.List(),
-                    new Hosting.View.AddButton(),
-                    new Hosting.View.Header(),
-                    new Hosting.View.SubNav({ section: "dns" })
-                ]
-            };
-
-            _.each(setup.views, function (view, index) {
+            _.each([
+                new Hosting.View.List(),
+                new Hosting.View.AddButton(),
+                new Hosting.View.Header(),
+                new Hosting.View.SubNav({ section: "dns" })
+            ], function (view, index) {
                 view.serialize();
             });
         }

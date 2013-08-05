@@ -12,7 +12,8 @@
 
                     if (module.Mixin && module.Mixin.icon) {
                         output.push(_.extend({
-                            module: moduleName
+                            module: moduleName,
+                            url: "/" + moduleName
                         }, module.Mixin));
                     }
                 });

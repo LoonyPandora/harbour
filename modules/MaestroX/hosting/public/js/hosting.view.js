@@ -26,9 +26,6 @@
                 var collection = new Session.Collection.GUIModules();
 
                 collection.fetch(function () {
-                    
-                    console.log(collection.toJSON());
-                    
                     view.render({
                         json: {
                             modules: collection.toJSON()

@@ -13,11 +13,11 @@
     }
     
     .collection-list-wrapper {
-        height: 200px;
+        height: 216px;
         background: #fff;
         border: none;
         border-bottom-style: solid;
-        border-width:       1px;
+        border-width: 1px;
     }
     
     /* FIXME: This is silly */
@@ -26,7 +26,7 @@
     }
     
     .content-wrapper {
-        top: 200px;
+        top: 216px;
     }
 }
 

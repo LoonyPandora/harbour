@@ -28,7 +28,7 @@ my @core_css = (
     "/core/css/collection-list.css",       "/core/css/subnav.css",
     "/core/css/content.css",               "/core/css/form.css",
     "/core/css/utilities.css",             "/core/css/spinner.css",
-    "/skins/default/css/default.css",
+    "/core/css/media-queries.css",         "/skins/default/css/default.css",
 );
 
 

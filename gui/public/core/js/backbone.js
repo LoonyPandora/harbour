@@ -1236,6 +1236,9 @@
     //     });
     //
     route: function(route, name, callback) {
+        var originalRoute = Backbone.Router.prototype.route;
+
+
       if (!_.isRegExp(route)) route = this._routeToRegExp(route);
       if (_.isFunction(name)) {
         callback = name;

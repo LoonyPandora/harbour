@@ -62,7 +62,7 @@
         Home: Maestro.View.extend({
             template: "/modules/hosting/templates/home.html",
             el: "#panel-hosting .view.content",
-
+            
             serialize: function () {
                 var view = this;
 

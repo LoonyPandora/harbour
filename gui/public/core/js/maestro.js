@@ -5,7 +5,33 @@
     this.Maestro = {};
 
     // Extend the default Backbone Router / View / Model / Collection
-    Maestro.Router = Backbone.Router.extend({ });
+    Maestro.Router = Backbone.Router.extend({
+        before: function () { },
+
+        after: function () { },
+
+        route: function(route, name, callback) {
+            var originalRoute = Backbone.Router.prototype.route;
+
+            if (!_.isRegExp(route)) route = this._routeToRegExp(route);
+
+            if (_.isFunction(name)) {
+                callback = name;
+                name = '';
+            }
+
+            if (!callback) {
+                callback = this[name];
+            }
+
+            return Backbone.Router.prototype.route.call(this, route, name, function () {
+                this.before();
+                callback.apply(this, arguments);
+                this.after();
+            });
+        }
+
+    });
 
     Maestro.View = Backbone.View.extend({
         initialize: function (options) {
@@ -37,6 +63,25 @@
                 }
             })
         },
+
+        // Called AFTER the view is rendered and the DOM is ready again
+        // Can be overridden by the individual view
+        after: function () {
+            var view = this;
+
+            // TODO: Cleanup how we do things after render
+            $(".canvas-pie-chart", view.$el.selector).easyPieChart({
+              animate: 500,
+              scaleColor: false,
+              lineWidth: 5,
+              // rotate: -90,
+              lineCap: "round",
+              size: 100,
+              trackColor: "#bdc3c7",
+              barColor: "#2980b9"
+            });
+        },
+        
         
         render: function (options) {
             var view = this;
@@ -50,6 +95,11 @@
                     $(view.$el.selector).html(
                         tmpl(options.json)
                     ).css({opacity: 0}).transition({ opacity: 1 }, 200);
+
+                    // Run the view specific afterRender
+                    if (_.isFunction(view.after)) {
+                        view.after();
+                    }
                 });
             });
 

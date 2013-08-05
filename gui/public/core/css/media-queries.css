@@ -6,14 +6,64 @@
 
 }
 
-@media screen and (min-width: 768px) {
+
+@media screen and (min-width: 300px) and (max-width: 991px) {
+    #logo, .collection-list-wrapper {
+        width: 100%;
+    }
+    
+    .collection-list-wrapper {
+        height: 200px;
+        background: #fff;
+        border: none;
+        border-bottom-style: solid;
+        border-width:       1px;
+    }
+    
+    /* FIXME: This is silly */
+    #title, #header-nav, .collection-list-footer {
+        display: none;
+    }
+    
+    .content-wrapper {
+        top: 200px;
+    }
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
 
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+    #logo, .collection-list-wrapper, .collection-list-footer {
+        width: 261px;
+    }
 
+    #title {
+        right:  160px;
+        left:   261px;
+    }
+
+    .content-wrapper {
+        left: 262px;
+    }
 }
 
 @media screen and (min-width: 1200px) {
+
+    #logo, .collection-list-wrapper, .collection-list-footer {
+        width: 23%;
+    }
+
+    #title {
+        left:        23%;
+        width:       -webkit-calc(77% - 160px);
+        width:               calc(77% - 160px);
+    }
+    
+    .content-wrapper {
+        width: 77%;
+    }
 
 }

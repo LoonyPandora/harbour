@@ -94,7 +94,7 @@
                 view.layoutReady.done(function() {
                     $(view.$el.selector).html(
                         tmpl(options.json)
-                    ).css({opacity: 0}).transition({ opacity: 1 }, 200);
+                    );
 
                     // Run the view specific afterRender
                     if (_.isFunction(view.after)) {

@@ -34,6 +34,12 @@ my @core_css = (
 
 
 
+get "/session/modules" => sub {
+    return \@enabled_modules;
+};
+
+
+
 
 # HTML output because nginx is purposefully dumb
 # FIXME: Write a proper serializer here instead of hardcoding

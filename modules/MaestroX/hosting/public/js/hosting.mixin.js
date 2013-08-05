@@ -2,6 +2,8 @@
     "use strict";
 
     Hosting.Mixin = {
+        // FIXME: XSS injection possible on icon.
+        icon: "&#xf0a0;",
         layout: "/core/layouts/collection-list.html",
         subnav: {
             "home": {

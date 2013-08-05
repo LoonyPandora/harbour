@@ -131,6 +131,7 @@
 
     // Our own Module getters & settings
     Maestro.Module = {
+        // FIXME: we need a method to check if a module exists
         // If no name specified, or it doesn't exist - return all modules
         get: function (module) {
             if (Maestro.Module._private[module]) {
@@ -211,9 +212,11 @@
 
                         var contents = _.keys(ModuleData[submodule]);
                         for (var x = 0; x < contents.length; x++) {
-                            ModuleData[submodule][contents[x]] = ModuleData[submodule][contents[x]].extend({
-                                Mixin: _.extend(ModuleData.Mixin, { module: module })
-                            });
+                            if (ModuleData.Mixin){
+                                ModuleData[submodule][contents[x]] = ModuleData[submodule][contents[x]].extend({
+                                    Mixin: _.extend(ModuleData.Mixin, { module: module })
+                                });
+                            }
                         }
                     };
 

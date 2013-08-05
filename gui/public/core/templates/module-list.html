@@ -1,0 +1,8 @@
+<% _.each(modules, function(module) { %>
+<li>
+    <a href="<%- module.url %>">
+        <span class="text"><%- module.name %></span>
+        <span class="icon"><%= module.icon %></span>
+    </a>
+</li>
+<% }); %>

@@ -12,6 +12,7 @@
                 new Hosting.View.AddButton(),
                 new Hosting.View.Header(),
                 new Hosting.View.Home(),
+                new Hosting.View.ModuleList(),
                 new Hosting.View.SubNav({ section: "dns" })
             ], function (view, index) {
                 view.serialize();

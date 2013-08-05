@@ -15,6 +15,30 @@
             }
         }),
 
+        ModuleList: Maestro.View.extend({
+            template: "/core/templates/module-list.html",
+            el: "#module-list",
+
+            serialize: function () {
+                var view = this;
+
+                var Session = Maestro.Module.get("session");
+                var collection = new Session.Collection.GUIModules();
+
+                collection.fetch(function () {
+                    
+                    console.log(collection.toJSON());
+                    
+                    view.render({
+                        json: {
+                            modules: collection.toJSON()
+                        }
+                    });
+                });
+
+            }
+        }),
+
         AddButton: Maestro.View.extend({
             template: "/core/templates/add-account.html",
             el: "#panel-hosting .view.collection-list-footer",
@@ -75,7 +99,7 @@
         }),
 
         List: Maestro.View.extend({
-            template: "/core/templates/list.html",
+            template: "/core/templates/collection-list.html",
             el: "#panel-hosting .view.collection-list",
 
             serialize: function () {

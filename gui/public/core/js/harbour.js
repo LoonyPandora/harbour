@@ -1,11 +1,11 @@
 (function () {
     "use strict";
 
-    // The top-level namespace. All public Maestro classes and modules will be attached to this.
-    this.Maestro = {};
+    // The top-level namespace. All public Harbour classes and modules will be attached to this.
+    this.Harbour = {};
 
     // Extend the default Backbone Router / View / Model / Collection
-    Maestro.Router = Backbone.Router.extend({
+    Harbour.Router = Backbone.Router.extend({
         before: function () { },
 
         after: function () { },
@@ -33,7 +33,7 @@
 
     });
 
-    Maestro.View = Backbone.View.extend({
+    Harbour.View = Backbone.View.extend({
         initialize: function (options) {
             var view = this;
 
@@ -41,7 +41,7 @@
 
             // Fetch the layout as early as possible, and pass a promise so
             // we don't try to render a view before the layout is in the DOM
-            view.layoutReady = Maestro.Template.fetch(view.Mixin.layout, function (tmpl) {
+            view.layoutReady = Harbour.Template.fetch(view.Mixin.layout, function (tmpl) {
                 // FIXME: Make this only insert when changing modules and not hardcoded
                 if ($("#panel-" + view.Mixin.module).length === 0) {
                     $(tmpl({
@@ -89,7 +89,7 @@
 
             // FIXME: This is probably really slow. Due to the element not being in the DOM
             // When we instantiate the object, backbone removed the el... Hence the reselecting
-            Maestro.Template.fetch(view.template, function (tmpl) {
+            Harbour.Template.fetch(view.template, function (tmpl) {
                 // Wait until the layout has been fetched before we try to DOM insert
                 view.layoutReady.done(function() {
                     $(view.$el.selector).html(
@@ -111,9 +111,9 @@
         serialize: function () { }
     });
 
-    Maestro.Model = Backbone.Model.extend({ });
+    Harbour.Model = Backbone.Model.extend({ });
 
-    Maestro.Collection = Backbone.Collection.extend({
+    Harbour.Collection = Backbone.Collection.extend({
         // For conveinience, if the first argument is a function, treat it as a callback
         // Rather than passing an object with a success function, which will always raise
         // the question of "where is error handling" (answer: it's automagically done)
@@ -130,27 +130,27 @@
     });
 
     // Our own Module getters & settings
-    Maestro.Module = {
+    Harbour.Module = {
         // FIXME: we need a method to check if a module exists
         // If no name specified, or it doesn't exist - return all modules
         get: function (module) {
-            if (Maestro.Module._private[module]) {
-                return Maestro.Module._private[module];
+            if (Harbour.Module._private[module]) {
+                return Harbour.Module._private[module];
             }
 
-            return Maestro.Module._private;
+            return Harbour.Module._private;
         },
 
         // Registers a module, and all it's routes
         register: function (module) {
             // If this module has already been created, return it so we keep adding to it
-            if (Maestro.Module._private[module]) {
-                return Maestro.Module._private[module];
+            if (Harbour.Module._private[module]) {
+                return Harbour.Module._private[module];
             }
 
             // If not, create a blank object with some meta information, and return that
-            Maestro.Module._private[module] = {};
-            return Maestro.Module._private[module];
+            Harbour.Module._private[module] = {};
+            return Harbour.Module._private[module];
         },
 
         // FIXME: Close over this, but keep a getter for all modules
@@ -158,16 +158,16 @@
     }
 
     // Template related functions
-    Maestro.Template = {
+    Harbour.Template = {
         fetch: function (path, callback) {
             // Instant synchronous way of getting the template, if it exists in our cache
-            if (Maestro.Template._private[path]) {
-                return callback(Maestro.Template._private[path]);
+            if (Harbour.Template._private[path]) {
+                return callback(Harbour.Template._private[path]);
             }
 
             return $.get(path, function (contents) {
                 var tmpl = _.template(contents);
-                Maestro.Template._private[path] = tmpl;
+                Harbour.Template._private[path] = tmpl;
 
                 callback(tmpl);
             });
@@ -178,12 +178,12 @@
     }
 
     // Keep active application instances namespaced under an app object.
-    Maestro.App = _.extend({}, Backbone.Events);
+    Harbour.App = _.extend({}, Backbone.Events);
 
     // kick-off all initialization, everything up to this point should be definitions.
     $(function ($) {
         // Shorthand the application namespace
-        var app = Maestro.App;
+        var app = Harbour.App;
 
         // Load every module into the main router
         var Router = Backbone.Router.extend({
@@ -195,12 +195,12 @@
                 // This is so we can always know what module we are in, among other things
                 
                 // FIXME: This is utterly heinous
-                var modules = _.keys(Maestro.Module.get());
+                var modules = _.keys(Harbour.Module.get());
                 for (var i = 0; i < modules.length; i++) {
                     var module = modules[i];
-                    var ModuleData = Maestro.Module.get(module);
+                    var ModuleData = Harbour.Module.get(module);
 
-                    var subModules = _.keys(Maestro.Module.get(module));
+                    var subModules = _.keys(Harbour.Module.get(module));
                     for (var j = 0; j < subModules.length; j++) {
                         var submodule = subModules[j];
 

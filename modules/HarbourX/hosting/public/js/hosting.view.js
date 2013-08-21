@@ -2,7 +2,7 @@
     "use strict";
 
     Hosting.View = {
-        Header: Maestro.View.extend({
+        Header: Harbour.View.extend({
             template: "/core/templates/header.html",
             el: "#title.view",
 
@@ -15,14 +15,14 @@
             }
         }),
 
-        ModuleList: Maestro.View.extend({
+        ModuleList: Harbour.View.extend({
             template: "/core/templates/module-list.html",
             el: "#module-list",
 
             serialize: function () {
                 var view = this;
 
-                var Session = Maestro.Module.get("session");
+                var Session = Harbour.Module.get("session");
                 var collection = new Session.Collection.GUIModules();
 
                 collection.fetch(function () {
@@ -36,7 +36,7 @@
             }
         }),
 
-        AddButton: Maestro.View.extend({
+        AddButton: Harbour.View.extend({
             template: "/core/templates/add-account.html",
             el: "#panel-hosting .view.collection-list-footer",
 
@@ -49,7 +49,7 @@
             }
         }),
 
-        SubNav: Maestro.View.extend({
+        SubNav: Harbour.View.extend({
             template: "/core/templates/subnav.html",
             el: "#panel-hosting .view.subnav",
 
@@ -80,7 +80,7 @@
             }
         }),
 
-        Home: Maestro.View.extend({
+        Home: Harbour.View.extend({
             template: "/modules/hosting/templates/home.html",
             el: "#panel-hosting .view.content",
             
@@ -95,7 +95,7 @@
             }
         }),
 
-        List: Maestro.View.extend({
+        List: Harbour.View.extend({
             template: "/core/templates/collection-list.html",
             el: "#panel-hosting .view.collection-list",
 
@@ -114,5 +114,5 @@
         })
     };
 
-})(Maestro.Module.register("hosting"));
+})(Harbour.Module.register("hosting"));
 

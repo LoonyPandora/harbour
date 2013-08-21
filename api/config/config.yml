@@ -1,6 +1,6 @@
 # Main config file
 
-appname:    "Maestro"
+appname:    "Harbour"
 charset:    "UTF-8"
 serializer: "JSON"
 

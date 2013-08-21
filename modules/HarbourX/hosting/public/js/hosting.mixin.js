@@ -25,4 +25,4 @@
         }
     };
 
-})(Maestro.Module.register("hosting"));
+})(Harbour.Module.register("hosting"));

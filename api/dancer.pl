@@ -1,13 +1,13 @@
 #!/usr/bin/env perl
 
 use Dancer;
-use Maestro;
+use Harbour;
 use common::sense;
 use Data::Dump qw(dump);
 use Path::Tiny qw(path);
 
 # Get a list of all installed modules and load them one-by-one
-my $moduledir = path(dirname(__FILE__), "../modules/MaestroX");
+my $moduledir = path(dirname(__FILE__), "../modules/HarbourX");
 
 for my $module ($moduledir->children) {
     if ( $module->is_dir && $module->child("lib", $module->basename . ".pm")->is_file ) {

@@ -1,7 +1,7 @@
 (function (Session) {
     "use strict";
 
-    Session.Router = Maestro.Router.extend({
+    Session.Router = Harbour.Router.extend({
         routes: {
             "login": "index",
         },
@@ -11,4 +11,4 @@
         }
     });
 
-})(Maestro.Module.register("session"));
+})(Harbour.Module.register("session"));

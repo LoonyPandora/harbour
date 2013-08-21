@@ -1,4 +1,4 @@
-package MaestroX::hosting;
+package HarbourX::hosting;
 
 use Dancer ":syntax";
 use Data::UUID;

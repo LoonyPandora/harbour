@@ -2,9 +2,9 @@
     "use strict";
 
     Session.Model = {
-        GUIModules: Maestro.Model.extend({
+        GUIModules: Harbour.Model.extend({
             
         })
     };
 
-})(Maestro.Module.register("session"));
+})(Harbour.Module.register("session"));

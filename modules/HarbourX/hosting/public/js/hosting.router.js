@@ -1,7 +1,7 @@
 (function (Hosting) {
     "use strict";
 
-    Hosting.Router = Maestro.Router.extend({
+    Hosting.Router = Harbour.Router.extend({
         routes: {
             "hosting": "index",
         },
@@ -20,4 +20,4 @@
         }
     });
 
-})(Maestro.Module.register("hosting"));
+})(Harbour.Module.register("hosting"));

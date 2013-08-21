@@ -2,10 +2,10 @@
     "use strict";
 
     Hosting.Model = {
-        List: Maestro.Model.extend({
+        List: Harbour.Model.extend({
             idAttribute: "id"
         })
     };
 
-})(Maestro.Module.register("hosting"));
+})(Harbour.Module.register("hosting"));
 

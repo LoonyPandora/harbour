@@ -1,7 +1,7 @@
 API
 ===
 
-Perl API code for Maestro. Contains all the API code we write.
+Perl API code for Harbour. Contains all the API code we write.
 
 There shouldn't be too much in here, it's got to be pretty lightweight. Most of the heavy lifting will be done by the 3rd party / optional modules.
 

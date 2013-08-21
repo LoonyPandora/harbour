@@ -2,7 +2,7 @@
     "use strict";
 
     // Config file. Contains configuration stuff
-    Maestro.Config = {
+    Harbour.Config = {
         version: "0.0.1"
     }
 

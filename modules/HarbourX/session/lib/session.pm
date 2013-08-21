@@ -1,4 +1,4 @@
-package MaestroX::session;
+package HarbourX::session;
 
 use Dancer ":syntax";
 use common::sense;
@@ -9,8 +9,8 @@ my @core_js = (
     "/core/js/underscore.js",       "/core/js/backbone.js",
     "/core/js/hashgrid.js",         "/core/js/jquery.easy-pie-chart.js",
     "/core/js/backbone.cacheit.js", "/core/js/backbone.fetch-cache.js",
-    "/core/js/moment.js",           "/core/js/maestro.js",
-    "/core/js/maestro.config.js",   "/core/js/spin.js",
+    "/core/js/moment.js",           "/core/js/harbour.js",
+    "/core/js/harbour.config.js",   "/core/js/spin.js",
     "/core/js/jquery.spin.js",      "/core/js/jquery.transit.js",
     "/core/js/main.js",
 );

@@ -2,11 +2,11 @@
     "use strict";
 
     Hosting.Collection = {
-        List: Maestro.Collection.extend({
+        List: Harbour.Collection.extend({
             model: Hosting.Model.List,
             url: "/api/hosting"
         })
     }
 
-})(Maestro.Module.register("hosting"));
+})(Harbour.Module.register("hosting"));
 

@@ -22,14 +22,3 @@ a {
 .icon {
     line-height: inherit;
 }
-
-
-/* FIXME: Media queries remove margins below 768px - find out why. It's annyoing */
-.row {
-    margin-right: -15px;
-    margin-left: -15px;
-}
-
-.btn {
-    font-weight: normal;
-}

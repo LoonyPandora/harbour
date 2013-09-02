@@ -44,7 +44,7 @@ Competitors
 [Canonical Landscape](https://landscape.canonical.com)
 [Docker Maestro](https://github.com/toscanini/maestro)
 [Docker UI](https://github.com/crosbymichael/dockerui)
-
+[CTL-C](http://ctl-c.io)
 
 THE PLAN
 --------

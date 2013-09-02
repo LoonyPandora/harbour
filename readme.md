@@ -48,7 +48,7 @@ Competitors
 [Commando](https://commando.io)
 [Hosted Chef](http://www.opscode.com/enterprise-chef/)
 [Hosted Puppet](https://www.hostedpuppetmaster.com)
-
+[The Foremane](http://theforeman.org)
 
 
 THE PLAN

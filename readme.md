@@ -46,6 +46,8 @@ Competitors
 [Docker UI](https://github.com/crosbymichael/dockerui)
 [CTL-C](http://ctl-c.io)
 [Commando](https://commando.io)
+[Hosted Chef](http://www.opscode.com/enterprise-chef/)
+[Hosted Puppet](https://www.hostedpuppetmaster.com)
 
 
 

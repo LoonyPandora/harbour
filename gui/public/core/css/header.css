@@ -6,7 +6,10 @@
     font-family: "HelveticaNeue-Light";
     height: 60px;
     line-height: 60px;
-    margin: 15px 0 0 20px;
+    margin: 20px 0 0 20px;
+    /* Minus the left padding */
+    width: -webkit-calc(100% - 20px);
+    width:         calc(100% - 20px);
 }
 
 /* Header Navigation

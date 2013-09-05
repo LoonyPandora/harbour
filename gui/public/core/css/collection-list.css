@@ -43,7 +43,7 @@
 .collection-list {
     /* Safari has a glitch where the margin doesn't work until you
        trigger reflow. Hence the use of padding */
-    padding: 55px 0 30px 0;
+    padding: 60px 0 30px 0;
 }
 
 .collection-list h4 {

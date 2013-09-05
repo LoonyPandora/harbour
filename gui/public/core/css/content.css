@@ -11,10 +11,10 @@
 }
 
 .content-wrapper .content {
-    clear: both;
-    padding: 55px 20px 20px 20px;
+    clear:  both;
+    padding: 20px;
 
-    /* Height minus subnav and padding */
-    height:       -webkit-calc(100% - 50px);
-    height:               calc(100% - 50px);
+    /* Height minus padding */
+/*    height:       -webkit-calc(100% - 20px);*/
+/*    height:               calc(100% - 20px);*/
 }

@@ -9,6 +9,10 @@
     height:     30px;
 }
 
+.content-wrapper .subnav:empty {
+    display: none;
+}
+
 .content-wrapper .subnav li {
     display: block;
     float:   left;

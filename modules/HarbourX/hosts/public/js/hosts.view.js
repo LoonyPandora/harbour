@@ -1,57 +1,20 @@
-(function (Hosting) {
+(function (Hosts) {
     "use strict";
 
-    Hosting.View = {
+    Hosts.View = {
         Header: Harbour.View.extend({
-            template: "/core/templates/header.html",
-            el: "#title.view",
 
-            serialize: function () {
-                this.render({
-                    json: {
-                        title: "Hello"
-                    }
-                });
-            }
         }),
 
         ModuleList: Harbour.View.extend({
-            template: "/core/templates/module-list.html",
-            el: "#module-list",
-
-            serialize: function () {
-                var view = this;
-
-                var Session = Harbour.Module.get("session");
-                var collection = new Session.Collection.GUIModules();
-
-                collection.fetch(function () {
-                    view.render({
-                        json: {
-                            modules: collection.toJSON()
-                        }
-                    });
-                });
-
-            }
         }),
 
         AddButton: Harbour.View.extend({
-            template: "/core/templates/add-account.html",
-            el: "#panel-hosting .view.collection-list-footer",
-
-            serialize: function () {
-                this.render({
-                    json: {
-                        buttonText: "New Account"
-                    }
-                });
-            }
         }),
 
         SubNav: Harbour.View.extend({
             template: "/core/templates/subnav.html",
-            el: "#panel-hosting .view.subnav",
+            el: "#panel-hosts .view.subnav",
 
             serialize: function () {
                 var view = this;
@@ -82,8 +45,8 @@
 
         Home: Harbour.View.extend({
             template: "/modules/hosting/templates/home.html",
-            el: "#panel-hosting .view.content",
-            
+            el: "#panel-hosts .view.content",
+
             serialize: function () {
                 var view = this;
 
@@ -97,11 +60,11 @@
 
         List: Harbour.View.extend({
             template: "/core/templates/collection-list.html",
-            el: "#panel-hosting .view.collection-list",
+            el: "#panel-hosts .view.collection-list",
 
             serialize: function () {
                 var view = this;
-                var collection = new Hosting.Collection.List();
+                var collection = new Hosts.Collection.List();
 
                 collection.fetch(function () {
                     view.render({
@@ -114,5 +77,5 @@
         })
     };
 
-})(Harbour.Module.register("hosting"));
+})(Harbour.Module.register("hosts"));
 

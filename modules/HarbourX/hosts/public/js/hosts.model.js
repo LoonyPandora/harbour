@@ -1,11 +1,11 @@
-(function (Hosting) {
+(function (Hosts) {
     "use strict";
 
-    Hosting.Model = {
+    Hosts.Model = {
         List: Harbour.Model.extend({
             idAttribute: "id"
         })
     };
 
-})(Harbour.Module.register("hosting"));
+})(Harbour.Module.register("hosts"));
 

@@ -1,7 +1,7 @@
-(function (Hosting) {
+(function (Hosts) {
     "use strict";
 
-    Hosting.Mixin = {
+    Hosts.Mixin = {
         // FIXME: XSS injection possible on icon.
         icon: "&#xf0a0;",
         layout: "/core/layouts/collection-list.html",
@@ -25,4 +25,4 @@
         }
     };
 
-})(Harbour.Module.register("hosting"));
+})(Harbour.Module.register("hosts"));

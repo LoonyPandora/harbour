@@ -27,7 +27,7 @@
 
     .content-wrapper {
         width: 100%;
-        top: 216px;
+        top:   216px;
     }
 }
 
@@ -42,8 +42,7 @@
     }
 
     .content-wrapper {
-        width: 100%;
-        left: 262px;
+        left:  262px;
     }
 }
 

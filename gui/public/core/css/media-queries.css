@@ -21,7 +21,7 @@
     }
     
     /* FIXME: This is silly */
-    #title, #header-nav, .collection-list-footer {
+    .collection-list-footer {
         display: none;
     }
     
@@ -40,11 +40,6 @@
         width: 261px;
     }
 
-    #title {
-        right:  160px;
-        left:   261px;
-    }
-
     .content-wrapper {
         left: 262px;
     }
@@ -56,12 +51,6 @@
         width: 23%;
     }
 
-    #title {
-        left:        23%;
-        width:       -webkit-calc(77% - 160px);
-        width:               calc(77% - 160px);
-    }
-    
     .content-wrapper {
         width: 77%;
     }

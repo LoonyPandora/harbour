@@ -18,14 +18,14 @@
 .content-wrapper .subnav li a:hover,
 .content-wrapper .subnav li a:active,
 .content-wrapper .subnav li a.active {
-    border-bottom-style: solid;
-    border-width:        3px;
+    border-top-style: solid;
+    border-width:        1px;
 }
 
 .content-wrapper .subnav li a {
     display: block;
     height:  30px;
-    padding: 4px 15px;
+    padding: 4px 20px;
 }
 
 

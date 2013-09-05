@@ -74,9 +74,14 @@ body {
     color: #7f8c8d;
 }
 
+.collection-list li span.label {
+    color: #fff;
+}
+
 .collection-list li a:hover,
 .collection-list li.active a,
 .collection-list li.active a:hover {
+    text-decoration: none;
     background-color: rgba(0,0,0,0.05);
 }
 

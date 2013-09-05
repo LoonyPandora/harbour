@@ -81,13 +81,13 @@
     border-left-width: 5px;
     border-left-style: solid;
     border-left-color: rgba(0,0,0,0.1);
+    padding: 0 0 0 10px;
 }
 
-.collection-list ul li a h5,
-.collection-list ul li a span {
+.collection-list ul li a h5 {
     display: inline-block;
     width:   100%;
-    padding: 0 5px 0 10px;
+    padding: 0 5px 0 0;
 }
 
 .collection-list ul li a h5 {
@@ -102,6 +102,7 @@
     line-height: 20px;
     font-size:   11px;
 }
+
 
 /* This is just the really active link - not one you are in the process of clicking on */
 .collection-list ul li.active a {

@@ -8,10 +8,10 @@
 
 
 @media screen and (min-width: 300px) and (max-width: 991px) {
-    #logo, .collection-list-wrapper {
+    .collection-list-wrapper {
         width: 100%;
     }
-    
+
     .collection-list-wrapper {
         height: 216px;
         background: #fff;
@@ -19,13 +19,14 @@
         border-bottom-style: solid;
         border-width: 1px;
     }
-    
+
     /* FIXME: This is silly */
     .collection-list-footer {
         display: none;
     }
-    
+
     .content-wrapper {
+        width: 100%;
         top: 216px;
     }
 }
@@ -36,18 +37,18 @@
 }
 
 @media screen and (min-width: 992px) and (max-width: 1199px) {
-    #logo, .collection-list-wrapper, .collection-list-footer {
+    .collection-list-wrapper, .collection-list-footer {
         width: 261px;
     }
 
     .content-wrapper {
+        width: 100%;
         left: 262px;
     }
 }
 
 @media screen and (min-width: 1200px) {
-
-    #logo, .collection-list-wrapper, .collection-list-footer {
+    .collection-list-wrapper, .collection-list-footer {
         width: 23%;
     }
 

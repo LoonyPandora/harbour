@@ -3,13 +3,26 @@
 
     Hosts.View = {
         Header: Harbour.View.extend({
+            template: "/core/templates/header.html",
+            el: "#panel-hosts .view.section-title",
 
+            serialize: function () {
+                var view = this;
+
+                view.render({
+                    json: {
+                        title: "Docker Host Management"
+                    }
+                });
+            }
         }),
 
         ModuleList: Harbour.View.extend({
+
         }),
 
         AddButton: Harbour.View.extend({
+
         }),
 
         SubNav: Harbour.View.extend({
@@ -44,18 +57,7 @@
         }),
 
         Home: Harbour.View.extend({
-            template: "/modules/hosting/templates/home.html",
-            el: "#panel-hosts .view.content",
 
-            serialize: function () {
-                var view = this;
-
-                view.render({
-                    json: {
-                        
-                    }
-                });
-            }
         }),
 
         List: Harbour.View.extend({

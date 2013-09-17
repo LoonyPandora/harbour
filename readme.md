@@ -59,19 +59,21 @@ THE PLAN
 This will allow us to launch, get feedback and hyped.
 
 2) Build deployment infrastructure, allowing us to build distributable app and single docker container management interface
-This will allow us to take a LOT of the momentum away from Docker UI
+This will allow us to take a LOT of the momentum away from Docker UI (NOTE: Docker roadmap will allow group manipulation of containers)
 
 3) Continue to work on modules that allow grouping of docker containers and management for the hosted product
 Work out a pricing structure and work around security concerns (see how competitors handle the idea of giving root to a 3rd party...)
 
 
+BUILD ORDER
+-----------
 
 
-
-
-
-
-
-
-
-
+- "About Harbour" Page
+- Available Server List
+    - The client to install on each server
+    - Manage an individual server (Direct Docker API)
+- Authentication (Login, Logout, Forgot Password, etc)
+- Manage list of active modules
+- Group management of servers (tagging, etc)
+- cPanel killer

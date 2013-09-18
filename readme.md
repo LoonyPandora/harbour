@@ -49,6 +49,8 @@ Competitors
 [Hosted Chef](http://www.opscode.com/enterprise-chef/)
 [Hosted Puppet](https://www.hostedpuppetmaster.com)
 [The Foreman](http://theforeman.org)
+[Devo.ps](http://devo.ps)
+
 
 
 THE PLAN

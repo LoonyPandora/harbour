@@ -14,7 +14,7 @@
                 new Hosts.View.Home(),
                 new Hosts.View.ModuleList(),
                 new Hosts.View.SubNav({ section: "dns" })
-            ], function (view, index) {
+            ], function (view) {
                 view.serialize();
             });
         }

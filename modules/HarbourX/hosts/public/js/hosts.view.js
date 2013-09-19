@@ -34,7 +34,7 @@
 
                 // Put a url property in the list of subnav items which is the same as the key
                 // Makes the template simpler if we just pass an array
-                var sectionList =_.map(view.Mixin.subnav, function (value, key) {
+                var sectionList = _.map(view.Mixin.subnav, function (value, key) {
                     if (key === view.options.section) {
                         value.active = "active";
                     }

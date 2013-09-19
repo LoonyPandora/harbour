@@ -24,6 +24,6 @@
             model: Session.Model.GUIModules,
             url: "/api/session/modules"
         })
-    }
+    };
 
 })(Harbour.Module.register("session"));

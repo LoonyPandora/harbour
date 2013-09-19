@@ -10,21 +10,23 @@
 
         after: function () { },
 
-        route: function(route, name, callback) {
+        route: function (route, name, callback) {
             var originalRoute = Backbone.Router.prototype.route;
 
-            if (!_.isRegExp(route)) route = this._routeToRegExp(route);
+            if (!_.isRegExp(route)) {
+                route = this._routeToRegExp(route);
+            }
 
             if (_.isFunction(name)) {
                 callback = name;
-                name = '';
+                name = "";
             }
 
             if (!callback) {
                 callback = this[name];
             }
 
-            return Backbone.Router.prototype.route.call(this, route, name, function () {
+            return originalRoute.call(this, route, name, function () {
                 this.before();
                 callback.apply(this, arguments);
                 this.after();
@@ -48,7 +50,7 @@
                         module: view.Mixin.module
                     })).css({ y: "-100%"})
                        .insertBefore("#panel-domain")
-                       .transition({ y: 0 }, 750, 'easeInOutCubic');
+                       .transition({ y: 0 }, 750, "easeInOutCubic");
 
                     $(".view", "#panel-" + view.Mixin.module).spin({
                         color: "rgba(44,62,80,0.6)",
@@ -59,9 +61,9 @@
                     });
 
                     // FIXME: Don't hardcode this
-                    $("#panel-domain").transition({ y: "100%" }, 750, 'easeInOutCubic');
+                    $("#panel-domain").transition({ y: "100%" }, 750, "easeInOutCubic");
                 }
-            })
+            });
         },
 
         // Called AFTER the view is rendered and the DOM is ready again
@@ -71,14 +73,14 @@
 
             // TODO: Cleanup how we do things after render
             $(".canvas-pie-chart", view.$el.selector).easyPieChart({
-              animate: 500,
-              scaleColor: false,
-              lineWidth: 5,
-              // rotate: -90,
-              lineCap: "round",
-              size: 100,
-              trackColor: "#bdc3c7",
-              barColor: "#2980b9"
+                animate: 500,
+                scaleColor: false,
+                lineWidth: 5,
+                // rotate: -90,
+                lineCap: "round",
+                size: 100,
+                trackColor: "#bdc3c7",
+                barColor: "#2980b9"
             });
         },
         
@@ -91,7 +93,7 @@
             // When we instantiate the object, backbone removed the el... Hence the reselecting
             Harbour.Template.fetch(view.template, function (tmpl) {
                 // Wait until the layout has been fetched before we try to DOM insert
-                view.layoutReady.done(function() {
+                view.layoutReady.done(function () {
                     $(view.$el.selector).html(
                         tmpl(options.json)
                     );
@@ -120,7 +122,7 @@
         fetch: function (options) {
             var collection = this;
 
-            if ( _.isFunction(options) ) {
+            if (_.isFunction(options)) {
                 var callback = options;
                 Backbone.Collection.prototype.fetch.call(collection).done(function () {
                     callback(collection);
@@ -155,7 +157,7 @@
 
         // FIXME: Close over this, but keep a getter for all modules
         _private: {}
-    }
+    };
 
     // Template related functions
     Harbour.Template = {
@@ -175,7 +177,7 @@
 
         // Store for our compiled templates
         _private: {}
-    }
+    };
 
     // Keep active application instances namespaced under an app object.
     Harbour.App = _.extend({}, Backbone.Events);
@@ -206,21 +208,21 @@
 
                         // Can't Mixin to the Mixin...
                         // FIXME: Routers should get mixins too, but are at a different nesting level
-                        if (submodule == "Router" || submodule == "Mixin") {
+                        if (submodule === "Router" || submodule === "Mixin") {
                             continue;
                         }
 
                         var contents = _.keys(ModuleData[submodule]);
                         for (var x = 0; x < contents.length; x++) {
-                            if (ModuleData.Mixin){
+                            if (ModuleData.Mixin) {
                                 ModuleData[submodule][contents[x]] = ModuleData[submodule][contents[x]].extend({
                                     Mixin: _.extend(ModuleData.Mixin, { module: module })
                                 });
                             }
                         }
-                    };
+                    }
 
-                    this[ module ] = new ModuleData.Router();
+                    this[module] = new ModuleData.Router();
                 }
             }
         });
@@ -234,7 +236,7 @@
         // All navigation that is relative should be passed through the navigate
         // method, to be processed by the router.  If the link has a data-bypass
         // attribute, bypass the delegation completely.
-        $(document).on("click", "a[href]:not([data-bypass])", function(evt) {
+        $(document).on("click", "a[href]:not([data-bypass])", function (evt) {
             // Get the absolute anchor href.
             var $this = $(this);
             var href = { prop: $this.prop("href"), attr: $this.attr("href") };

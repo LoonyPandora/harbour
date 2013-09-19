@@ -6,7 +6,7 @@
             model: Hosts.Model.List,
             url: "/api/hosts"
         })
-    }
+    };
 
 })(Harbour.Module.register("hosts"));
 

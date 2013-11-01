@@ -40,7 +40,7 @@
     text-decoration: none;
 }
 
-#module-list li a .icon {
+#module-list li a .fa {
     display:        block;
     float:          right;
     text-align:     center;
@@ -52,6 +52,6 @@
     margin-left:    10px;
 }
 
-#module-list li a .icon {
+#module-list li a .fa {
     font-family: "FontAwesome";
 }

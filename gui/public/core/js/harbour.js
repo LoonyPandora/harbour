@@ -117,6 +117,7 @@
             } else {
                 Harbour.Template.fetch(view.template, function (tmpl) {
                     doRender(tmpl);
+                    $(view.$el.selector).show(0);
                 });
             }
 

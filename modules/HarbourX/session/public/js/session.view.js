@@ -7,15 +7,18 @@
             el: "#module-list",
 
             serialize: function () {
-                return {
-                    modules: [{
-                        url: "url",
-                        name: "name",
-                        icon: "hello" 
-                    }]
-                }
-            }
+                var view = this;
 
+                var modules = new Session.Collection.GUIModules();
+
+                modules.fetch().done(function (collection) {
+                    view.render({
+                        json: {
+                            modules: collection.toJSON()
+                        }
+                    })
+                })
+            }
         }),
 
         SectionTitle: Harbour.View.extend({

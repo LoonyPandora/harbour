@@ -82,9 +82,7 @@
                 // Wait until the layout has been fetched before we try to DOM insert
                 view.layoutReady.done(function () {
                     $(view.$el.selector).html(
-                        tmpl(
-                            view.serialize()
-                        )
+                        tmpl(options.json)
                     );
 
                     // Run the view specific afterRender
@@ -104,21 +102,7 @@
 
     Harbour.Model = Backbone.Model.extend({ });
 
-    Harbour.Collection = Backbone.Collection.extend({
-        // For conveinience, if the first argument is a function, treat it as a callback
-        // Rather than passing an object with a success function, which will always raise
-        // the question of "where is error handling" (answer: it's automagically done)
-        fetch: function (options) {
-            var collection = this;
-
-            if (_.isFunction(options)) {
-                var callback = options;
-                Backbone.Collection.prototype.fetch.call(collection).done(function () {
-                    callback(collection);
-                });
-            }
-        }
-    });
+    Harbour.Collection = Backbone.Collection.extend({ });
 
     // Our own Module getters & settings
     Harbour.Module = {

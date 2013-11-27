@@ -11,7 +11,7 @@
             _.each([
                 new Session.View.ModuleList()
             ], function (view, index) {
-                view.render();
+                view.serialize();
             });
         },
         

@@ -3,12 +3,20 @@
 
     Session.Router = Harbour.Router.extend({
         routes: {
-            "":""
-            "login": "index",
+            "":"index",
+            "login": "login"
         },
 
         index: function () {
-            console.log("hello");
+            _.each([
+                new Session.View.ModuleList()
+            ], function (view, index) {
+                view.render();
+            });
+        },
+        
+        login: function () {
+            console.log("login route");
         }
     });
 

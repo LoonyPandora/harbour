@@ -70,21 +70,8 @@
         // Can be overridden by the individual view
         after: function () {
             var view = this;
-
-            // TODO: Cleanup how we do things after render
-            $(".canvas-pie-chart", view.$el.selector).easyPieChart({
-                animate: 500,
-                scaleColor: false,
-                lineWidth: 5,
-                // rotate: -90,
-                lineCap: "round",
-                size: 100,
-                trackColor: "#bdc3c7",
-                barColor: "#2980b9"
-            });
         },
-        
-        
+
         render: function (options) {
             var view = this;
             options = options || {};
@@ -95,7 +82,9 @@
                 // Wait until the layout has been fetched before we try to DOM insert
                 view.layoutReady.done(function () {
                     $(view.$el.selector).html(
-                        tmpl(options.json)
+                        tmpl(
+                            view.serialize()
+                        )
                     );
 
                     // Run the view specific afterRender
@@ -195,7 +184,7 @@
 
                 // We want to recurse down through each module to add the Meta object
                 // This is so we can always know what module we are in, among other things
-                
+
                 // FIXME: This is utterly heinous
                 var modules = _.keys(Harbour.Module.get());
                 for (var i = 0; i < modules.length; i++) {

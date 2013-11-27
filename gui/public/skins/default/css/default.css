@@ -70,17 +70,17 @@ body {
     color: #34495e;
 }
 
-.collection-list li span {
+.collection-list ul li span {
     color: #7f8c8d;
 }
 
-.collection-list li span.label {
+.collection-list ul li span.label {
     color: #fff;
 }
 
-.collection-list li a:hover,
-.collection-list li.active a,
-.collection-list li.active a:hover {
+.collection-list ul li a:hover,
+.collection-list ul li a.active,
+.collection-list ul li a.active:hover {
     text-decoration: none;
     background-color: rgba(0,0,0,0.05);
 }

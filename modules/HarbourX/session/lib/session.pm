@@ -18,7 +18,7 @@ my @core_js = (
 
 # FIXME: Of course, this needs to be stored in a DB, and only load enabled perl modules
 # Those enabled perl modules are done at an admin level during app startup.
-my @enabled_modules = qw(session);
+my @enabled_modules = qw(session NotJenkins);
 
 my @core_css = (
     "/core/css/bootstrap.css",             "/core/css/font-awesome.css",

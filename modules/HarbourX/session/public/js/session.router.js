@@ -3,6 +3,7 @@
 
     Session.Router = Harbour.Router.extend({
         routes: {
+            "":""
             "login": "index",
         },
 

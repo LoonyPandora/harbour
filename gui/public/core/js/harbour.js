@@ -125,7 +125,10 @@
         },
 
         // Munges data into a format we can render. Must override in each view
-        serialize: function () { }
+        // Unless you want to render an empty page of course
+        serialize: function () {
+            this.render({json:""});
+        }
     });
 
     Harbour.Model = Backbone.Model.extend({ });

@@ -6,7 +6,13 @@
 
     // Extend the default Backbone Router / View / Model / Collection
     Harbour.Router = Backbone.Router.extend({
-        before: function () { },
+        before: function () {
+            // Render things that aren't part of a layout
+            var Session = Harbour.Module.get("session");
+            var view = new Session.View.ModuleList()
+
+            view.serialize();
+        },
 
         after: function () { },
 
@@ -41,15 +47,25 @@
 
             view.options = options;
 
+            // If there is no layout (e.g it's a session-based view) - just skip it.
+            // We need to return a resolved promise to make it look like we returned a layou
+            if (!view.Mixin.layout) {
+                var dfd = new jQuery.Deferred();
+                dfd.resolve();
+                view.layoutReady = dfd.promise();
+                return;
+            }
+
             // Fetch the layout as early as possible, and pass a promise so
             // we don't try to render a view before the layout is in the DOM
             view.layoutReady = Harbour.Template.fetch(view.Mixin.layout, function (tmpl) {
+                console.log(view.Mixin.module);
                 // FIXME: Make this only insert when changing modules and not hardcoded
                 if ($("#panel-" + view.Mixin.module).length === 0) {
                     $(tmpl({
                         module: view.Mixin.module
                     })).css({ y: "-100%"})
-                       .insertBefore("#panel-domain")
+                       .insertAfter("#module-list")
                        .transition({ y: 0 }, 750, "easeInOutCubic");
 
                     $(".view", "#panel-" + view.Mixin.module).spin({
@@ -61,7 +77,7 @@
                     });
 
                     // FIXME: Don't hardcode this
-                    $("#panel-domain").transition({ y: "100%" }, 750, "easeInOutCubic");
+                    // $("#panel-domain").transition({ y: "100%" }, 750, "easeInOutCubic");
                 }
             });
         },
@@ -137,7 +153,13 @@
         fetch: function (path, callback) {
             // Instant synchronous way of getting the template, if it exists in our cache
             if (Harbour.Template._private[path]) {
-                return callback(Harbour.Template._private[path]);
+                var dfd = new jQuery.Deferred();
+
+                dfd.resolve(
+                    callback(Harbour.Template._private[path])
+                );
+
+                return dfd.promise();
             }
 
             return $.get(path, function (contents) {

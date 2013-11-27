@@ -2,7 +2,9 @@
     "use strict";
 
     Session.Mixin = {
-        layout: "/core/layouts/collection-list.html"
+        url: "/",
+        name: "Harbour",
+        icon: "anchor"
     };
 
 })(Harbour.Module.register("session"));

@@ -19,11 +19,7 @@
                     })
                 })
             }
-        }),
-
-        SectionTitle: Harbour.View.extend({
-
-        }),
+        })
     };
 
 })(Harbour.Module.register("session"));

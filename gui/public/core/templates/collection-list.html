@@ -1,10 +1,10 @@
-<h4></h4>
+<h4><%- sectionTitle %></h4>
 <ul>
-    <% _.each(accounts, function(account) { %>
+    <% _.each(models, function(model) { %>
     <li>
-        <a href="/hosting/<%- account.id %>">
-            <h5><%- account.domains[0] %></h5>
-            <span><%- account.id %></span>
+        <a href="/<%- sectionRoot %>/<%- model.id %>">
+            <h5><%- model.title %></h5>
+            <span><%- model.id %></span>
         </a>
     </li>
     <% }); %>

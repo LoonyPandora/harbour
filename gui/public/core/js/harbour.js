@@ -45,7 +45,7 @@
         initialize: function (options) {
             var view = this;
 
-            view.options = options;
+            view.options = options || {};
 
             // If there is no layout (e.g it's a session-based view) - just skip it.
             // We need to return a resolved promise to make it look like we returned a layou
@@ -59,7 +59,6 @@
             // Fetch the layout as early as possible, and pass a promise so
             // we don't try to render a view before the layout is in the DOM
             view.layoutReady = Harbour.Template.fetch(view.Mixin.layout, function (tmpl) {
-                console.log(view.Mixin.module);
                 // FIXME: Make this only insert when changing modules and not hardcoded
                 if ($("#panel-" + view.Mixin.module).length === 0) {
                     $(tmpl({
@@ -94,7 +93,7 @@
 
             // FIXME: This is probably really slow. Due to the element not being in the DOM
             // When we instantiate the object, backbone removed the el... Hence the reselecting
-            Harbour.Template.fetch(view.template, function (tmpl) {
+            function doRender (tmpl) {
                 // Wait until the layout has been fetched before we try to DOM insert
                 view.layoutReady.done(function () {
                     $(view.$el.selector).html(
@@ -106,7 +105,20 @@
                         view.after();
                     }
                 });
-            });
+            }
+
+            // If the template is passed the empty string, render the empty string.
+            // FIXME: A bit hacky passing anonymous functions around...
+            if (!view.template) {
+                doRender(function() {
+                    $(view.$el.selector).hide(0);
+                    return "";
+                });
+            } else {
+                Harbour.Template.fetch(view.template, function (tmpl) {
+                    doRender(tmpl);
+                });
+            }
 
             // Backbone convention
             return view;

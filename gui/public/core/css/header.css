@@ -4,8 +4,9 @@
 
 .section-title {
     font-family: "HelveticaNeue-Light";
-    height: 60px;
-    line-height: 60px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 24px;
     margin: 20px 0 0 20px;
 
     /* Minus the left padding */

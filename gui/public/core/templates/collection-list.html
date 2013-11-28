@@ -2,7 +2,7 @@
 <ul>
     <% _.each(models, function(model) { %>
     <li>
-        <a href="/<%- sectionRoot %>/<%- model.id %>/home" class="<%- sectionActive === model.id? 'active' : "" %>">
+        <a href="/<%- sectionRoot %>/<%- model.id %>" class="<%- sectionActive === model.id? 'active' : "" %>">
             <h5><%- model.title %></h5>
             <span><%- model.id %></span>
         </a>

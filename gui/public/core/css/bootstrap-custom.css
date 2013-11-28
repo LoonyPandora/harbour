@@ -12,6 +12,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+/* Collapsible panel title should have a large click target */
+.panel-title a {
+    display: block;
+}
+
+
 /* Remove outline for firefox. TODO: Check accessibility implication */
 /* Screws up a bunch of stuff - target this better */
 a {

@@ -8,11 +8,7 @@
         },
 
         index: function () {
-            _.each([
-                // new Session.View.ModuleList()
-            ], function (view, index) {
-                // view.serialize();
-            });
+            this.navigate("NotJenkins", { trigger: true, replace: true });
         },
 
         login: function () {

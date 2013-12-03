@@ -8,7 +8,7 @@ my @core_js = (
     "/core/js/jquery.js",           "/core/js/bootstrap.js",
     "/core/js/underscore.js",       "/core/js/backbone.js",
     "/core/js/hashgrid.js",         
-    "/core/js/backbone.cacheit.js", "/core/js/backbone.fetch-cache.js",
+    "/core/js/backbone.cacheit.js",
     "/core/js/moment.js",           "/core/js/harbour.js",
     "/core/js/harbour.config.js",   "/core/js/spin.js",
     "/core/js/jquery.spin.js",      "/core/js/jquery.transit.js",

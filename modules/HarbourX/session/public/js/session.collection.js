@@ -4,7 +4,6 @@
     Session.Collection = {
         GUIModules: Harbour.Collection.extend({
             parse: function (response) {
-
                 // Remove any modules that aren't supposed to be visible to the user
                 var output = [];
                 _.each(response, function (moduleName) {

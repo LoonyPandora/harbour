@@ -3,7 +3,6 @@
 use Dancer;
 use Harbour;
 use common::sense;
-use Data::Dump qw(dump);
 use Path::Tiny qw(path);
 
 # Get a list of all installed modules and load them one-by-one

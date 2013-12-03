@@ -8,7 +8,7 @@ my @core_js = (
     "/core/js/jquery.js",           "/core/js/bootstrap.js",
     "/core/js/underscore.js",       "/core/js/backbone.js",
     "/core/js/hashgrid.js",         
-    "/core/js/backbone.cacheit.js",
+    "/core/js/backbone.cacheit.js", "/core/js/markdown.js",
     "/core/js/moment.js",           "/core/js/harbour.js",
     "/core/js/harbour.config.js",   "/core/js/spin.js",
     "/core/js/jquery.spin.js",      "/core/js/jquery.transit.js",
@@ -70,6 +70,12 @@ get "/session/css.html" => sub {
     my @output;
     for my $css (@core_css) {
         push @output, qq{<link href="$css" rel="stylesheet">};
+    }
+
+    for my $module (@enabled_modules) {
+        push @output, qq{
+            <link href="/modules/$module/css/$module.css" rel="stylesheet">
+        };
     }
 
     set serializer => undef;

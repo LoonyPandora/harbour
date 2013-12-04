@@ -4,6 +4,10 @@ body {
     overflow: hidden;
 }
 
+/* Even if we don't have a href - the cursor should be a pointor */
+a {
+    cursor: pointer;
+}
 
 /* I like this on headings */
 h1, h2, h3, h4, h5, h6 {

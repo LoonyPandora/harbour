@@ -4,6 +4,11 @@ appname:    "Harbour"
 charset:    "UTF-8"
 serializer: "JSON"
 
+engines:
+  JSON:
+    allow_blessed: 1
+    convert_blessed: 1
+
 plugins:
     Database:
         driver:         "mysql"

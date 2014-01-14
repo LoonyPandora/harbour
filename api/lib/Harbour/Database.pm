@@ -7,4 +7,4 @@ use common::sense;
 
 
 
-true;
+1;

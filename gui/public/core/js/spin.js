@@ -1,4 +1,4 @@
-//fgnass.github.com/spin.js#v1.3.2
+//fgnass.github.com/spin.js#v1.3.3
 
 /**
  * Copyright (c) 2011-2013 Felix Gnass
@@ -353,3 +353,4 @@
   return Spinner
 
 }));
+

@@ -11,6 +11,20 @@ engines:
 
 plugins:
     Database:
+        connections:
+            fork:
+                driver:         "mysql"
+                database:       "notjenkins"
+                host:           "127.0.0.1"
+                port:           3306
+                username:       "root"
+                password:       ""
+                log_queries:    1
+                on_connect_do: ["SET NAMES 'utf8'", "SET CHARACTER SET 'utf8'"]
+                dbi_params:
+                    RaiseError: 1
+                    AutoCommit: 1
+
         driver:         "mysql"
         database:       "notjenkins"
         host:           "127.0.0.1"
@@ -18,7 +32,7 @@ plugins:
         username:       "root"
         password:       ""
         log_queries:    1
-        on_connect_do: ["SET NAMES 'utf8'", "SET CHARACTER SET 'utf8'" ]
+        on_connect_do: ["SET NAMES 'utf8'", "SET CHARACTER SET 'utf8'"]
         dbi_params:
             RaiseError: 1
             AutoCommit: 1

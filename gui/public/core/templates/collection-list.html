@@ -1,5 +1,5 @@
 <h4><%- sectionTitle %></h4>
-<ul>
+<ul class="list">
     <% _.each(models, function(model) { %>
     <li>
         <a href="/<%- sectionRoot %>/<%- model.id %>" class="<%- sectionActive === model.id? 'active' : "" %>">

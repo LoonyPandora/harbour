@@ -112,7 +112,6 @@
 .collection-list ul.list li a {
     border-left-width: 5px;
     border-left-style: solid;
-    border-left-color: rgba(0,0,0,0.1);
     padding: 0 0 0 10px;
 }
 
@@ -133,12 +132,6 @@
     height:      20px;
     line-height: 20px;
     font-size:   11px;
-}
-
-
-/* This is just the really active link - not one you are in the process of clicking on */
-.collection-list ul.list li a.active {
-    border-left-color: #f39c12;
 }
 
 .collection-list ul.list li a.active,

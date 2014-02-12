@@ -5,6 +5,7 @@ use common::sense;
 
 
 my @core_js = (
+    "/core/js/pace.js",
     "/core/js/jquery.js",           "/core/js/bootstrap.js",
     "/core/js/underscore.js",       "/core/js/backbone.js",
     "/core/js/hashgrid.js",         "/core/js/highlight.js",
@@ -21,6 +22,7 @@ my @core_js = (
 my @enabled_modules = qw(session NotJenkins);
 
 my @core_css = (
+    "/core/css/pace-themes/pace-theme-minimal.css",
     "/core/css/bootstrap.css",             "/core/css/font-awesome.css",
     "/core/css/bootstrap-custom.css",      "/core/css/hashgrid.css",
     "/core/css/structure.css",

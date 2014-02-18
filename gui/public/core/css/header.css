@@ -13,3 +13,7 @@
     width: -webkit-calc(100% - 20px);
     width:         calc(100% - 20px);
 }
+
+.section-title a {
+    text-decoration: none;
+}

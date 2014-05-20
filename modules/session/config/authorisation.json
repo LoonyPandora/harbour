@@ -1,0 +1,16 @@
+{
+    "authorisation": [
+        {
+            "route": "/session/modules",
+            "type": "Harbour::Authorisation::Role::AllowAll"
+        },
+        {
+            "route": "/session/css.html",
+            "type": "Harbour::Authorisation::Role::AllowAll"
+        },
+        {
+            "route": "/session/js.html",
+            "type": "Harbour::Authorisation::Role::AllowAll"
+        }
+    ]
+}

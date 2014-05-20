@@ -8,7 +8,7 @@
         },
 
         index: function () {
-            this.navigate("NotJenkins", { trigger: true, replace: true });
+
         },
 
         login: function () {

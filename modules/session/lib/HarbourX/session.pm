@@ -45,6 +45,10 @@ get "/session/modules" => sub {
 };
 
 
+get qr{^ /session/branches/ (?<branch_name> .+ ) $}x => sub {
+    
+};
+
 
 
 # HTML output because nginx is purposefully dumb

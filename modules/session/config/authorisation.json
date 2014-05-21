@@ -1,16 +1,6 @@
 {
-    "authorisation": [
-        {
-            "route": "/session/modules",
-            "type": "Harbour::Authorisation::Role::AllowAll"
-        },
-        {
-            "route": "/session/css.html",
-            "type": "Harbour::Authorisation::Role::AllowAll"
-        },
-        {
-            "route": "/session/js.html",
-            "type": "Harbour::Authorisation::Role::AllowAll"
-        }
-    ]
+    "/session/modules"                  : "Harbour::Authorisation::Role::AllowAll",
+    "/session/css.html"                 : "Harbour::Authorisation::Role::AllowAll",
+    "/session/js.html"                  : "Harbour::Authorisation::Role::AllowAll",
+    "/session/branches/:branch_name"    : "Harbour::Authorisation::Role::AllowAll"
 }

@@ -1,3 +1,4 @@
 {
-    "/session/modules"  : "Harbour::Authorisation::Role::AllowAll"
+    "/session/modules"  : "Harbour::Authorisation::Role::AllowAll",
+    "/session/current"  : "Harbour::Authorisation::Role::AllowAll"
 }

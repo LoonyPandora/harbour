@@ -1,0 +1,4 @@
+{
+    "/webui/css.html" : "Harbour::Authorisation::Role::AllowAll",
+    "/webui/js.html"  : "Harbour::Authorisation::Role::AllowAll"
+}

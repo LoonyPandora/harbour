@@ -1,6 +1,3 @@
 {
-    "/session/modules"                  : "Harbour::Authorisation::Role::AllowAll",
-    "/session/css.html"                 : "Harbour::Authorisation::Role::AllowAll",
-    "/session/js.html"                  : "Harbour::Authorisation::Role::AllowAll",
-    "/session/branches/:branch_name"    : "Harbour::Authorisation::Role::AllowAll"
+    "/session/modules"  : "Harbour::Authorisation::Role::AllowAll"
 }

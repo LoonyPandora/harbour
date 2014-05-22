@@ -1,6 +1,8 @@
 package HarbourX::webui::js;
 
 use Dancer ":syntax";
+use Path::Tiny qw(path);
+
 use common::sense;
 
 
@@ -26,21 +28,20 @@ my @core_js = (
 get "/webui/js.html" => sub {
     my @output;
     for my $core (@core_js) {
-        push @output, qq{
-            <script src="$core"></script>
-        };
+        push @output, qq{<script src="$core"></script>};
     }
 
-    my @enabled_modules = HarbourX::session::modules::enabled_modules();
+    my $enabled_modules = HarbourX::session::modules::enabled_modules();
 
-    for my $module (@enabled_modules) {
-        push @output, qq{
-            <script src="/modules/$module/js/$module.router.js"></script>
-            <script src="/modules/$module/js/$module.model.js"></script>
-            <script src="/modules/$module/js/$module.collection.js"></script>
-            <script src="/modules/$module/js/$module.view.js"></script>
-            <script src="/modules/$module/js/$module.mixin.js"></script>
-        };
+    # So we can check if the file exists so we can include it
+    my $publicdir = path(dirname(__FILE__), "../../../../");
+
+    for my $module (@$enabled_modules) {
+        for my $type (qw(router model collection view mixin)) {
+            if ($publicdir->child($module, "public", "js", "$module.$type.js")->is_file) {
+                push @output, qq{<script src="/modules/$module/js/$module.$type.js"></script>}
+            }
+        }
     }
 
     set serializer => undef;

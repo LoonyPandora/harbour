@@ -1,6 +1,8 @@
 package HarbourX::webui::css;
 
 use Dancer ":syntax";
+use Path::Tiny qw(path);
+
 use common::sense;
 
 
@@ -24,12 +26,15 @@ get "/webui/css.html" => sub {
         push @output, qq{<link href="$css" rel="stylesheet">};
     }
 
-    my @enabled_modules = HarbourX::session::modules::enabled_modules();
+    my $enabled_modules = HarbourX::session::modules::enabled_modules();
 
-    for my $module (@enabled_modules) {
-        push @output, qq{
-            <link href="/modules/$module/css/$module.css" rel="stylesheet">
-        };
+    # So we can check if the file exists so we can include it
+    my $publicdir = path(dirname(__FILE__), "../../../../");
+
+    for my $module (@$enabled_modules) {
+        if ($publicdir->child($module, "public", "css", "$module.css")->is_file) {
+            push @output, qq{<link href="/modules/$module/css/$module.css" rel="stylesheet">};
+        }
     }
 
     set serializer => undef;

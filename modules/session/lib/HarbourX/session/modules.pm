@@ -7,7 +7,7 @@ use common::sense;
 sub enabled_modules {
     # FIXME: Of course, this needs to be stored in a DB, and only load enabled perl modules
     # Those enabled perl modules are done at an admin level during app startup.
-    my @enabled_modules = qw(session);
+    my @enabled_modules = qw(session webui);
 
     return \@enabled_modules;
 }

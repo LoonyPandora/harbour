@@ -8,8 +8,8 @@
     Harbour.Router = Backbone.Router.extend({
         before: function () {
             // Render things that aren't part of a layout
-            var Session = Harbour.Module.get("session");
-            var view = new Session.View.ModuleList()
+            var WebUI = Harbour.Module.get("webui");
+            var view = new WebUI.View.ModuleList()
 
             view.serialize();
         },

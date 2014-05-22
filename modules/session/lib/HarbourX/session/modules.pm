@@ -19,7 +19,9 @@ get "/session/modules" => sub {
 
 
 get "/session/current" => sub {
-    return session;
+    return {
+        id => session()->id,
+    };
 };
 
 

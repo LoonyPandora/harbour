@@ -4,7 +4,6 @@
     Documentation.Model = {
         Route: Harbour.Model.extend({
             idAttribute: "route"
-            // urlRoot: "/documentation/routes"
         })
     };
 

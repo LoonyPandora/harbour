@@ -9,7 +9,6 @@
                 return _.sortBy(response.routes, "route");
             }
         })
-
     };
 
 })(Harbour.Module.register("documentation"));

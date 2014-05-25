@@ -1,3 +1,4 @@
 {
-    "/documentation/route"     : "Harbour::Authorisation::Role::AllowAll"
+    "/documentation/route"             : "Harbour::Authorisation::Role::AllowAll",
+    "/documentation/route/:route_name" : "Harbour::Authorisation::Role::AllowAll"
 }

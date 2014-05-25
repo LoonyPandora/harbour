@@ -2,5 +2,8 @@
     "/session/modules"        : "Harbour::Authorisation::Role::AllowAll",
     "/session/login"          : "Harbour::Authorisation::Role::AllowAll",
     "/session/route_list"     : "Harbour::Authorisation::Role::AllowAll",
-    "/session/current"        : "Harbour::Authorisation::Role::AllowAll"
+    "/session/current"        : "Harbour::Authorisation::Role::AllowAll",
+    
+    
+    "/session/regex_route/:repo_owner/:repo_name": "Harbour::Authorisation::Role::AllowAll"
 }

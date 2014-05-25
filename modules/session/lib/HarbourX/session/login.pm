@@ -20,27 +20,37 @@ sub is_authenticated {
 
     $sth->execute($username);
 
-    die dump $sth->fetchall_arrayref({});
+    my $user = $sth->fetchall_hashref([]);
 
-    return $sth->fetchall_arrayref({});
+    unless ( $user->{id} && passphrase( $password )->matches( $user->{password} ) ) {
+        return undef;
+    }
+
+    session "user_id"  => $user->{id};
+    session "username" => $user->{username};
+
+    return {
+        session => session "id",
+    }
 }
 
 
 post "/session/login" => sub {
-    # my $phrase = passphrase( param("password") )->generate;
-
     my $username = param("username");
     my $password = param("password");
-    
-    is_authenticated($password);
 
-    # $phrase is now an object that contains RFC 2307 representation
-    # of the hashed passphrase, along with the salt, and other metadata
-     
-    # You should store $phrase->rfc2307() for use later
-    
-    return {
-        password => param("password")
+    unless ( ($username && $password) && ($username ne '' && $password ne '') ) {
+        status 401;
+        return halt "Need a username & password.";
     }
+
+    my $authenticated = is_authenticated($username, $password);
+
+    unless ($authenticated) {
+        status 401;
+        return halt "Bad username / password.";
+    }
+
+    return $authenticated;
 };
 

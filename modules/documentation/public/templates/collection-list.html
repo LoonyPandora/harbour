@@ -1,0 +1,13 @@
+<h4>Routes</h4>
+<ul class="list">
+    <% _.each(routes, function(route) { %>
+    <li>
+        <a href="/documentation<%- route.route %>" class="<%- Backbone.history.fragment.match(route.route)? 'active' : "" %>">
+            <h5><%- route.route %></h5>
+            <% _.each(route.methods, function(method) { %>
+            <span class="label label-default"><%- method %></span>
+            <% }); %>
+        </a>
+    </li>
+    <% }); %>
+</ul>

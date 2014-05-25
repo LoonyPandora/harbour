@@ -14,9 +14,9 @@
 
             _.each([
                 new Documentation.View.CollectionList(),
-                new Documentation.View.Blank({ el: ".collection-list-footer.view" }),
-                new Documentation.View.Blank({ el: ".subnav.view" }),
-                new Documentation.View.Blank({ el: ".content.view" }),
+                new WebUI.View.Blank({ el: ".collection-list-footer.view" }),
+                new WebUI.View.Blank({ el: ".subnav.view" }),
+                new WebUI.View.Blank({ el: ".content.view" }),
                 new WebUI.View.PageTitle({ el: ".section-title.view", title: "Documentation - Harbour" }),
                 new WebUI.View.PageTitle({ title: "Documentation - Harbour" })
             ], function (view, index) {
@@ -29,9 +29,9 @@
 
             _.each([
                 new Documentation.View.CollectionList(),
-                new Documentation.View.Blank({ el: ".collection-list-footer.view" }),
-                new Documentation.View.Blank({ el: ".subnav.view" }),
-                new Documentation.View.Blank({ el: ".content.view" }),
+                new WebUI.View.Blank({ el: ".collection-list-footer.view" }),
+                new WebUI.View.Blank({ el: ".subnav.view" }),
+                new WebUI.View.Blank({ el: ".content.view" }),
                 new WebUI.View.PageTitle({ el: ".section-title.view",  title: "/" + routeName }),
                 new WebUI.View.PageTitle({ title: "Documentation - " + routeName })
             ], function (view, index) {

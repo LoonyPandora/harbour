@@ -2,6 +2,8 @@
     "use strict";
 
     WebUI.View = {
+        Blank: Harbour.View.extend({}),
+
         ModuleList: Harbour.View.extend({
             template: "/modules/webui/templates/module-list.html",
             el: "#module-list",
@@ -27,11 +29,10 @@
 
             serialize: function (options) {
                 var view = this;
-                _.extend(view.options, options);
 
                 return view.render({
                     json: {
-                        title: view.options.title
+                        title: view.title
                     }
                 });
             }

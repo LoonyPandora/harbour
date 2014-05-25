@@ -107,12 +107,14 @@
                 });
             }
 
-            // If the template is passed the empty string, render the empty string.
-            // FIXME: A bit hacky passing anonymous functions around...
+            // FIXME: This is a workaround for a race condition when rendering templates
+            // Shouldn't need to fetch a blank but of HTML, but we do. Figure out why.
             if (!view.template) {
-                doRender(function() {
-                    $(view.$el.selector).hide(0);
-                    return "";
+                Harbour.Template.fetch("/modules/webui/templates/blank.html", function (tmpl) {
+                    doRender(function() {
+                        $(view.$el.selector).hide(0);
+                        return "";
+                    });
                 });
             } else {
                 Harbour.Template.fetch(view.template, function (tmpl) {

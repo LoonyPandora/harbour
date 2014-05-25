@@ -2,8 +2,6 @@
     "use strict";
 
     Documentation.View = {
-        Blank: Harbour.View.extend({ template: "" }),
-
         CollectionList: Harbour.View.extend({
             template: "/modules/documentation/templates/collection-list.html",
             el: ".collection-list.view",

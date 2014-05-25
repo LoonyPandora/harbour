@@ -19,12 +19,6 @@ get "/session/modules" => sub {
     return enabled_modules();
 };
 
-# Test route with a regex
-get qr{^ /session/regex_route/ (?<repo_owner> .+ ) / (?<repo_name> .+ ) $}x => sub {
-
-};
-
-
 get "/session/current" => sub {
     return {
         id => session()->id,

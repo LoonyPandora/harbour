@@ -24,6 +24,12 @@ plugins:
             AutoCommit: 1
             InactiveDestroy: 1
 
+    Passphrase:
+        default: 'Bcrypt'
+        Bcrypt:
+            cost: 8
+
+
 session_name: "harbour.session"
 session: "DBI"
 session_options:

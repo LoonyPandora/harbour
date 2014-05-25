@@ -4,6 +4,7 @@ use Dancer;
 use Harbour;
 use common::sense;
 use Path::Tiny qw(path);
+use Try::Tiny;
 use JSON::XS;
 
 # Get a list of all installed modules and load them one-by-one
@@ -20,9 +21,15 @@ for my $module ($moduledir->children) {
 
     # Load the authorisation file and later we'll make it a setting run on a before filter
     if ( $module->is_dir && $module->child("config", "authorisation.json")->is_file ) {
-        my $auth = decode_json(
-            $module->child("config", "authorisation.json")->slurp_utf8
-        );
+        
+        my $auth;
+        try {
+            $auth = decode_json(
+                $module->child("config", "authorisation.json")->slurp_utf8
+            );
+        } catch {
+            die "Could not parse: '".$module->child("config", "authorisation.json")->realpath->stringify."' - Reason: $_";
+        };
 
         $route_authorisation->{"HarbourX::".$module->basename} = $auth;
     }

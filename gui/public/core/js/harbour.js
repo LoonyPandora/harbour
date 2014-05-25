@@ -45,7 +45,7 @@
         initialize: function (options) {
             var view = this;
 
-            view.options = options || {};
+            _.extend(view, options);
 
             // If there is no layout (e.g it's a session-based view) - just skip it.
             // We need to return a resolved promise to make it look like we returned a layou

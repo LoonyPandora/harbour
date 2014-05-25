@@ -1,8 +1,8 @@
-(function (Session) {
+(function (Documentation) {
     "use strict";
 
-    Session.Mixin = {
+    Documentation.Mixin = {
 
     };
 
-})(Harbour.Module.register("session"));
+})(Harbour.Module.register("documentation"));

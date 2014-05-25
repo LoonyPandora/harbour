@@ -1,19 +1,14 @@
-(function (Session) {
+(function (Documentation) {
     "use strict";
 
-    Session.Router = Harbour.Router.extend({
+    Documentation.Router = Harbour.Router.extend({
         routes: {
-            "" : "index",
-            "login" : "login"
+            "" : "index"
         },
 
         index: function () {
 
         },
-
-        login: function () {
-            console.log("login route");
-        }
     });
 
-})(Harbour.Module.register("session"));
+})(Harbour.Module.register("documentation"));

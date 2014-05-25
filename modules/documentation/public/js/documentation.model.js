@@ -1,8 +1,8 @@
-(function (Session) {
+(function (Documentation) {
     "use strict";
 
-    Session.Model = {
+    Documentation.Model = {
 
     };
 
-})(Harbour.Module.register("session"));
+})(Harbour.Module.register("documentation"));

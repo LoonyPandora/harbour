@@ -3,7 +3,7 @@
 
     WebUI.View = {
         ModuleList: Harbour.View.extend({
-            template: "/core/templates/module-list.html",
+            template: "/modules/webui/templates/module-list.html",
             el: "#module-list",
 
             serialize: function () {
@@ -22,7 +22,7 @@
         }),
 
         PageTitle: Harbour.View.extend({
-            template: "/core/templates/header.html",
+            template: "/modules/webui/templates/header.html",
             el: "title.view",
 
             serialize: function (options) {

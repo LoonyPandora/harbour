@@ -8,6 +8,7 @@
 
             viewHelper: {
                 isActive: function (route) {
+                    // FIXME: Doesn't match when you are on a subview
                     var matchEnd = new RegExp(route + "$");
 
                     if ( Backbone.history.fragment.match(matchEnd) ) {
@@ -16,9 +17,8 @@
                 }
             },
 
-            serialize: function (options) {
+            serialize: function () {
                 var view = this;
-                _.extend(view.options, options);
 
                 var deferred = _.map([
                     new Documentation.Collection.Routes()
@@ -36,7 +36,6 @@
                 });
             }
         })
-
     };
 
 })(Harbour.Module.register("documentation"));

@@ -13,7 +13,7 @@ sub {
         VALUES (?, ?, ?)
     });
 
-    $sth->execute($uuid, "loonypandora", $password);
+    $sth->execute($uuid, $username, $password);
 
     $sth->finish();
 }

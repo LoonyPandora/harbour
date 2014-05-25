@@ -17,7 +17,7 @@
                 new Documentation.View.Blank({ el: ".collection-list-footer.view" }),
                 new Documentation.View.Blank({ el: ".subnav.view" }),
                 new Documentation.View.Blank({ el: ".content.view" }),
-                // new Documentation.View.SectionTitle({ title: "Documentation - Harbour" }),
+                new WebUI.View.PageTitle({ el: ".section-title.view", title: "Documentation - Harbour" }),
                 new WebUI.View.PageTitle({ title: "Documentation - Harbour" })
             ], function (view, index) {
                 view.serialize();
@@ -32,12 +32,10 @@
                 new Documentation.View.Blank({ el: ".collection-list-footer.view" }),
                 new Documentation.View.Blank({ el: ".subnav.view" }),
                 new Documentation.View.Blank({ el: ".content.view" }),
-                new Documentation.View.Blank({ el: ".section-title.view" }),
-                new WebUI.View.PageTitle()
+                new WebUI.View.PageTitle({ el: ".section-title.view",  title: "/" + routeName }),
+                new WebUI.View.PageTitle({ title: "Documentation - " + routeName })
             ], function (view, index) {
-                view.serialize({
-                    title: "Documentation - " + routeName
-                });
+                view.serialize();
             });
         },
         

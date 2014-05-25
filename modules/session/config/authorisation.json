@@ -1,5 +1,6 @@
 {
-    "/session/modules"  : "Harbour::Authorisation::Role::AllowAll",
-    "/session/login"    : "Harbour::Authorisation::Role::AllowAll",
-    "/session/current"  : "Harbour::Authorisation::Role::AllowAll"
+    "/session/modules"        : "Harbour::Authorisation::Role::AllowAll",
+    "/session/login"          : "Harbour::Authorisation::Role::AllowAll",
+    "/session/route_list"     : "Harbour::Authorisation::Role::AllowAll",
+    "/session/current"        : "Harbour::Authorisation::Role::AllowAll"
 }

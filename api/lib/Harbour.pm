@@ -21,7 +21,7 @@ sub is_authorised {
     # Without an entry, default to deny.
     unless ($auth_package) {
         status 401;
-        return halt "No Auth Package";
+        return halt "No Auth Package for $route, $app";
     }
 
     # If we have an entry, try to load it and run it.

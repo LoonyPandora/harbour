@@ -24,7 +24,7 @@ for my $module ($moduledir->children) {
             $module->child("config", "authorisation.json")->slurp_utf8
         );
 
-        $route_authorisation->{$module->basename} = $auth;
+        $route_authorisation->{"HarbourX::".$module->basename} = $auth;
     }
 }
 

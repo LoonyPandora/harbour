@@ -13,17 +13,8 @@ use common::sense;
 sub is_authorised {
     my ($route, $harbour_module) = @_;
 
-     # route is a regex, so munge it
-    if ($route =~ /\Q?^ux:\E/) {
-        # Strip the perl regexp flags
-        $route =~ s/\Q?^ux:\E//g;
-        # Strip negative lookaheads
-        $route =~ s/ \( \? ! [^)]+ \) //gx;
-        # Change named captures to :params
-        $route =~ s/ \( \? < ([\w]+) >.*? \) /:$1/gx;
-        # Anything left is nonsense that can be ignored.
-        $route =~ s/[^\/:\w]//g;
-    }
+    # Route might be a regex, so munge it to /route/:param format
+    regex_to_route($route);
 
     # This setting is dynamically generated on app startup by reading all modules
     my $route_authorisation = setting("route_authorisation");
@@ -45,27 +36,45 @@ sub is_authorised {
     };
 
     # Now lets try and run the authorised method
-    unless ($auth_package->authorised()) {
-        status 401;
-        return halt "Sorry, I can't do that.";
+    return $auth_package->authorised();
+}
+
+sub regex_to_route {
+    my ($route) = @_;
+
+    # Check that is absolutely for sure a regex.
+    # TODO: Be nice if Perl had a proper Type.
+    if ($route =~ /\Q?^ux:\E/) {
+        # Strip the perl regexp flags
+        $route =~ s/\Q?^ux:\E//g;
+        # Strip negative lookaheads
+        $route =~ s/ \( \? ! [^)]+ \) //gx;
+        # Change named captures to :params
+        $route =~ s/ \( \? < ([\w]+) >.*? \) /:$1/gx;
+        # Anything left is nonsense that can be ignored.
+        $route =~ s/[^\/:\w]//g;
     }
+
+    return $route;
 }
 
 
 # This runs the authorisation method for every route, loading the module if necessary
 hook 'before' => sub {
     my $route = shift;
-    my ($module) = request()->path =~ m{^/(\w+)/};
 
+    my $app =  Dancer::App->current()->{name};
 
     unless ($route) {
-        status 401;
-        return halt "Sorry, I can't do that.";
+        status 404;
+        return halt "No Route Found.";
     }
 
     # TODO: Add check for malformed JSON and correct headers
-
-    is_authorised($route->pattern(), $module);
+    unless ( is_authorised($route->pattern(), $app) ) {
+        status 401;
+        return halt "Sorry, I can't do that.";
+    }
 };
 
 1;

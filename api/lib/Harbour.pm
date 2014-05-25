@@ -35,6 +35,9 @@ sub is_authorised {
     return $auth_package->authorised();
 }
 
+
+
+# Given a route and the current app, will return the package / class that will say whehter a user has access
 sub get_authorisation_package {
     my ($route, $app) = @_;
 
@@ -51,6 +54,8 @@ sub get_authorisation_package {
 }
 
 
+
+# Takes a route regex, turns it into /route/:param format
 sub regex_to_route {
     my ($route) = @_;
 
@@ -68,6 +73,34 @@ sub regex_to_route {
     }
 
     return $route;
+}
+
+
+# Lists ALL Routes that the currently authenticated user has access to.
+# Useful for the root, an also for the documentation browser
+sub route_list {
+    my @apps = Dancer::App->applications;
+
+    my $route_list = {};
+    for my $app ( @apps ) {
+        my $routes = $app->{registry}->{routes};
+
+        # TODO: could probably do some fancy map here.
+        for my $method (keys %$routes) {
+            for my $route (@{ $routes->{$method} }) {
+                my $route_key = regex_to_route($route->pattern);
+
+                # Only add authorised routes
+                if (is_authorised($route->pattern, $app->{name})) {
+                    $route_list->{$route_key}->{route} = regex_to_route($route->pattern);
+                    $route_list->{$route_key}->{role} = get_authorisation_package($route->pattern, $app->{name});
+                    push @{$route_list->{$route_key}->{methods}}, $method;
+                }
+            }
+        }
+    }
+
+    return $route_list;
 }
 
 

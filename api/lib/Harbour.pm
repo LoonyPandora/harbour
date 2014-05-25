@@ -57,13 +57,15 @@ hook 'before' => sub {
     my $route = shift;
     my ($module) = request()->path =~ m{^/(\w+)/};
 
+
     unless ($route) {
         status 401;
         return halt "Sorry, I can't do that.";
     }
 
-    is_authorised($route->pattern(), $module);
+    # TODO: Add check for malformed JSON and correct headers
 
+    is_authorised($route->pattern(), $module);
 };
 
 1;

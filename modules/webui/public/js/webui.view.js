@@ -19,6 +19,22 @@
                     })
                 })
             }
+        }),
+
+        PageTitle: Harbour.View.extend({
+            template: "/core/templates/header.html",
+            el: "title.view",
+
+            serialize: function (options) {
+                var view = this;
+                _.extend(view.options, options);
+
+                return view.render({
+                    json: {
+                        title: view.options.title
+                    }
+                });
+            }
         })
     };
 

@@ -5,7 +5,6 @@
         Route: Harbour.Model.extend({
             idAttribute: "id",
             parse: function (response) {
-                console.log(response);
                 return response;
             }
         })

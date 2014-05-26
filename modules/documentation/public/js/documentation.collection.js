@@ -2,7 +2,7 @@
     "use strict";
 
     Documentation.Collection = {
-        Routes: Harbour.Model.extend({
+        Routes: Harbour.Collection.extend({
             model: Documentation.Model.Route,
             url: "/api/documentation/route",
             parse: function (response) {
@@ -21,12 +21,7 @@
                     }
                 });
 
-                var displayCollection = {
-                    title: "Routes",
-                    models: _.sortBy(models, "title")
-                }
-
-                return displayCollection;
+                return _.sortBy(models, "title");
             }
         })
     };

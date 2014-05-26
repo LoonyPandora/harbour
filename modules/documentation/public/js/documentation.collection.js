@@ -11,4 +11,4 @@
         })
     };
 
-})(Harbour.Module.register("documentation"));
+})(Harbour.Module.get("documentation"));

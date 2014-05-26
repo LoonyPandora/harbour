@@ -137,24 +137,18 @@
 
     // Our own Module getters & settings
     Harbour.Module = {
-        // FIXME: we need a method to check if a module exists
-        // If no name specified, or it doesn't exist - return all modules
         get: function (module) {
+            // Return all modules if no module specified
+            if (!module) {
+                return Harbour.Module._private;
+            }
+
+            // If it has already been created, return it
             if (Harbour.Module._private[module]) {
                 return Harbour.Module._private[module];
             }
 
-            return Harbour.Module._private;
-        },
-
-        // Registers a module, and all it's routes
-        register: function (module) {
-            // If this module has already been created, return it so we keep adding to it
-            if (Harbour.Module._private[module]) {
-                return Harbour.Module._private[module];
-            }
-
-            // If not, create a blank object with some meta information, and return that
+            // If all else fails, create it.
             Harbour.Module._private[module] = {};
             return Harbour.Module._private[module];
         },

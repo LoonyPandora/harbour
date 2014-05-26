@@ -7,4 +7,4 @@
         layout: "/core/layouts/with-collection-list.html"
     };
 
-})(Harbour.Module.register("documentation"));
+})(Harbour.Module.get("documentation"));

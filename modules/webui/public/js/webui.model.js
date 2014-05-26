@@ -7,4 +7,4 @@
         })
     };
 
-})(Harbour.Module.register("webui"));
+})(Harbour.Module.get("webui"));

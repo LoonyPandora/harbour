@@ -16,4 +16,4 @@
         }
     });
 
-})(Harbour.Module.register("session"));
+})(Harbour.Module.get("session"));

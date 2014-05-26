@@ -3,7 +3,11 @@
 
     Documentation.Model = {
         Route: Harbour.Model.extend({
-            idAttribute: "route"
+            idAttribute: "id",
+            parse: function (response) {
+                console.log(response);
+                return response;
+            }
         })
     };
 

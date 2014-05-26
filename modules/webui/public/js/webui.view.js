@@ -23,6 +23,39 @@
             }
         }),
 
+        CollectionList: Harbour.View.extend({
+            template: "/modules/webui/templates/collection-list.html",
+            el: ".collection-list.view",
+
+            viewHelper: {
+                isActive: function (route) {
+                    // FIXME: Doesn't match when you are on a subview
+                    var matchEnd = new RegExp(route + "$");
+
+                    if ( Backbone.history.fragment.match(matchEnd) ) {
+                        return "active";
+                    }
+                }
+            },
+
+            serialize: function () {
+                var view = this;
+
+                var deferred = _.map(view.collections, function (collection) {
+                    return collection.fetch();
+                });
+
+                $.when.apply($, deferred).done(function (routes) {
+                    view.render({
+                        json: {
+                            routes: routes.toJSON(),
+                            viewHelper: view.viewHelper
+                        }
+                    })
+                });
+            }
+        }),
+
         PageTitle: Harbour.View.extend({
             template: "/modules/webui/templates/header.html",
             el: "title.view",

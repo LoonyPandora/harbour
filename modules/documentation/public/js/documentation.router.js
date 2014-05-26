@@ -2,6 +2,7 @@
     "use strict";
 
     var WebUI = Harbour.Module.get("webui");
+    _.extend(WebUI.Mixin, Documentation.Mixin);
 
     Documentation.Router = Harbour.Router.extend({
         routes: {
@@ -16,7 +17,11 @@
 
         index: function () {
             _.each([
-                new Documentation.View.CollectionList(),
+                new WebUI.View.CollectionList({
+                    collections: [
+                        new Documentation.Collection.Routes()
+                    ]
+                }),
                 new WebUI.View.Blank({ el: ".collection-list-footer.view" }),
                 new WebUI.View.Blank({ el: ".subnav.view" }),
                 new WebUI.View.Blank({ el: ".content.view" }),
@@ -76,7 +81,11 @@
             ]
 
             _.each([
-                new Documentation.View.CollectionList(),
+                new WebUI.View.CollectionList({
+                    collections: [
+                        new Documentation.Collection.Routes()
+                    ]
+                }),
                 new WebUI.View.Blank({ el: ".collection-list-footer.view" }),
                 new WebUI.View.PageTitle({ el: ".section-title.view",  title: "/" + routeName }),
                 new WebUI.View.PageTitle({ title: "Documentation - " + routeName }),

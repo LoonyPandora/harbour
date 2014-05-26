@@ -28,6 +28,11 @@
         subviewStars:  function (routeName) { this.showRoute(routeName, "stars")  },
 
         showRoute: function (routeName, subview) {
+            // We want to always navigate to a default subview if we have a subnav
+            if (!subview) {
+                this.navigate("documentation/"+routeName+"/builds", { replace: true });
+            }
+
             _.each([
                 new Documentation.View.CollectionList(),
                 new WebUI.View.Blank({ el: ".collection-list-footer.view" }),

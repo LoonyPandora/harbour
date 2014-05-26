@@ -41,6 +41,40 @@
                 this.navigate("documentation/"+routeName+"/test", { replace: true });
             }
 
+            // All views that are dependent on a parent, in order they will appear in the navbar
+            var subviews = [
+                new WebUI.View.PageTitle({
+                    url: "test",
+                    icon: "bolt",
+                    title: "Test",
+                    el: ".content.view"
+                }),
+                new WebUI.View.PageTitle({
+                    url: "input",
+                    icon: "sign-in",
+                    title: "Input",
+                    el: ".content.view"
+                }),
+                new WebUI.View.PageTitle({
+                    url: "output",
+                    icon: "sign-out",
+                    title: "Output",
+                    el: ".content.view"
+                }),
+                new WebUI.View.PageTitle({
+                    url: "errors",
+                    icon: "bomb",
+                    title: "Errors",
+                    el: ".content.view"
+                }),
+                new WebUI.View.PageTitle({
+                    url: "reference",
+                    icon: "book",
+                    title: "Full Docs",
+                    el: ".content.view"
+                })
+            ]
+
             _.each([
                 new Documentation.View.CollectionList(),
                 new WebUI.View.Blank({ el: ".collection-list-footer.view" }),
@@ -49,38 +83,7 @@
                 new WebUI.View.Subnav({
                     baseURL: "documentation/"+routeName,
                     activeSubview: subview,
-                    subviews: [
-                        new WebUI.View.PageTitle({
-                            url: "test",
-                            icon: "bolt",
-                            title: "Test",
-                            el: ".content.view"
-                        }),
-                        new WebUI.View.PageTitle({
-                            url: "input",
-                            icon: "sign-in",
-                            title: "Input",
-                            el: ".content.view"
-                        }),
-                        new WebUI.View.PageTitle({
-                            url: "output",
-                            icon: "sign-out",
-                            title: "Output",
-                            el: ".content.view"
-                        }),
-                        new WebUI.View.PageTitle({
-                            url: "errors",
-                            icon: "bomb",
-                            title: "Errors",
-                            el: ".content.view"
-                        }),
-                        new WebUI.View.PageTitle({
-                            url: "reference",
-                            icon: "book",
-                            title: "Full Docs",
-                            el: ".content.view"
-                        })
-                    ]
+                    subviews: subviews
                 })
             ], function (view, index) {
                 view.serialize();

@@ -1,8 +1,5 @@
-(function (Documentation) {
+(function (Documentation, WebUI) {
     "use strict";
-
-    var WebUI = Harbour.Module.get("webui");
-    _.extend(WebUI.Mixin, Documentation.Mixin);
 
     Documentation.Router = Harbour.Router.extend({
         routes: {
@@ -101,4 +98,10 @@
         
     });
 
-})(Harbour.Module.register("documentation"));
+    // Make sure the WebUI takes on the appearence of this module
+    _.extend(WebUI.Mixin, Documentation.Mixin);
+
+})(
+    Harbour.Module.get("documentation"),
+    Harbour.Module.get("webui")
+);

@@ -1,13 +1,15 @@
-<h4>Routes</h4>
+<% _.each(collections, function(collection) { %>
+<h4><%- collection.title %></h4>
 <ul class="list">
-    <% _.each(routes, function(route) { %>
+    <% _.each(collection.models, function(model) { %>
     <li>
-        <a href="/documentation<%- route.route %>" class="<%- viewHelper.isActive(route.route) %>">
-            <h5><%- route.route %></h5>
-            <% _.each(route.methods, function(method) { %>
-            <span class="label label-default"><%- method %></span>
+        <a href="/<%- baseURL %><%- model.id %>" class="<%- viewHelper.isActive(model.id) %>">
+            <h5><%- model.title %></h5>
+            <% _.each(model.labels, function(label) { %>
+                <span class="label label-<%- label.type %>"><%- label.title %></span>
             <% }); %>
         </a>
     </li>
     <% }); %>
 </ul>
+<% }); %>

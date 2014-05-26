@@ -45,10 +45,16 @@
                     return collection.fetch();
                 });
 
-                $.when.apply($, deferred).done(function (routes) {
+                $.when.apply($, deferred).done(function () {
+                    // Create an array of all the collections that were added
+                    var collections = _.map(view.collections, function (collection) {
+                        return collection.toJSON();
+                    });
+
                     view.render({
                         json: {
-                            routes: routes.toJSON(),
+                            baseURL: view.baseURL,
+                            collections: collections,
                             viewHelper: view.viewHelper
                         }
                     })

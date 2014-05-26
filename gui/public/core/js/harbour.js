@@ -107,14 +107,11 @@
                 });
             }
 
-            // FIXME: This is a workaround for a race condition when rendering templates
-            // Shouldn't need to fetch a blank but of HTML, but we do. Figure out why.
+            // Rended empty string if we have no template and just want to blank the section
             if (!view.template) {
-                Harbour.Template.fetch("/modules/webui/templates/blank.html", function (tmpl) {
-                    doRender(function() {
-                        $(view.$el.selector).hide(0);
-                        return "";
-                    });
+                doRender(function() {
+                    $(view.$el.selector).hide(0);
+                    return "";
                 });
             } else {
                 Harbour.Template.fetch(view.template, function (tmpl) {

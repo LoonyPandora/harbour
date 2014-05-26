@@ -27,6 +27,8 @@
             });
         },
 
+        // Can't capture these items, as we are using a splat - documentation can have forward slashes
+        // Normally wouldn't be this messy if we can be sure captures won't have slashes
         subviewTest:      function (routeName) { this.showRoute(routeName, "test")      },
         subviewInput:     function (routeName) { this.showRoute(routeName, "input")     },
         subviewOutput:    function (routeName) { this.showRoute(routeName, "output")    },

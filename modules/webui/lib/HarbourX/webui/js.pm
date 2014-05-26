@@ -37,7 +37,7 @@ get "/webui/js.html" => sub {
     my $publicdir = path(dirname(__FILE__), "../../../../");
 
     for my $module (@$enabled_modules) {
-        for my $type (qw(router model collection view mixin)) {
+        for my $type (qw(mixin model collection view router)) {
             if ($publicdir->child($module, "public", "js", "$module.$type.js")->is_file) {
                 push @output, qq{<script src="/modules/$module/js/$module.$type.js"></script>}
             }

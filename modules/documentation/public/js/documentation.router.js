@@ -5,10 +5,13 @@
 
     Documentation.Router = Harbour.Router.extend({
         routes: {
-            "documentation"                    : "index",
-            "documentation/*routeName/builds"  : "subviewBuilds",
-            "documentation/*routeName/stars"   : "subviewStars",
-            "documentation/*routeName"         : "showRoute",
+            "documentation"                      : "index",
+            "documentation/*routeName/test"      : "subviewTest",
+            "documentation/*routeName/input"     : "subviewInput",
+            "documentation/*routeName/output"    : "subviewOutput",
+            "documentation/*routeName/errors"    : "subviewErrors",
+            "documentation/*routeName/reference" : "subviewReference",
+            "documentation/*routeName"           : "showRoute",
         },
 
         index: function () {
@@ -24,13 +27,16 @@
             });
         },
 
-        subviewBuilds: function (routeName) { this.showRoute(routeName, "builds") },
-        subviewStars:  function (routeName) { this.showRoute(routeName, "stars")  },
+        subviewTest:      function (routeName) { this.showRoute(routeName, "test")      },
+        subviewInput:     function (routeName) { this.showRoute(routeName, "input")     },
+        subviewOutput:    function (routeName) { this.showRoute(routeName, "output")    },
+        subviewErrors:    function (routeName) { this.showRoute(routeName, "errors")    },
+        subviewReference: function (routeName) { this.showRoute(routeName, "reference") },
 
         showRoute: function (routeName, subview) {
             // We want to always navigate to a default subview if we have a subnav
             if (!subview) {
-                this.navigate("documentation/"+routeName+"/builds", { replace: true });
+                this.navigate("documentation/"+routeName+"/test", { replace: true });
             }
 
             _.each([
@@ -43,15 +49,33 @@
                     activeSubview: subview,
                     subviews: [
                         new WebUI.View.PageTitle({
-                            url: "builds",
-                            icon: "cogs",
-                            title: "Builds",
+                            url: "test",
+                            icon: "bolt",
+                            title: "Test",
                             el: ".content.view"
                         }),
                         new WebUI.View.PageTitle({
-                            url: "stars",
-                            icon: "star",
-                            title: "Stars",
+                            url: "input",
+                            icon: "sign-in",
+                            title: "Input",
+                            el: ".content.view"
+                        }),
+                        new WebUI.View.PageTitle({
+                            url: "output",
+                            icon: "sign-out",
+                            title: "Output",
+                            el: ".content.view"
+                        }),
+                        new WebUI.View.PageTitle({
+                            url: "errors",
+                            icon: "bomb",
+                            title: "Errors",
+                            el: ".content.view"
+                        }),
+                        new WebUI.View.PageTitle({
+                            url: "reference",
+                            icon: "book",
+                            title: "Full Docs",
                             el: ".content.view"
                         })
                     ]

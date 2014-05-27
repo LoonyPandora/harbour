@@ -102,6 +102,8 @@
     // Make sure the WebUI takes on the appearence of this module
     _.extend(WebUI.Mixin, Documentation.Mixin);
 
+    // FIXME: Find a more elegant way of doing this. If we don't, we get an icon for WebUI in the sidebar
+    delete WebUI.Mixin.icon;
 })(
     Harbour.Module.get("documentation"),
     Harbour.Module.get("webui")

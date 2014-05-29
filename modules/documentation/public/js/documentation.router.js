@@ -15,6 +15,7 @@
         index: function () {
             _.each([
                 new WebUI.View.CollectionList({
+                    baseURL: "documentation",
                     collections: [
                         new Documentation.Collection.Routes()
                     ]

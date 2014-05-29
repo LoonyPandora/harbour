@@ -1,5 +1,5 @@
-<% _.each(collections, function(collection) { %>
-<h4><%- collection.title %></h4>
+<% _.each(collections, function(collection, i) { %>
+<h4><%- collectionTitles[i] %></h4>
 <ul class="list">
     <% _.each(collection, function(model) { %>
     <li>

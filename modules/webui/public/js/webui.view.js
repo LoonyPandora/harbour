@@ -54,6 +54,7 @@
                     view.render({
                         json: {
                             baseURL: view.baseURL,
+                            collectionTitles: view.collectionTitles,
                             collections: collections,
                             viewHelper: view.viewHelper
                         }

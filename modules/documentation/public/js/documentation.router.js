@@ -16,6 +16,9 @@
             _.each([
                 new WebUI.View.CollectionList({
                     baseURL: "documentation",
+                    collectionTitles: [
+                        "All Routes"
+                    ],
                     collections: [
                         new Documentation.Collection.Routes()
                     ]
@@ -81,6 +84,9 @@
             _.each([
                 new WebUI.View.CollectionList({
                     baseURL: "documentation",
+                    collectionTitles: [
+                        "All Routes"
+                    ],
                     collections: [
                         new Documentation.Collection.Routes()
                     ]

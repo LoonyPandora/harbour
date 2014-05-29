@@ -29,8 +29,7 @@
 
             viewHelper: {
                 isActive: function (route) {
-                    // FIXME: Doesn't match when you are on a subview
-                    var matchEnd = new RegExp(route + "$");
+                    var matchEnd = new RegExp(route + "/\\w+" + "$");
 
                     if ( Backbone.history.fragment.match(matchEnd) ) {
                         return "active";

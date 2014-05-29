@@ -44,7 +44,7 @@
         showRoute: function (routeName, subview) {
             // We want to always navigate to a default subview if we have a subnav
             if (!subview) {
-                this.navigate("documentation/"+routeName+"/test", { replace: true });
+                this.navigate("documentation/"+routeName+"/test", { trigger: true, replace: true });
             }
 
             // All views that are dependent on a parent, in order they will appear in the navbar

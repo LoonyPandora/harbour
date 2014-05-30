@@ -41,6 +41,11 @@
                 var view = this;
 
                 var deferred = _.map(view.collections, function (collection) {
+                    // Return if we've already got the data in memory. This is a completed promise.
+                    if (collection.length) {
+                        return collection;
+                    }
+
                     return collection.fetch();
                 });
 
@@ -59,6 +64,28 @@
                         }
                     })
                 });
+            },
+
+            // Wire up the filter box
+            after: function () {
+                var view = this;
+
+                var $searchBox = $(view.$el.selector).parent().find("input");
+
+                $searchBox.on("keyup", function (event) {
+                    var filtered = view.collections[0].where({ title: "/documentation/route" });
+
+                    // console.log(filtered[0].collection);
+
+                    var Documentation = Harbour.Module.get("documentation");
+
+                    var thing = new Documentation.Collection.Routes(filtered[0]);
+
+                    view.collections[0] = thing;
+                    view.serialize();
+                })
+
+                // console.log($searchBox.val(), view.collections);
             }
         }),
 

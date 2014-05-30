@@ -45,6 +45,9 @@
         initialize: function (options) {
             var view = this;
 
+            // Remove any delegated events for new instances of a view
+            $(view.$el.selector).off();
+
             _.extend(view, options);
 
             // If there is no layout (e.g it's a session-based view) - just skip it.

@@ -66,16 +66,35 @@
                 });
             },
 
+
             // Wire up the filter box
             after: function () {
                 var view = this;
 
+                // Save a complete copy of the collections, before any searches are done
+                if (typeof view.allCollections === "undefined") {
+                    view.allCollections = _.clone(view.collections);
+                }
+
                 var $searchBox = $(view.$el.selector).parent().find("input");
 
-                $searchBox.on("keyup", function (event) {
-                    var filtered = view.collections[0].where({ title: "/documentation/route" });
+                // FIXME: Turning it off before re-attaching is a workaround for double attaching the event
+                $searchBox.off("keyup").on("keyup", function (event) {
+                    var pattern = new RegExp($searchBox.val(), "i");
 
-                    // console.log(filtered[0].collection);
+                    // We have an array of collections that we have to descend through
+                    var filtered = _.map(view.allCollections, function (collection) {
+
+                        // Returns true if the collection contains a model that matches
+                        var matchedCollection = collection.map(function(model) {
+                            var title = model.get("title");
+                            if (pattern.test(title)) {
+                                return model;
+                            }
+                        });
+
+                        return matchedCollection.filter(function(collection) { return collection; });
+                    });
 
                     var Documentation = Harbour.Module.get("documentation");
 
@@ -84,8 +103,6 @@
                     view.collections[0] = thing;
                     view.serialize();
                 })
-
-                // console.log($searchBox.val(), view.collections);
             }
         }),
 

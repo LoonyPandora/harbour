@@ -47,6 +47,7 @@
 
             // Remove any delegated events for new instances of a view
             $(view.$el.selector).off();
+            $(view.$el.selector).children().off();
 
             _.extend(view, options);
 
@@ -89,6 +90,7 @@
         after: function () {
             var view = this;
         },
+
 
         render: function (options) {
             var view = this;

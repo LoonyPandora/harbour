@@ -46,6 +46,12 @@
                         return collection;
                     }
 
+                    // If we have filtered the collection, we WANT to return something empty
+                    if (collection.filtered) {
+                        return collection;
+                    }
+
+                    // Default is to connect to the server and fetch the collection
                     return collection.fetch();
                 });
 
@@ -66,7 +72,6 @@
                 });
             },
 
-
             // Wire up the filter box
             after: function () {
                 var view = this;
@@ -84,21 +89,26 @@
 
                     // We have an array of collections that we have to descend through
                     var filtered = _.map(view.allCollections, function (collection) {
-
                         // Returns true if the collection contains a model that matches
                         var matchedCollection = collection.map(function(model) {
                             var title = model.get("title");
+
                             if (pattern.test(title)) {
                                 return model;
                             }
                         });
 
+                        // Remove and undefined values from this list
+                        // FIXME: Why do we have them in the firstplace?
                         return matchedCollection.filter(function(collection) { return collection; });
                     });
 
                     var Documentation = Harbour.Module.get("documentation");
 
                     var thing = new Documentation.Collection.Routes(filtered[0]);
+
+                    // Set a flag that this has been through a filter, so we can render an empty view
+                    thing.filtered = true;
 
                     view.collections[0] = thing;
                     view.serialize();

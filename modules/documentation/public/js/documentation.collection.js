@@ -17,7 +17,7 @@
                     return {
                         id: model.route,
                         title: model.route,
-                        labels: labels
+                        labels: _.sortBy(labels, "title")
                     }
                 });
 

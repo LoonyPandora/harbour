@@ -138,7 +138,24 @@
 
     Harbour.Model = Backbone.Model.extend({ });
 
-    Harbour.Collection = Backbone.Collection.extend({ });
+    Harbour.Collection = Backbone.Collection.extend({
+
+        // Like filter, but is a regex match instead of an exact match
+        // TODO: Make it fuzzy like textmate command + T
+        search: function(pattern, attribute) {
+            var collection = this;
+
+            var pattern = new RegExp(pattern, "i");
+
+            return collection.map(function(model) {
+                var searchedAttribute = model.get(attribute);
+
+                if (pattern.test(searchedAttribute)) {
+                    return model;
+                }
+            });
+        }
+    });
 
     // Our own Module getters & settings
     Harbour.Module = {

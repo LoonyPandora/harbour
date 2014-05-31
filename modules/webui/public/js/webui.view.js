@@ -89,18 +89,11 @@
 
                     // We have an array of collections that we have to descend through
                     var filtered = _.map(view.allCollections, function (collection) {
-                        // Returns true if the collection contains a model that matches
-                        var matchedCollection = collection.map(function(model) {
-                            var title = model.get("title");
-
-                            if (pattern.test(title)) {
-                                return model;
-                            }
-                        });
-
                         // Remove and undefined values from this list
                         // FIXME: Why do we have them in the firstplace?
-                        return matchedCollection.filter(function(collection) { return collection; });
+                        return collection.search($searchBox.val(), "title").filter(function(collection) {
+                            return collection;
+                        });
                     });
 
                     var Documentation = Harbour.Module.get("documentation");

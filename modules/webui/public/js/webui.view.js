@@ -77,7 +77,7 @@
                 var view = this;
 
                 // Save a complete copy of the collections, before any searches are done
-                if (typeof view.allCollections === "undefined") {
+                if (_.size(view.allCollections) === 0) {
                     view.allCollections = _.clone(view.collections);
                 }
 
@@ -87,23 +87,29 @@
                 $searchBox.off("keyup").on("keyup", function (event) {
                     var pattern = new RegExp($searchBox.val(), "i");
 
-                    // We have an array of collections that we have to descend through
-                    var filtered = _.map(view.allCollections, function (collection) {
-                        // Remove and undefined values from this list
-                        // FIXME: Why do we have them in the firstplace?
-                        return collection.search($searchBox.val(), "title").filter(function(collection) {
-                            return collection;
-                        });
+                    // Generate the list of models that match what we've searched for
+                    var matchingModels = [];
+                    _.each(view.allCollections, function (collection) {
+                        matchingModels.push(collection.search($searchBox.val(), "title")
+                            // Filter out ones that don't match & are undefined
+                            .filter(function(models) {
+                                return models;
+                            })
+                        );
                     });
 
-                    var Documentation = Harbour.Module.get("documentation");
+                    // Create new collections containing just the models we've matched
+                    // use the models collection attribute to bless it into the same collection
+                    // We know we have at least one matching model, that's why we always access the first in the list
+                    var filteredCollections = _.map(matchingModels, function(modelList) {
+                        if (_.size(modelList) > 0) {
+                            return new modelList[0].collection.constructor(modelList);
+                        }
+                    }).filter(function(collections) {
+                        return collections;
+                    });
 
-                    var thing = new Documentation.Collection.Routes(filtered[0]);
-
-                    // Set a flag that this has been through a filter, so we can render an empty view
-                    thing.filtered = true;
-
-                    view.collections[0] = thing;
+                    view.collections = filteredCollections;
                     view.serialize();
                 })
             }

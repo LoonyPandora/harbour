@@ -85,9 +85,11 @@
                 new WebUI.View.CollectionList({
                     baseURL: "documentation",
                     collectionTitles: [
-                        "All Routes"
+                        "All Routes",
+                        "Other Routes"
                     ],
                     collections: [
+                        new Documentation.Collection.Routes(),
                         new Documentation.Collection.Routes()
                     ]
                 }),

@@ -12,6 +12,7 @@ my @core_js = (
 
     "/core/js/jquery.js",           "/core/js/bootstrap.js",
     "/core/js/underscore.js",       "/core/js/backbone.js",
+    "/core/js/URI.js",              "/core/js/jquery.URI.js",
     
     "/core/js/hashgrid.js",         "/core/js/highlight.js",
     "/core/js/backbone.cacheit.js", "/core/js/markdown.js",
